@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+data/matches/
+data/events/
+data/lineups/
+data/competitions.json
+!data/sample_10_matches/
+output/
+.DS_Store
