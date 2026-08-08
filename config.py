@@ -59,6 +59,37 @@ K_RANGE = range(3, 11)  # candidate number of clusters to try (elbow/silhouette)
 # k-sweep table is meant to inform. Report both numbers.
 K_OVERRIDE = 5
 
+# --- Within-position-family clustering (position_families.py) -------------
+# Per-family override of the silhouette-chosen k, same rationale as
+# K_OVERRIDE above but decided independently per family since each family
+# gets its own scaler and its own k-sweep. Leave a family out (or set to
+# None) to auto-pick by max silhouette.
+#
+# On the full run, every family's silhouette peaked at k=2, but the
+# runner-up wasn't equally close for all four, and the runner-up k is
+# NOT always k=3 -- check the actual sweep, don't assume:
+#   GK:  k=2 0.3028 vs k=6 0.2787 (gap 0.024)
+#   DEF: k=2 0.2936 vs k=3 0.2859 (gap 0.008 -- tighter than the global
+#        model's k=3-vs-k=5 gap of 0.011 that justified K_OVERRIDE above)
+#   MID: k=2 0.2395 vs k=4 0.2132 (gap 0.026 -- k=3 is 0.1672, the WORST
+#        value in the whole sweep, not a runner-up at all)
+#   FWD: k=2 0.2606 vs k=3 0.2066 (gap 0.054)
+# DEF -> 3 to see whether a third cluster splits center backs from
+# fullbacks: it does, cleanly (all 3 clusters land at n=90/90/121, well
+# above the 12-player floor). MID -> 4 was tried too (its actual
+# silhouette runner-up) but REJECTED: it produces a 4-player outlier
+# cluster, well under the floor this analysis otherwise enforces --
+# position_families.py checks this automatically now and falls back to
+# the silhouette-max k if an override violates the floor, so MID stays
+# at its silhouette-optimal k=2. GK and FWD are left at k=2 too since
+# the silhouette cost of going further is larger there than for DEF.
+POSITION_FAMILY_K_OVERRIDE = {
+    "GK": None,
+    "DEF": 3,
+    "MID": None,
+    "FWD": None,
+}
+
 # --- Train/test (generalization check) -------------------------------------
 # Competitions held out to test whether cluster profiles generalize.
 # Fit on TRAIN_COMPETITIONS, evaluate profile consistency on TEST_COMPETITIONS.

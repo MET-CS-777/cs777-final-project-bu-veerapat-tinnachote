@@ -148,8 +148,16 @@ players (women's tournaments) met the 270-minute threshold.
 - **Within-position-family clustering** (`position_families.py`,
   pooling all 4 competitions): clustering goalkeepers, defenders,
   midfielders, and forwards *separately* against only their own family
-  — own scaler, own k-sweep — every family independently landed on
-  k=2 by silhouette. Restricted to forwards only (166 players, no
+  — own scaler, own k-sweep. Silhouette favored k=2 for all four.
+  `config.POSITION_FAMILY_K_OVERRIDE` lets k be bumped per family where
+  the runner-up is close (same idea as the global model's `K_OVERRIDE`);
+  the script checks any override against a minimum-cluster-size floor
+  before accepting it. DEF → k=3 passed (all 3 resulting clusters ≥ 90
+  players) and splits defenders into no-nonsense stoppers, overlapping
+  attacking fullbacks, and deep ball-playing center backs. MID → k=4 was
+  tried and **rejected**: it produced a 4-player outlier cluster well
+  under the floor, so MID stays at k=2 — reported as a negative result,
+  not silently dropped. Restricted to forwards only (166 players, no
   other positions in the comparison), Ronaldo lands in a low-pass/
   high-shot-conversion/high-aerial cluster and Messi in a high-pass/
   high-dribble/high-key-pass cluster — the same separation the global

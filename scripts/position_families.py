@@ -74,6 +74,10 @@ def k_range_for(n_players: int):
 
 
 def sweep_and_fit(scaled_df, k_range, seed):
+    """Sweep k_range and return (results, best) where best is keyed by
+    max silhouette. Does NOT apply any override -- that's the caller's
+    job, so the full sweep table always reflects the untouched silhouette
+    scan regardless of what k eventually gets used."""
     evaluator = ClusteringEvaluator(featuresCol="features", predictionCol="cluster", metricName="silhouette")
     results = []
     best = None
@@ -87,6 +91,14 @@ def sweep_and_fit(scaled_df, k_range, seed):
         if best is None or sil > best[1]:
             best = (k, sil, model, preds)
     return results, best
+
+
+def fit_at_k(scaled_df, k, seed):
+    km = KMeans(featuresCol="features", predictionCol="cluster", k=k, seed=seed)
+    model = km.fit(scaled_df)
+    preds = model.transform(scaled_df)
+    sil = ClusteringEvaluator(featuresCol="features", predictionCol="cluster", metricName="silhouette").evaluate(preds)
+    return sil, model, preds
 
 
 def main():
@@ -127,8 +139,30 @@ def main():
 
         krange = k_range_for(n)
         print(f"  Sweeping k in {list(krange)} (feature set: {'GK' if family=='GK' else 'standard'}, {len(cols)} features)")
-        sweep_results, (best_k, best_sil, model, preds) = sweep_and_fit(scaled, krange, RANDOM_SEED)
-        print(f"  Chosen k={best_k} (silhouette={best_sil:.4f}) by max silhouette")
+        sweep_results, (silhouette_k, silhouette_sil, model, preds) = sweep_and_fit(scaled, krange, RANDOM_SEED)
+
+        override_k = config.POSITION_FAMILY_K_OVERRIDE.get(family)
+        if override_k is not None and override_k != silhouette_k:
+            cand_sil, cand_model, cand_preds = fit_at_k(scaled, override_k, RANDOM_SEED)
+            cand_sizes = [r["count"] for r in cand_preds.groupBy("cluster").count().collect()]
+            if min(cand_sizes) < MIN_PLAYERS_PER_CLUSTER:
+                # The k-range cap on the auto sweep only bounds k assuming
+                # roughly equal-sized clusters -- it does NOT guarantee an
+                # arbitrary override produces balanced clusters. K-Means can
+                # (and did, for MID at k=4) carve out a tiny outlier cluster
+                # well under the floor. Refuse the override rather than
+                # silently reporting a "style" that's really 4 outliers.
+                print(f"  REJECTED POSITION_FAMILY_K_OVERRIDE[{family}]={override_k}: "
+                      f"produces a cluster of size {min(cand_sizes)} (< {MIN_PLAYERS_PER_CLUSTER} floor). "
+                      f"Falling back to silhouette-max k={silhouette_k}.")
+                best_k, best_sil = silhouette_k, silhouette_sil
+            else:
+                print(f"  Silhouette-max k={silhouette_k} (sil={silhouette_sil:.4f}); "
+                      f"using POSITION_FAMILY_K_OVERRIDE[{family}]={override_k} (see config.py)")
+                best_k, best_sil, model, preds = override_k, cand_sil, cand_model, cand_preds
+        else:
+            best_k, best_sil = silhouette_k, silhouette_sil
+            print(f"  Chosen k={best_k} (silhouette={best_sil:.4f}) by max silhouette")
 
         profile = preds.groupBy("cluster").agg(
             F.count("*").alias("n"), *[F.mean(c).alias(c) for c in cols]
@@ -167,8 +201,11 @@ def main():
             "n": n,
             "features_used": cols,
             "k_sweep": sweep_results,
+            "silhouette_max_k": silhouette_k,
+            "silhouette_max_value": silhouette_sil,
             "chosen_k": best_k,
             "chosen_silhouette": best_sil,
+            "k_overridden": best_k != silhouette_k,
             "cluster_profiles": profile_rows,
             "position_cross_tab": cross_rows,
             "sample_players": sample_players,

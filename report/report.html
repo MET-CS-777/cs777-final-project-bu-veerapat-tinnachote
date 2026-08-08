@@ -808,7 +808,8 @@ footer {
   <p>Goalkeepers get an extended feature set here: StatsBomb's <code>Goal Keeper</code> event type (distinct from the passing features used elsewhere) records shots faced, saves, claims, and sweeper actions directly, so a real shot-stopping/distribution signal is available rather than an approximation.</p>
 
   <div class="callout">
-    <p><strong>k was not assumed.</strong> Each family swept k=2 through the largest k its sample size could support (capped so no resulting cluster drops below 12 players) and kept whichever k maximized silhouette &mdash; the same rule as the primary model, applied independently four times. All four families landed on <strong>k=2</strong>. That's a finding, not a design choice: at this feature set and sample size, each traditional position most strongly supports a two-way split, not the four- or five-way taxonomies scouting vocabulary sometimes uses.</p>
+    <p><strong>k is not assumed -- and an override has to earn its place, not just be requested.</strong> Each family swept k=2 through the largest k its sample size could support (capped so no resulting cluster drops below 12 players) and defaults to whichever k maximizes silhouette. Silhouette alone favored k=2 for all four families. Two candidate overrides were tested where the runner-up k was close enough to be worth a look, the same logic that chose k=5 over k=3 for the global model:</p>
+    <p><strong>DEF &rarr; k=3</strong> survived: its silhouette gap (0.008) was tighter than the global model's own k=3-vs-k=5 gap, and the resulting three clusters are all well above the 12-player floor (90/90/121) with a genuinely new, interpretable split. <strong>MID &rarr; k=4</strong> did not: despite a reasonable-looking silhouette gap (0.026), it produced a 4-player outlier cluster -- nowhere near a real sub-style. The pipeline now checks this automatically for any override and refuses one that breaks the size floor, so MID stays at its silhouette-optimal k=2. That rejection is reported here rather than quietly dropped, because a negative result from checking your own override is exactly the kind of thing a methods section should show its work on.</p>
   </div>
 
   <p style="font-size:13.5px;color:var(--ink-secondary)">This analysis pools all four competitions (no train/test split) to keep each family's sample large enough to cluster meaningfully &mdash; it is a companion to the primary model, not a replacement for it, and is not held to the same generalization check.</p>
@@ -850,36 +851,70 @@ footer {
   
   <figure>
     <p class="figure-eyebrow">Figure 7</p>
-    <h4>DEF family &mdash; 301 players &middot; k=2 chosen by silhouette (0.294)</h4>
-    <p class="figure-note">Own StandardScaler and own k-sweep, fit only on this family's players. Bars show each feature's relative difference between the two sub-clusters (orange = higher in "Deep Ball-Players", blue = higher in "Progressive Duellers"), ranked by size of the difference.</p>
-    <div class="chart-wrap"><svg viewBox="0 0 620 214" role="img" aria-label="DEF sub-cluster differentiators" class="chart-svg">
-<rect x="136.5" y="20.0" width="173.5" height="16" rx="3" fill="var(--series-1)"><title>Progressive Duellers: 0.60 vs Deep Ball-Players: 0.13</title></rect>
-<text x="310.0" y="14.0" class="axis-caption-sm" text-anchor="middle">Dribbles/90</text>
-<text x="302.0" y="32.0" class="bar-value" text-anchor="end">0.60</text>
-<text x="318.0" y="32.0" class="bar-value" text-anchor="start">0.13</text>
-<line x1="310.0" y1="18.0" x2="310.0" y2="38.0" class="tape-divider"/>
-<rect x="150.2" y="60.0" width="159.8" height="16" rx="3" fill="var(--series-1)"><title>Progressive Duellers: 35.02 vs Deep Ball-Players: 9.58</title></rect>
-<text x="310.0" y="54.0" class="axis-caption-sm" text-anchor="middle">Att. 3rd touches/90</text>
-<text x="302.0" y="72.0" class="bar-value" text-anchor="end">35.02</text>
-<text x="318.0" y="72.0" class="bar-value" text-anchor="start">9.58</text>
-<line x1="310.0" y1="58.0" x2="310.0" y2="78.0" class="tape-divider"/>
-<rect x="170.5" y="100.0" width="139.5" height="16" rx="3" fill="var(--series-1)"><title>Progressive Duellers: 0.68 vs Deep Ball-Players: 0.25</title></rect>
-<text x="310.0" y="94.0" class="axis-caption-sm" text-anchor="middle">Key passes/90</text>
-<text x="302.0" y="112.0" class="bar-value" text-anchor="end">0.68</text>
-<text x="318.0" y="112.0" class="bar-value" text-anchor="start">0.25</text>
-<line x1="310.0" y1="98.0" x2="310.0" y2="118.0" class="tape-divider"/>
-<rect x="211.2" y="140.0" width="98.8" height="16" rx="3" fill="var(--series-1)"><title>Progressive Duellers: 12.90 vs Deep Ball-Players: 7.11</title></rect>
-<text x="310.0" y="134.0" class="axis-caption-sm" text-anchor="middle">Pressures/90</text>
-<text x="302.0" y="152.0" class="bar-value" text-anchor="end">12.90</text>
-<text x="318.0" y="152.0" class="bar-value" text-anchor="start">7.11</text>
-<line x1="310.0" y1="138.0" x2="310.0" y2="158.0" class="tape-divider"/>
-<rect x="310.0" y="180.0" width="98.1" height="16" rx="3" fill="var(--series-2)"><title>Deep Ball-Players: 2.11 vs Progressive Duellers: 1.17</title></rect>
-<text x="310.0" y="174.0" class="axis-caption-sm" text-anchor="middle">Aerial duels won/90</text>
-<text x="302.0" y="192.0" class="bar-value" text-anchor="end">1.17</text>
-<text x="318.0" y="192.0" class="bar-value" text-anchor="start">2.11</text>
-<line x1="310.0" y1="178.0" x2="310.0" y2="198.0" class="tape-divider"/>
+    <h4>DEF family &mdash; 301 players &middot; k=3 (overridden from silhouette-max k=2)</h4>
+    <p class="figure-note">Silhouette peaked at k=2 (0.294), but k=3 (0.286) was within 0.008 of it -- tighter than the gap that justified the global model's k=5 override -- and, unlike the rejected MID override below, k=3 here produces three well-balanced clusters (n=90/90/121). Each cell is z-scored against the mean across this family's 3 cluster means; blue = below average, red = above average.</p>
+    <div class="chart-wrap"><svg viewBox="0 0 740 184" role="img" aria-label="DEF sub-cluster heatmap" class="chart-svg chart-svg-heatmap">
+<text x="220.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 220.0 36)">Passes/90</text>
+<text x="260.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 260.0 36)">Pass completion</text>
+<text x="300.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 300.0 36)">Progressive passes/90</text>
+<text x="340.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 340.0 36)">Key passes/90</text>
+<text x="380.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 380.0 36)">Shots/90</text>
+<text x="420.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 420.0 36)">Shot conversion</text>
+<text x="460.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 460.0 36)">Dribbles/90</text>
+<text x="500.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 500.0 36)">Dribble success</text>
+<text x="540.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 540.0 36)">Tackles/90</text>
+<text x="580.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 580.0 36)">Interceptions/90</text>
+<text x="620.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 620.0 36)">Aerial duels won/90</text>
+<text x="660.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 660.0 36)">Pressures/90</text>
+<text x="700.0" y="36" class="heat-collabel" text-anchor="start" transform="rotate(-40 700.0 36)">Att. 3rd touches/90</text>
+<text x="190" y="68.0" class="heat-rowlabel" text-anchor="end">No-Nonsense Center Backs</text>
+<text x="190" y="80.0" class="heat-rowsub" text-anchor="end">n=90</text>
+<rect x="201.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(103,157,221)"><title>No-Nonsense Center Backs — Passes/90: 34.31 (z=-1.38)</title></rect>
+<rect x="241.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(132,174,224)"><title>No-Nonsense Center Backs — Pass completion: 0.72 (z=-1.10)</title></rect>
+<rect x="281.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(137,177,225)"><title>No-Nonsense Center Backs — Progressive passes/90: 8.50 (z=-1.04)</title></rect>
+<rect x="321.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(168,196,228)"><title>No-Nonsense Center Backs — Key passes/90: 0.24 (z=-0.73)</title></rect>
+<rect x="361.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(136,177,224)"><title>No-Nonsense Center Backs — Shots/90: 0.32 (z=-1.05)</title></rect>
+<rect x="401.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(204,218,232)"><title>No-Nonsense Center Backs — Shot conversion: 0.06 (z=-0.36)</title></rect>
+<rect x="441.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(181,204,229)"><title>No-Nonsense Center Backs — Dribbles/90: 0.21 (z=-0.59)</title></rect>
+<rect x="481.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(136,176,224)"><title>No-Nonsense Center Backs — Dribble success: 0.28 (z=-1.05)</title></rect>
+<rect x="521.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(240,239,236)"><title>No-Nonsense Center Backs — Tackles/90: 1.02 (z=+0.00)</title></rect>
+<rect x="561.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(236,212,210)"><title>No-Nonsense Center Backs — Interceptions/90: 1.32 (z=+0.30)</title></rect>
+<rect x="601.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(161,191,227)"><title>No-Nonsense Center Backs — Aerial duels won/90: 1.22 (z=-0.80)</title></rect>
+<rect x="641.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(232,187,185)"><title>No-Nonsense Center Backs — Pressures/90: 11.85 (z=+0.58)</title></rect>
+<rect x="681.0" y="45.0" width="38.0" height="38.0" rx="3" fill="rgb(181,204,229)"><title>No-Nonsense Center Backs — Att. 3rd touches/90: 13.51 (z=-0.60)</title></rect>
+<text x="190" y="108.0" class="heat-rowlabel" text-anchor="end">Overlapping Fullbacks</text>
+<text x="190" y="120.0" class="heat-rowsub" text-anchor="end">n=90</text>
+<rect x="201.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(234,200,197)"><title>Overlapping Fullbacks — Passes/90: 53.76 (z=+0.44)</title></rect>
+<rect x="241.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(218,226,234)"><title>Overlapping Fullbacks — Pass completion: 0.78 (z=-0.23)</title></rect>
+<rect x="281.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(210,221,233)"><title>Overlapping Fullbacks — Progressive passes/90: 11.16 (z=-0.30)</title></rect>
+<rect x="321.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(219,112,111)"><title>Overlapping Fullbacks — Key passes/90: 0.95 (z=+1.41)</title></rect>
+<rect x="361.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(220,118,117)"><title>Overlapping Fullbacks — Shots/90: 0.72 (z=+1.35)</title></rect>
+<rect x="401.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(220,116,115)"><title>Overlapping Fullbacks — Shot conversion: 0.08 (z=+1.36)</title></rect>
+<rect x="441.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(220,112,111)"><title>Overlapping Fullbacks — Dribbles/90: 0.82 (z=+1.41)</title></rect>
+<rect x="481.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(220,118,117)"><title>Overlapping Fullbacks — Dribble success: 0.56 (z=+1.35)</title></rect>
+<rect x="521.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(222,129,128)"><title>Overlapping Fullbacks — Tackles/90: 1.29 (z=+1.22)</title></rect>
+<rect x="561.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(225,145,143)"><title>Overlapping Fullbacks — Interceptions/90: 1.46 (z=+1.05)</title></rect>
+<rect x="601.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(180,203,229)"><title>Overlapping Fullbacks — Aerial duels won/90: 1.31 (z=-0.61)</title></rect>
+<rect x="641.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(228,164,163)"><title>Overlapping Fullbacks — Pressures/90: 12.49 (z=+0.83)</title></rect>
+<rect x="681.0" y="85.0" width="38.0" height="38.0" rx="3" fill="rgb(220,112,111)"><title>Overlapping Fullbacks — Att. 3rd touches/90: 47.71 (z=+1.41)</title></rect>
+<text x="190" y="148.0" class="heat-rowlabel" text-anchor="end">Deep Ball-Playing Center Backs</text>
+<text x="190" y="160.0" class="heat-rowsub" text-anchor="end">n=121</text>
+<rect x="201.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(226,154,152)"><title>Deep Ball-Playing Center Backs — Passes/90: 59.21 (z=+0.95)</title></rect>
+<rect x="241.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(221,120,119)"><title>Deep Ball-Playing Center Backs — Pass completion: 0.88 (z=+1.32)</title></rect>
+<rect x="281.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(220,118,117)"><title>Deep Ball-Playing Center Backs — Progressive passes/90: 17.10 (z=+1.35)</title></rect>
+<rect x="321.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(172,198,228)"><title>Deep Ball-Playing Center Backs — Key passes/90: 0.26 (z=-0.69)</title></rect>
+<rect x="361.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(211,221,233)"><title>Deep Ball-Playing Center Backs — Shots/90: 0.44 (z=-0.30)</title></rect>
+<rect x="401.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(140,179,225)"><title>Deep Ball-Playing Center Backs — Shot conversion: 0.05 (z=-1.01)</title></rect>
+<rect x="441.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(159,191,227)"><title>Deep Ball-Playing Center Backs — Dribbles/90: 0.14 (z=-0.82)</title></rect>
+<rect x="481.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(211,221,233)"><title>Deep Ball-Playing Center Backs — Dribble success: 0.37 (z=-0.29)</title></rect>
+<rect x="521.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(119,166,223)"><title>Deep Ball-Playing Center Backs — Tackles/90: 0.75 (z=-1.23)</title></rect>
+<rect x="561.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(107,159,221)"><title>Deep Ball-Playing Center Backs — Interceptions/90: 1.02 (z=-1.35)</title></rect>
+<rect x="601.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(220,112,111)"><title>Deep Ball-Playing Center Backs — Aerial duels won/90: 2.20 (z=+1.41)</title></rect>
+<rect x="641.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(101,155,221)"><title>Deep Ball-Playing Center Backs — Pressures/90: 6.77 (z=-1.41)</title></rect>
+<rect x="681.0" y="125.0" width="38.0" height="38.0" rx="3" fill="rgb(160,191,227)"><title>Deep Ball-Playing Center Backs — Att. 3rd touches/90: 9.83 (z=-0.81)</title></rect>
 </svg></div>
-    <figcaption><strong>Progressive Duellers</strong> (n=150) vs. <strong>Deep Ball-Players</strong> (n=151).</figcaption>
+    <div class="heat-legend"><span>below average</span><span class="heat-legend-bar"></span><span>above average</span></div>
+    <figcaption>The third cluster is the payoff: at k=2, DEF only separated into an attack-involved group and a deep/passing group. At k=3, that attack-involved group itself splits into <strong>No-Nonsense Center Backs</strong> (n=90) &mdash; low forward involvement, low key passes/dribbles, the classic no-frills stopper &mdash; and <strong>Overlapping Fullbacks</strong> (n=90) &mdash; high tackles <em>and</em> high attacking-third touches/key passes/dribbles, the modern hybrid fullback who both defends and joins the attack. <strong>Deep Ball-Playing Center Backs</strong> (n=121) is unchanged from k=2: highest pass volume/completion/progressive passing and aerial duels, lowest forward involvement &mdash; the deep possession-recycling center back.</figcaption>
   </figure>
   
   <figure>
@@ -955,13 +990,13 @@ footer {
 
   <div class="table-wrap">
   <table>
-    <caption>All eight within-family sub-clusters</caption>
-    <thead><tr><th>Family</th><th class="num">n</th><th class="num">k</th><th>Cluster 0</th><th class="num">n</th><th>Cluster 1</th><th class="num">n</th></tr></thead>
+    <caption>All within-family sub-clusters (k chosen per family; DEF overridden, see callout above)</caption>
+    <thead><tr><th>Family</th><th class="num">n</th><th class="num">k</th><th>Sub-clusters (n)</th></tr></thead>
     <tbody>
-      <tr><td>Goalkeeper</td><td class="num">79</td><td class="num">2</td><td>Low-Volume Keepers</td><td class="num">47</td><td>High-Engagement Keepers</td><td class="num">32</td></tr>
-      <tr><td>Defender</td><td class="num">301</td><td class="num">2</td><td>Progressive Duellers</td><td class="num">150</td><td>Deep Ball-Players</td><td class="num">151</td></tr>
-      <tr><td>Midfielder</td><td class="num">168</td><td class="num">2</td><td>High-Pressing Ball-Winners</td><td class="num">86</td><td>Advanced Playmakers</td><td class="num">82</td></tr>
-      <tr class="hl"><td>Forward</td><td class="num">166</td><td class="num">2</td><td>Poacher-Type Finishers</td><td class="num">77</td><td>Creative Providers</td><td class="num">89</td></tr>
+      <tr><td>Goalkeeper</td><td class="num">79</td><td class="num">2</td><td>Low-Volume Keepers (47) &middot; High-Engagement Keepers (32)</td></tr>
+      <tr class="hl"><td>Defender</td><td class="num">301</td><td class="num">3</td><td>No-Nonsense Center Backs (90) &middot; Overlapping Fullbacks (90) &middot; Deep Ball-Playing Center Backs (121)</td></tr>
+      <tr><td>Midfielder</td><td class="num">168</td><td class="num">2</td><td>High-Pressing Ball-Winners (86) &middot; Advanced Playmakers (82)</td></tr>
+      <tr><td>Forward</td><td class="num">166</td><td class="num">2</td><td>Poacher-Type Finishers (77) &middot; Creative Providers (89)</td></tr>
     </tbody>
   </table>
   </div>
@@ -971,7 +1006,7 @@ footer {
   <div class="section-head"><span class="section-num">05</span><h2>Discussion</h2></div>
   <p>The central hypothesis holds: clustering on per-90 event-derived features recovers style groups that correlate with, but do not collapse into, official position labels. Two nearly-pure clusters (Goalkeepers, Ball-Playing Center Backs) confirm the pipeline surfaces real structure rather than noise; the three mixed clusters (Creative Attackers, Fullbacks &amp; Defensive Midfielders, Box Finishers) are exactly where the interesting cross-position groupings live, and Fullbacks &amp; Defensive Midfielders in particular &mdash; a near 50/50 split of two nominally different position families &mdash; is the clearest evidence that a defensive-actions <em>style</em> exists independent of which line a player nominally sits in.</p>
   <p>The Messi/Ronaldo separation is a genuine finding, not a cherry-pick: both were pulled from the dataset by name before clustering, and the pipeline (fit on all 387 players, with no player-specific tuning) placed them in different clusters on its own. The generalization check adds real weight &mdash; the same rank-ordering of clusters on every feature holds on tournaments the model never saw during fitting.</p>
-  <p>The within-position-family analysis (Section 04) answers the complementary question and reaches the same conclusion from the opposite direction: even restricted to players who share one official label, distinct styles emerge on their own -- and every family the data was rich enough to test landed on exactly two, not the finer four- or five-way taxonomies real scouting vocabulary sometimes assumes. That two-cluster result held independently for goalkeepers, defenders, midfielders, and forwards, which is a more surprising and more consistent finding than a single lucky split would be.</p>
+  <p>The within-position-family analysis (Section 04) answers the complementary question and reaches the same conclusion from the opposite direction: even restricted to players who share one official label, distinct styles emerge on their own. Three of four families (GK, MID, FWD) landed on a silhouette-optimal two-way split; defenders supported a third, well-separated cluster once tested, splitting attack-involved defenders into no-nonsense stoppers and overlapping fullbacks. The one override attempt that did NOT survive scrutiny (a 4th midfield cluster) is reported alongside the ones that did, which matters more than it might seem: it shows the k choices here are being checked against the data, not fit to a preferred story.</p>
   <h3>Limitations</h3>
   <ul>
     <li><strong>k selection is not fully data-driven.</strong> k=5 was chosen over the silhouette-optimal k=3 for interpretability, a defensible but subjective call, disclosed rather than hidden.</li>
@@ -986,7 +1021,7 @@ footer {
 
 <section id="conclusion">
   <div class="section-head"><span class="section-num">06</span><h2>Conclusion</h2></div>
-  <p>Aggregating StatsBomb's raw event data into per-90 feature vectors and clustering with K-Means recovers five interpretable playing-style groups from 738 professional footballers across four major tournaments. The groups correlate with official positions where roles are narrow (goalkeepers, center backs) and diverge from them where roles are broad (forwards, wide players, defensive midfielders) &mdash; which is precisely where a scout or coach relying on position labels alone would be least well served. The pipeline separates Messi from Ronaldo despite an identical position tag, reproduces its cluster structure on tournaments held out entirely from fitting, and its K-Means/GMM comparison surfaces both a clear model-selection result (K-Means fits this feature space better) and a substantive one (wingers and mobile forwards are where individual players' styles genuinely blend two of the discovered groups). Style-based grouping built this way widens the realistic replacement pool for recruitment and gives a coach a lens on squad composition that a position sheet cannot provide on its own. A companion analysis restricted to each traditional position family in turn confirms the same conclusion from the other direction: clustering forwards only, defenders only, midfielders only, and goalkeepers only, each family independently split into exactly two silhouette-optimal sub-styles -- including, within forwards alone, the same Ronaldo/Messi separation the global model found.</p>
+  <p>Aggregating StatsBomb's raw event data into per-90 feature vectors and clustering with K-Means recovers five interpretable playing-style groups from 738 professional footballers across four major tournaments. The groups correlate with official positions where roles are narrow (goalkeepers, center backs) and diverge from them where roles are broad (forwards, wide players, defensive midfielders) &mdash; which is precisely where a scout or coach relying on position labels alone would be least well served. The pipeline separates Messi from Ronaldo despite an identical position tag, reproduces its cluster structure on tournaments held out entirely from fitting, and its K-Means/GMM comparison surfaces both a clear model-selection result (K-Means fits this feature space better) and a substantive one (wingers and mobile forwards are where individual players' styles genuinely blend two of the discovered groups). Style-based grouping built this way widens the realistic replacement pool for recruitment and gives a coach a lens on squad composition that a position sheet cannot provide on its own. A companion analysis restricted to each traditional position family in turn confirms the same conclusion from the other direction: clustering forwards only, defenders only, midfielders only, and goalkeepers only, three families independently split into two silhouette-optimal sub-styles and defenders supported a well-separated third -- including, within forwards alone, the same Ronaldo/Messi separation the global model found.</p>
 </section>
 
 <footer>

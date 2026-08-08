@@ -14,17 +14,17 @@
       {
         "k": 2,
         "silhouette": 0.3028045485480001,
-        "training_cost": 443.30255574989525
+        "training_cost": 443.3025557498953
       },
       {
         "k": 3,
         "silhouette": 0.2535257767367013,
-        "training_cost": 374.82270537345966
+        "training_cost": 374.8227053734596
       },
       {
         "k": 4,
         "silhouette": 0.2437242535273322,
-        "training_cost": 341.38449718250473
+        "training_cost": 341.3844971825047
       },
       {
         "k": 5,
@@ -34,11 +34,14 @@
       {
         "k": 6,
         "silhouette": 0.2786883957204581,
-        "training_cost": 271.96576614693606
+        "training_cost": 271.965766146936
       }
     ],
+    "silhouette_max_k": 2,
+    "silhouette_max_value": 0.3028045485480001,
     "chosen_k": 2,
     "chosen_silhouette": 0.3028045485480001,
+    "k_overridden": false,
     "cluster_profiles": [
       {
         "cluster": 0,
@@ -296,17 +299,17 @@
       {
         "k": 2,
         "silhouette": 0.293591577224323,
-        "training_cost": 3173.2174960042626
+        "training_cost": 3173.217496004262
       },
       {
         "k": 3,
         "silhouette": 0.28585318853109115,
-        "training_cost": 2782.4446421945727
+        "training_cost": 2782.4446421945718
       },
       {
         "k": 4,
         "silhouette": 0.24034492130039645,
-        "training_cost": 2606.651054348793
+        "training_cost": 2606.6510543487943
       },
       {
         "k": 5,
@@ -316,170 +319,161 @@
       {
         "k": 6,
         "silhouette": 0.2129130698252416,
-        "training_cost": 2309.3867490495472
+        "training_cost": 2309.3867490495477
       }
     ],
-    "chosen_k": 2,
-    "chosen_silhouette": 0.293591577224323,
+    "silhouette_max_k": 2,
+    "silhouette_max_value": 0.293591577224323,
+    "chosen_k": 3,
+    "chosen_silhouette": 0.28585318853109115,
+    "k_overridden": true,
     "cluster_profiles": [
       {
         "cluster": 0,
-        "n": 150,
-        "passes_attempted_p90": 45.71800266231439,
-        "pass_completion_pct": 0.7406215144949697,
-        "progressive_passes_p90": 9.8658708918742,
-        "key_passes_p90": 0.6780677878059208,
-        "shots_p90": 0.5515934916307964,
-        "shot_conversion_pct": 0.06479365079365079,
-        "dribbles_completed_p90": 0.6024505441125612,
-        "dribble_success_pct": 0.4677986769818519,
-        "tackles_won_p90": 1.2387982556745707,
-        "interceptions_p90": 1.466306290434886,
-        "aerial_duels_won_p90": 1.1676114798302908,
-        "pressures_p90": 12.904995392582746,
-        "attacking_third_touches_p90": 35.01740834047485
+        "n": 90,
+        "passes_attempted_p90": 34.31200254890917,
+        "pass_completion_pct": 0.721270788661039,
+        "progressive_passes_p90": 8.4971649757192,
+        "key_passes_p90": 0.24447942732159542,
+        "shots_p90": 0.3152143799628269,
+        "shot_conversion_pct": 0.06203703703703704,
+        "dribbles_completed_p90": 0.20899987961960464,
+        "dribble_success_pct": 0.2849470899470899,
+        "tackles_won_p90": 1.0230485831789329,
+        "interceptions_p90": 1.3202796739538045,
+        "aerial_duels_won_p90": 1.2209366737686314,
+        "pressures_p90": 11.85076069678097,
+        "attacking_third_touches_p90": 13.505714483873906
       },
       {
         "cluster": 1,
-        "n": 151,
-        "passes_attempted_p90": 54.5272475070028,
-        "pass_completion_pct": 0.8586142021419458,
-        "progressive_passes_p90": 15.613324755241662,
-        "key_passes_p90": 0.24802441064173097,
-        "shots_p90": 0.42475775856291453,
-        "shot_conversion_pct": 0.06603220729294136,
-        "dribbles_completed_p90": 0.12742808173112877,
-        "dribble_success_pct": 0.33562493430043094,
-        "tackles_won_p90": 0.7521577593515761,
-        "interceptions_p90": 1.0164274318717788,
-        "aerial_duels_won_p90": 2.1080764570418817,
-        "pressures_p90": 7.112208746795631,
-        "attacking_third_touches_p90": 9.577497018448673
+        "n": 90,
+        "passes_attempted_p90": 53.76446417267879,
+        "pass_completion_pct": 0.7766815192322807,
+        "progressive_passes_p90": 11.157079363503293,
+        "key_passes_p90": 0.9541323228739623,
+        "shots_p90": 0.7213023656560774,
+        "shot_conversion_pct": 0.08484126984126986,
+        "dribbles_completed_p90": 0.8186780225324641,
+        "dribble_success_pct": 0.5586062605782189,
+        "tackles_won_p90": 1.2933610884884188,
+        "interceptions_p90": 1.45787324098097,
+        "aerial_duels_won_p90": 1.307255385076248,
+        "pressures_p90": 12.492633305769296,
+        "attacking_third_touches_p90": 47.71135640099003
+      },
+      {
+        "cluster": 2,
+        "n": 121,
+        "passes_attempted_p90": 59.21018816497246,
+        "pass_completion_pct": 0.8754401982419875,
+        "progressive_passes_p90": 17.095956043740458,
+        "key_passes_p90": 0.2585685674395807,
+        "shots_p90": 0.44290031555304266,
+        "shot_conversion_pct": 0.053478209101108634,
+        "dribbles_completed_p90": 0.14147281623635058,
+        "dribble_success_pct": 0.37131706677161214,
+        "tackles_won_p90": 0.7513941286215862,
+        "interceptions_p90": 1.0197745738325763,
+        "aerial_duels_won_p90": 2.1977188569572617,
+        "pressures_p90": 6.766837763834945,
+        "attacking_third_touches_p90": 9.828734886109293
       }
     ],
     "position_cross_tab": [
       {
         "cluster": 0,
-        "position_label": "Left Back",
-        "count": 56
-      },
-      {
-        "cluster": 0,
-        "position_label": "Right Back",
-        "count": 44
+        "position_label": "Right Center Back",
+        "count": 24
       },
       {
         "cluster": 0,
         "position_label": "Left Center Back",
+        "count": 20
+      },
+      {
+        "cluster": 0,
+        "position_label": "Left Back",
+        "count": 19
+      },
+      {
+        "cluster": 0,
+        "position_label": "Right Back",
         "count": 13
       },
       {
         "cluster": 0,
-        "position_label": "Right Center Back",
-        "count": 13
+        "position_label": "Right Wing Back",
+        "count": 5
+      },
+      {
+        "cluster": 0,
+        "position_label": "Center Back",
+        "count": 5
       },
       {
         "cluster": 0,
         "position_label": "Left Wing Back",
-        "count": 11
-      },
-      {
-        "cluster": 0,
-        "position_label": "Right Wing Back",
-        "count": 10
-      },
-      {
-        "cluster": 0,
-        "position_label": "Center Back",
-        "count": 3
-      },
-      {
-        "cluster": 1,
-        "position_label": "Right Center Back",
-        "count": 68
-      },
-      {
-        "cluster": 1,
-        "position_label": "Left Center Back",
-        "count": 59
-      },
-      {
-        "cluster": 1,
-        "position_label": "Center Back",
-        "count": 13
-      },
-      {
-        "cluster": 1,
-        "position_label": "Right Back",
-        "count": 6
-      },
-      {
-        "cluster": 1,
-        "position_label": "Left Back",
         "count": 4
       },
       {
         "cluster": 1,
+        "position_label": "Left Back",
+        "count": 39
+      },
+      {
+        "cluster": 1,
+        "position_label": "Right Back",
+        "count": 32
+      },
+      {
+        "cluster": 1,
+        "position_label": "Left Wing Back",
+        "count": 7
+      },
+      {
+        "cluster": 1,
         "position_label": "Right Wing Back",
-        "count": 1
+        "count": 6
+      },
+      {
+        "cluster": 1,
+        "position_label": "Right Center Back",
+        "count": 3
+      },
+      {
+        "cluster": 1,
+        "position_label": "Left Center Back",
+        "count": 3
+      },
+      {
+        "cluster": 2,
+        "position_label": "Right Center Back",
+        "count": 54
+      },
+      {
+        "cluster": 2,
+        "position_label": "Left Center Back",
+        "count": 49
+      },
+      {
+        "cluster": 2,
+        "position_label": "Center Back",
+        "count": 11
+      },
+      {
+        "cluster": 2,
+        "position_label": "Right Back",
+        "count": 5
+      },
+      {
+        "cluster": 2,
+        "position_label": "Left Back",
+        "count": 2
       }
     ],
     "sample_players": {
       "0": [
-        {
-          "player_name": "Risa Shimizu",
-          "position_label": "Right Wing Back",
-          "cluster": 0,
-          "passes_attempted_p90": 48.345581377998286,
-          "pass_completion_pct": 0.7666666666666667,
-          "progressive_passes_p90": 8.661916663558026,
-          "key_passes_p90": 0.8057596896333047,
-          "shots_p90": 1.0071996120416309,
-          "shot_conversion_pct": 0.2,
-          "dribbles_completed_p90": 0.40287984481665234,
-          "dribble_success_pct": 0.5,
-          "tackles_won_p90": 0.40287984481665234,
-          "interceptions_p90": 0.8057596896333047,
-          "aerial_duels_won_p90": 0.20143992240832617,
-          "pressures_p90": 7.453277129108068,
-          "attacking_third_touches_p90": 40.287984481665234
-        },
-        {
-          "player_name": "Marc Cucurella Saseta",
-          "position_label": "Left Back",
-          "cluster": 0,
-          "passes_attempted_p90": 57.43020634645396,
-          "pass_completion_pct": 0.9130434782608695,
-          "progressive_passes_p90": 11.860586093289406,
-          "key_passes_p90": 0.936362059996532,
-          "shots_p90": 0.1560603433327553,
-          "shot_conversion_pct": 0.0,
-          "dribbles_completed_p90": 0.0,
-          "dribble_success_pct": 0.0,
-          "tackles_won_p90": 1.2484827466620425,
-          "interceptions_p90": 1.7166637766603086,
-          "aerial_duels_won_p90": 1.7166637766603086,
-          "pressures_p90": 14.045430899947979,
-          "attacking_third_touches_p90": 62.89231836310039
-        },
-        {
-          "player_name": "Theo Bernard Fran\u00e7ois Hern\u00e1ndez",
-          "position_label": "Left Back",
-          "cluster": 0,
-          "passes_attempted_p90": 56.03524987800327,
-          "pass_completion_pct": 0.8948824343015215,
-          "progressive_passes_p90": 11.703074317535952,
-          "key_passes_p90": 1.3950684616930276,
-          "shots_p90": 0.775038034273904,
-          "shot_conversion_pct": 0.2,
-          "dribbles_completed_p90": 0.930045641128685,
-          "dribble_success_pct": 0.7058823529411765,
-          "tackles_won_p90": 1.1625570514108563,
-          "interceptions_p90": 0.8525418377012947,
-          "aerial_duels_won_p90": 0.930045641128685,
-          "pressures_p90": 8.912937394149898,
-          "attacking_third_touches_p90": 58.127852570542814
-        },
         {
           "player_name": "Betina Petit-Fr\u00e8re",
           "position_label": "Right Back",
@@ -517,24 +511,6 @@
           "attacking_third_touches_p90": 28.872024836150395
         },
         {
-          "player_name": "Marcos Javier Acu\u00f1a",
-          "position_label": "Left Back",
-          "cluster": 0,
-          "passes_attempted_p90": 48.824999999999996,
-          "pass_completion_pct": 0.783410138248848,
-          "progressive_passes_p90": 6.975,
-          "key_passes_p90": 1.125,
-          "shots_p90": 0.45,
-          "shot_conversion_pct": 0.0,
-          "dribbles_completed_p90": 0.225,
-          "dribble_success_pct": 0.2,
-          "tackles_won_p90": 1.8,
-          "interceptions_p90": 0.6749999999999999,
-          "aerial_duels_won_p90": 2.25,
-          "pressures_p90": 11.700000000000001,
-          "attacking_third_touches_p90": 62.325
-        },
-        {
           "player_name": "Bongeka Gamede",
           "position_label": "Left Center Back",
           "cluster": 0,
@@ -569,13 +545,231 @@
           "aerial_duels_won_p90": 0.3061745194761014,
           "pressures_p90": 15.921075012757273,
           "attacking_third_touches_p90": 26.63718319442082
+        },
+        {
+          "player_name": "Kethna Louis",
+          "position_label": "Left Center Back",
+          "cluster": 0,
+          "passes_attempted_p90": 41.43070044709389,
+          "pass_completion_pct": 0.539568345323741,
+          "progressive_passes_p90": 12.518628912071534,
+          "key_passes_p90": 0.0,
+          "shots_p90": 0.29806259314456035,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.29806259314456035,
+          "dribble_success_pct": 0.25,
+          "tackles_won_p90": 2.384500745156483,
+          "interceptions_p90": 0.8941877794336811,
+          "aerial_duels_won_p90": 2.0864381520119224,
+          "pressures_p90": 10.134128166915053,
+          "attacking_third_touches_p90": 8.34575260804769
+        },
+        {
+          "player_name": "Zineb Redouani",
+          "position_label": "Left Back",
+          "cluster": 0,
+          "passes_attempted_p90": 33.4407872412623,
+          "pass_completion_pct": 0.636986301369863,
+          "progressive_passes_p90": 8.4747200542925,
+          "key_passes_p90": 0.0,
+          "shots_p90": 0.22904648795385138,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.9161859518154055,
+          "dribble_success_pct": 0.5,
+          "tackles_won_p90": 2.0614183915846622,
+          "interceptions_p90": 2.977604343400068,
+          "aerial_duels_won_p90": 0.9161859518154055,
+          "pressures_p90": 21.301323379708176,
+          "attacking_third_touches_p90": 17.178486596538853
+        },
+        {
+          "player_name": "Mar\u00eda Paula Coto Gonz\u00e1lez",
+          "position_label": "Right Wing Back",
+          "cluster": 0,
+          "passes_attempted_p90": 36.434767817656066,
+          "pass_completion_pct": 0.7394957983193278,
+          "progressive_passes_p90": 11.328457220615752,
+          "key_passes_p90": 0.0,
+          "shots_p90": 0.9185235584283041,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 0.0,
+          "interceptions_p90": 0.6123490389522028,
+          "aerial_duels_won_p90": 3.6740942337132165,
+          "pressures_p90": 13.16550433747236,
+          "attacking_third_touches_p90": 11.634631740091853
+        },
+        {
+          "player_name": "Nahuel Molina Lucero",
+          "position_label": "Right Back",
+          "cluster": 0,
+          "passes_attempted_p90": 52.376333656644036,
+          "pass_completion_pct": 0.8222222222222222,
+          "progressive_passes_p90": 10.038797284190107,
+          "key_passes_p90": 0.43646944713870023,
+          "shots_p90": 0.2909796314258002,
+          "shot_conversion_pct": 0.5,
+          "dribbles_completed_p90": 0.1454898157129001,
+          "dribble_success_pct": 0.3333333333333333,
+          "tackles_won_p90": 0.5819592628516004,
+          "interceptions_p90": 1.3094083414161009,
+          "aerial_duels_won_p90": 0.0,
+          "pressures_p90": 10.475266731328807,
+          "attacking_third_touches_p90": 36.808923375363726
         }
       ],
       "1": [
         {
+          "player_name": "Risa Shimizu",
+          "position_label": "Right Wing Back",
+          "cluster": 1,
+          "passes_attempted_p90": 48.345581377998286,
+          "pass_completion_pct": 0.7666666666666667,
+          "progressive_passes_p90": 8.661916663558026,
+          "key_passes_p90": 0.8057596896333047,
+          "shots_p90": 1.0071996120416309,
+          "shot_conversion_pct": 0.2,
+          "dribbles_completed_p90": 0.40287984481665234,
+          "dribble_success_pct": 0.5,
+          "tackles_won_p90": 0.40287984481665234,
+          "interceptions_p90": 0.8057596896333047,
+          "aerial_duels_won_p90": 0.20143992240832617,
+          "pressures_p90": 7.453277129108068,
+          "attacking_third_touches_p90": 40.287984481665234
+        },
+        {
+          "player_name": "Marc Cucurella Saseta",
+          "position_label": "Left Back",
+          "cluster": 1,
+          "passes_attempted_p90": 57.43020634645396,
+          "pass_completion_pct": 0.9130434782608695,
+          "progressive_passes_p90": 11.860586093289406,
+          "key_passes_p90": 0.936362059996532,
+          "shots_p90": 0.1560603433327553,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 1.2484827466620425,
+          "interceptions_p90": 1.7166637766603086,
+          "aerial_duels_won_p90": 1.7166637766603086,
+          "pressures_p90": 14.045430899947979,
+          "attacking_third_touches_p90": 62.89231836310039
+        },
+        {
+          "player_name": "Theo Bernard Fran\u00e7ois Hern\u00e1ndez",
+          "position_label": "Left Back",
+          "cluster": 1,
+          "passes_attempted_p90": 56.03524987800327,
+          "pass_completion_pct": 0.8948824343015215,
+          "progressive_passes_p90": 11.703074317535952,
+          "key_passes_p90": 1.3950684616930276,
+          "shots_p90": 0.775038034273904,
+          "shot_conversion_pct": 0.2,
+          "dribbles_completed_p90": 0.930045641128685,
+          "dribble_success_pct": 0.7058823529411765,
+          "tackles_won_p90": 1.1625570514108563,
+          "interceptions_p90": 0.8525418377012947,
+          "aerial_duels_won_p90": 0.930045641128685,
+          "pressures_p90": 8.912937394149898,
+          "attacking_third_touches_p90": 58.127852570542814
+        },
+        {
+          "player_name": "Marcos Javier Acu\u00f1a",
+          "position_label": "Left Back",
+          "cluster": 1,
+          "passes_attempted_p90": 48.824999999999996,
+          "pass_completion_pct": 0.783410138248848,
+          "progressive_passes_p90": 6.975,
+          "key_passes_p90": 1.125,
+          "shots_p90": 0.45,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.225,
+          "dribble_success_pct": 0.2,
+          "tackles_won_p90": 1.8,
+          "interceptions_p90": 0.6749999999999999,
+          "aerial_duels_won_p90": 2.25,
+          "pressures_p90": 11.700000000000001,
+          "attacking_third_touches_p90": 62.325
+        },
+        {
+          "player_name": "Esmee Brugts",
+          "position_label": "Left Wing Back",
+          "cluster": 1,
+          "passes_attempted_p90": 48.32995017530909,
+          "pass_completion_pct": 0.8041237113402062,
+          "progressive_passes_p90": 7.473703635357076,
+          "key_passes_p90": 1.1625761210555452,
+          "shots_p90": 1.66082303007935,
+          "shot_conversion_pct": 0.2,
+          "dribbles_completed_p90": 1.826905333087285,
+          "dribble_success_pct": 0.44,
+          "tackles_won_p90": 2.9894814541428305,
+          "interceptions_p90": 2.6573168481269605,
+          "aerial_duels_won_p90": 0.16608230300793503,
+          "pressures_p90": 18.102971027864918,
+          "attacking_third_touches_p90": 74.40487174755489
+        },
+        {
+          "player_name": "Laura Wienroither",
+          "position_label": "Right Back",
+          "cluster": 1,
+          "passes_attempted_p90": 41.350061848383106,
+          "pass_completion_pct": 0.6923076923076923,
+          "progressive_passes_p90": 9.860399363845202,
+          "key_passes_p90": 0.3180773988337162,
+          "shots_p90": 0.0,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 1.590386994168581,
+          "dribble_success_pct": 0.8333333333333334,
+          "tackles_won_p90": 3.498851387170878,
+          "interceptions_p90": 1.9084643930022973,
+          "aerial_duels_won_p90": 0.9542321965011487,
+          "pressures_p90": 15.585792542852095,
+          "attacking_third_touches_p90": 32.12581728220534
+        },
+        {
+          "player_name": "Catarina Amado",
+          "position_label": "Right Back",
+          "cluster": 1,
+          "passes_attempted_p90": 46.569435637285984,
+          "pass_completion_pct": 0.6911764705882353,
+          "progressive_passes_p90": 10.957514267596702,
+          "key_passes_p90": 0.45656309448319593,
+          "shots_p90": 0.0,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 1.5979708306911857,
+          "dribble_success_pct": 0.5833333333333334,
+          "tackles_won_p90": 2.28281547241598,
+          "interceptions_p90": 2.5110970196575777,
+          "aerial_duels_won_p90": 1.3696892834495877,
+          "pressures_p90": 17.805960684844642,
+          "attacking_third_touches_p90": 27.16550412175016
+        },
+        {
+          "player_name": "Denzel Dumfries",
+          "position_label": "Right Back",
+          "cluster": 1,
+          "passes_attempted_p90": 44.34298329235863,
+          "pass_completion_pct": 0.7596741344195519,
+          "progressive_passes_p90": 6.050875520545882,
+          "key_passes_p90": 0.6321810245346445,
+          "shots_p90": 0.5418694496011238,
+          "shot_conversion_pct": 0.16666666666666666,
+          "dribbles_completed_p90": 0.18062314986704128,
+          "dribble_success_pct": 0.18181818181818182,
+          "tackles_won_p90": 1.0837388992022476,
+          "interceptions_p90": 0.6321810245346445,
+          "aerial_duels_won_p90": 1.6256083488033715,
+          "pressures_p90": 11.3792584416236,
+          "attacking_third_touches_p90": 60.68937835532587
+        }
+      ],
+      "2": [
+        {
           "player_name": "Millie Bright",
           "position_label": "Right Center Back",
-          "cluster": 1,
+          "cluster": 2,
           "passes_attempted_p90": 63.34310850439883,
           "pass_completion_pct": 0.8695175438596491,
           "progressive_passes_p90": 19.65581108195709,
@@ -593,7 +787,7 @@
         {
           "player_name": "Dominique Johanna Anna Petrone Janssen",
           "position_label": "Left Center Back",
-          "cluster": 1,
+          "cluster": 2,
           "passes_attempted_p90": 60.72336054495323,
           "pass_completion_pct": 0.8108974358974359,
           "progressive_passes_p90": 19.073363248094285,
@@ -611,7 +805,7 @@
         {
           "player_name": "Alistair Johnston",
           "position_label": "Right Center Back",
-          "cluster": 1,
+          "cluster": 2,
           "passes_attempted_p90": 58.651332984840565,
           "pass_completion_pct": 0.8342245989304813,
           "progressive_passes_p90": 15.368531102979615,
@@ -629,7 +823,7 @@
         {
           "player_name": "\u00c9der Gabriel Milit\u00e3o",
           "position_label": "Right Back",
-          "cluster": 1,
+          "cluster": 2,
           "passes_attempted_p90": 64.6692607003891,
           "pass_completion_pct": 0.9061371841155235,
           "progressive_passes_p90": 18.21011673151751,
@@ -647,7 +841,7 @@
         {
           "player_name": "Samet Akaydin",
           "position_label": "Right Center Back",
-          "cluster": 1,
+          "cluster": 2,
           "passes_attempted_p90": 52.868561698907435,
           "pass_completion_pct": 0.8985507246376812,
           "progressive_passes_p90": 13.280991344653074,
@@ -665,7 +859,7 @@
         {
           "player_name": "Alex Greenwood",
           "position_label": "Left Center Back",
-          "cluster": 1,
+          "cluster": 2,
           "passes_attempted_p90": 82.19454729047457,
           "pass_completion_pct": 0.8685503685503686,
           "progressive_passes_p90": 24.941097273645234,
@@ -683,7 +877,7 @@
         {
           "player_name": "Lisandro Mart\u00ednez",
           "position_label": "Left Center Back",
-          "cluster": 1,
+          "cluster": 2,
           "passes_attempted_p90": 39.14148545608585,
           "pass_completion_pct": 0.8571428571428571,
           "progressive_passes_p90": 11.437447048856257,
@@ -701,7 +895,7 @@
         {
           "player_name": "Marc Guehi",
           "position_label": "Left Center Back",
-          "cluster": 1,
+          "cluster": 2,
           "passes_attempted_p90": 68.15211928296198,
           "pass_completion_pct": 0.9336283185840708,
           "progressive_passes_p90": 15.831797621042051,
@@ -741,22 +935,22 @@
       {
         "k": 2,
         "silhouette": 0.23946791900136516,
-        "training_cost": 1846.7676101308487
+        "training_cost": 1846.7676101308484
       },
       {
         "k": 3,
         "silhouette": 0.1672394142380704,
-        "training_cost": 1693.5095408219975
+        "training_cost": 1693.5095408219977
       },
       {
         "k": 4,
         "silhouette": 0.21320233924729526,
-        "training_cost": 1591.4099581983749
+        "training_cost": 1591.409958198375
       },
       {
         "k": 5,
         "silhouette": 0.14833005244123246,
-        "training_cost": 1534.0299199593546
+        "training_cost": 1534.0299199593542
       },
       {
         "k": 6,
@@ -764,8 +958,11 @@
         "training_cost": 1328.5898107423525
       }
     ],
+    "silhouette_max_k": 2,
+    "silhouette_max_value": 0.23946791900136516,
     "chosen_k": 2,
     "chosen_silhouette": 0.23946791900136516,
+    "k_overridden": false,
     "cluster_profiles": [
       {
         "cluster": 0,
@@ -1191,17 +1388,17 @@
       {
         "k": 2,
         "silhouette": 0.2605753319391261,
-        "training_cost": 1783.3024201256414
+        "training_cost": 1783.3024201256412
       },
       {
         "k": 3,
         "silhouette": 0.20657496815560597,
-        "training_cost": 1627.5540107096247
+        "training_cost": 1627.5540107096244
       },
       {
         "k": 4,
         "silhouette": 0.18894408318322037,
-        "training_cost": 1530.919382119948
+        "training_cost": 1530.9193821199478
       },
       {
         "k": 5,
@@ -1211,11 +1408,14 @@
       {
         "k": 6,
         "silhouette": 0.19244824717620337,
-        "training_cost": 1350.4763215770972
+        "training_cost": 1350.476321577097
       }
     ],
+    "silhouette_max_k": 2,
+    "silhouette_max_value": 0.2605753319391261,
     "chosen_k": 2,
     "chosen_silhouette": 0.2605753319391261,
+    "k_overridden": false,
     "cluster_profiles": [
       {
         "cluster": 0,
