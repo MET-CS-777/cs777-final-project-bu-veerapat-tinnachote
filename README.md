@@ -35,6 +35,9 @@ the real project run.
 
 ## Setup
 
+Requires Python 3.10+ and Java 17 (for Spark). Developed and verified
+on Python 3.14 / PySpark 4.1 / OpenJDK 17.
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate         # Windows: venv\Scripts\activate
@@ -56,7 +59,7 @@ pip install -r requirements.txt
 2. Run the full pipeline:
 
    ```bash
-   spark-submit scripts/main.py
+   python3 scripts/main.py      # or: spark-submit scripts/main.py
    ```
 
    This will:
@@ -88,23 +91,42 @@ data/                  raw StatsBomb JSON (gitignored except the sample)
 output/                 Parquet feature/cluster tables (created on run)
 ```
 
-## Status / what's verified so far
+## Results (full 210-match run, verified)
 
-- Feature-engineering logic (minutes-played calc, pass completion,
-  shots/goals, etc.) was validated with an offline pandas prototype
-  against the 10 sample matches, cross-checked against known real-world
-  results (e.g., Bukayo Saka's 4 shots / 2 goals vs. Iran matches the
-  actual match record).
-- The full Spark pipeline has **not yet been run end-to-end** — it
-  needs a real PySpark environment with internet access to
-  `raw.githubusercontent.com` (StatsBomb's data host), which this
-  development sandbox doesn't have. Run it locally to generate the
-  actual cluster results, elbow/silhouette numbers, and Messi/Ronaldo
-  cluster assignment for the report.
-- Feature definitions flagged in `features.py` comments (progressive
-  pass threshold, aerial-duel-won proxy) are first-pass assumptions —
-  worth double-checking against the StatsBomb Open Data Specification
-  before finalizing numbers for the report.
+The pipeline has been run end-to-end on the full dataset (exit 0, logs
+in `results/`). 387 TRAIN players (men's tournaments) and 327 TEST
+players (women's tournaments) met the 270-minute threshold.
+
+- **Cluster count:** silhouette peaks at k=3 (0.327), but k=3 only
+  recovers goalkeeper / defender / attacker. k=5 (silhouette 0.316,
+  within the proposal's expected 5–8 range) is used via
+  `config.K_OVERRIDE` for style-level resolution — both numbers and the
+  rationale are reported.
+- **k=5 clusters are interpretable style groups:** creative attackers
+  (wingers/attacking mids, high key passes + dribbles), ball-playing
+  center backs (highest passing volume/completion + progressive
+  passes), goalkeepers, all-round fullbacks/defensive midfielders, and
+  penalty-box forwards (low pass volume, high shots).
+- **Headline spot-check confirmed:** Messi (creative-attacker cluster)
+  and Ronaldo (penalty-box-forward cluster) land in different clusters
+  despite both being listed as forwards.
+- **Clusters cut across position labels** as hypothesized: e.g. the
+  penalty-box cluster contains wingers alongside center forwards, and
+  the creative cluster mixes wings, attacking mids, and forwards.
+- **Generalization:** the TRAIN-fit scaler+KMeans applied to the
+  held-out women's tournaments reproduces the same profile structure
+  with closely matching per-cluster means.
+- **K-Means vs GMM:** K-Means separates better (silhouette 0.327 vs
+  0.209 at k=3); GMM's soft assignments surface blended-style players
+  (e.g. hybrid wingers/forwards with low max cluster probability).
+- **Pressing (descriptive):** both women's tournaments show more
+  pressures per 90 player-minutes (12.6, 15.5) than the men's (10.5,
+  11.8); men's pressing rose slightly from WC 2022 to Euro 2024.
+
+Feature semantics (aerial duels via `aerial_won` flags, tackles via
+duel type, key passes via shot/goal assist flags) were verified against
+the StatsBomb Open Data Specification and cross-checked in the raw
+sample JSON — see comments in `ingest.py` / `features.py`.
 
 ## Academic integrity note
 

@@ -19,7 +19,9 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+_SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, _SCRIPTS_DIR)
+sys.path.insert(0, os.path.dirname(_SCRIPTS_DIR))  # project root, for config.py
 
 from pyspark.sql import functions as F
 
@@ -27,7 +29,14 @@ import config
 from ingest import build_spark_session, load_events, load_lineups
 from minutes import compute_minutes_played
 from features import build_player_features
-from clustering import assemble_and_scale, choose_k, fit_gmm, fit_kmeans, sweep_kmeans_k
+from clustering import (
+    assemble_and_scale,
+    choose_k,
+    fit_gmm,
+    fit_kmeans,
+    silhouette_score,
+    sweep_kmeans_k,
+)
 from evaluate import (
     apply_fitted_pipeline,
     cluster_profile_means,
@@ -100,9 +109,14 @@ def main():
     print("\nScaling TRAIN features and sweeping k for KMeans (elbow/silhouette) ...")
     train_scaled, scaler_model = assemble_and_scale(train_features)
     sweep_results = sweep_kmeans_k(train_scaled, config.K_RANGE, config.RANDOM_SEED)
-    best_k = choose_k(sweep_results)
-    print(f"Selected k={best_k} by silhouette (inspect the printed table above "
-          f"and override in config.py if a different k is more interpretable).")
+    silhouette_k = choose_k(sweep_results)
+    best_k = config.K_OVERRIDE or silhouette_k
+    if best_k != silhouette_k:
+        print(f"Silhouette-max k={silhouette_k}, using K_OVERRIDE={best_k} "
+              f"from config.py (see rationale there).")
+    else:
+        print(f"Selected k={best_k} by silhouette (inspect the printed table above "
+              f"and set K_OVERRIDE in config.py if a different k is more interpretable).")
 
     print("\nFitting final KMeans and GMM on TRAIN ...")
     kmeans_model, train_kmeans_pred = fit_kmeans(train_scaled, best_k, config.RANDOM_SEED)
@@ -117,6 +131,27 @@ def main():
     print("=== Spot-check: Messi / Ronaldo (TRAIN, KMeans) ===")
     spot_check_players(train_kmeans_pred, "cluster_kmeans", ["Messi", "Ronaldo"]).show(truncate=False)
 
+    print("\n=== KMeans vs GMM comparison (TRAIN) ===")
+    print(f"Silhouette  KMeans: {silhouette_score(train_kmeans_pred, 'cluster_kmeans'):.4f}  "
+          f"GMM: {silhouette_score(train_gmm_pred, 'cluster_gmm'):.4f}")
+
+    print("\nTRAIN cluster profiles (GMM):")
+    cluster_profile_means(train_gmm_pred, "cluster_gmm").show(truncate=False)
+
+    print("=== Spot-check: Messi / Ronaldo (TRAIN, GMM) ===")
+    spot_check_players(train_gmm_pred, "cluster_gmm", ["Messi", "Ronaldo"]).show(truncate=False)
+
+    # GMM soft assignments: players whose highest cluster probability is
+    # low are the "blended style" players a hard KMeans label hides.
+    from pyspark.ml.functions import vector_to_array
+    train_gmm_pred = train_gmm_pred.withColumn(
+        "gmm_max_prob", F.array_max(vector_to_array("probability"))
+    )
+    print("=== Most style-blended players (lowest GMM max-probability) ===")
+    train_gmm_pred.orderBy("gmm_max_prob").select(
+        "player_name", "position_label", "cluster_gmm", F.round("gmm_max_prob", 3).alias("gmm_max_prob")
+    ).show(15, truncate=False)
+
     print("\n=== Generalization check: applying TRAIN-fit models to TEST competitions ===")
     test_kmeans_pred = apply_fitted_pipeline(test_features, scaler_model, kmeans_model, "cluster_kmeans")
     print("TEST cluster profiles (using TRAIN-fit KMeans model):")
@@ -125,18 +160,16 @@ def main():
           "per-cluster feature means indicate the clusters generalize beyond "
           "the competitions they were fit on.")
 
-    print("\n=== Pressing trend (descriptive only) ===")
-    train_with_year = train_features.join(
-        minutes_train.select("player_id", "match_id").join(match_comp_map, "match_id")
-        .select("player_id", "season_year").dropDuplicates(["player_id"]),
-        on="player_id", how="left",
-    )
-    pressing_trend(train_with_year, config.PRESSING_TREND_CUTOFF_YEAR).show()
+    print("\n=== Pressing trend across tournaments (descriptive only) ===")
+    pressing_trend(events_df, minutes_df, match_comp_map).show(truncate=False)
 
     print("\nWriting outputs ...")
     os.makedirs("output", exist_ok=True)
-    train_kmeans_pred.drop("features_raw", "features").write.mode("overwrite").parquet(
-        f"{config.FEATURES_OUTPUT_PATH}_train"
+    gmm_cols = train_gmm_pred.select("player_id", "cluster_gmm", "gmm_max_prob")
+    (
+        train_kmeans_pred.join(gmm_cols, "player_id", "left")
+        .drop("features_raw", "features")
+        .write.mode("overwrite").parquet(f"{config.FEATURES_OUTPUT_PATH}_train")
     )
     test_kmeans_pred.drop("features_raw", "features").write.mode("overwrite").parquet(
         f"{config.FEATURES_OUTPUT_PATH}_test"

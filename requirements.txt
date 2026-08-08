@@ -1,5 +1,8 @@
-pyspark==3.5.1
-requests==2.32.3
-numpy==1.26.4
-pandas==2.2.2
-matplotlib==3.9.0
+# Requires Python 3.10+ (developed/verified on Python 3.14, PySpark 4.1,
+# Java 17). Older pins like pyspark 3.5 / numpy 1.26 have no wheels for
+# Python >= 3.13.
+pyspark>=4.0
+requests>=2.31
+numpy>=2.1
+pandas>=2.2
+matplotlib>=3.9

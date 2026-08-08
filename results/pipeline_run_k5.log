@@ -1,0 +1,345 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/08/08 14:18:11 WARN Utils: Your hostname, Veerapats-MacBook-Air.local, resolves to a loopback address: 127.27.109.4; using 192.168.1.105 instead (on interface en0)
+26/08/08 14:18:11 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/08/08 14:18:11 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/08/08 14:18:14 WARN FileStreamSink: Assume no metadata directory. Error while looking for metadata directory in the path: data/events/*.json.
+java.io.FileNotFoundException: File data/events/*.json does not exist
+	at org.apache.hadoop.fs.RawLocalFileSystem.deprecatedGetFileStatus(RawLocalFileSystem.java:980)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileLinkStatusInternal(RawLocalFileSystem.java:1301)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileStatus(RawLocalFileSystem.java:970)
+	at org.apache.hadoop.fs.FilterFileSystem.getFileStatus(FilterFileSystem.java:462)
+	at org.apache.spark.sql.execution.streaming.sinks.FileStreamSink$.hasMetadata(FileStreamSink.scala:58)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:384)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.org$apache$spark$sql$catalyst$analysis$ResolveDataSource$$loadV1BatchSource(ResolveDataSource.scala:143)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.$anonfun$applyOrElse$2(ResolveDataSource.scala:61)
+	at scala.Option.getOrElse(Option.scala:201)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.applyOrElse(ResolveDataSource.scala:61)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.applyOrElse(ResolveDataSource.scala:45)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsUpWithPruning$3(AnalysisHelper.scala:139)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsUpWithPruning$1(AnalysisHelper.scala:139)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.allowInvokingTransformsInAnalyzer(AnalysisHelper.scala:416)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUpWithPruning(AnalysisHelper.scala:135)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUpWithPruning$(AnalysisHelper.scala:131)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsUpWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUp(AnalysisHelper.scala:112)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUp$(AnalysisHelper.scala:111)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsUp(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.apply(ResolveDataSource.scala:45)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.apply(ResolveDataSource.scala:43)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$2(RuleExecutor.scala:248)
+	at scala.collection.LinearSeqOps.foldLeft(LinearSeq.scala:183)
+	at scala.collection.LinearSeqOps.foldLeft$(LinearSeq.scala:179)
+	at scala.collection.immutable.List.foldLeft(List.scala:79)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1(RuleExecutor.scala:245)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1$adapted(RuleExecutor.scala:237)
+	at scala.collection.immutable.List.foreach(List.scala:323)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.execute(RuleExecutor.scala:237)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.org$apache$spark$sql$catalyst$analysis$Analyzer$$executeSameContext(Analyzer.scala:343)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$execute$1(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.AnalysisContext$.withNewAnalysisContext(Analyzer.scala:224)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:289)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$executeAndTrack$1(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker$.withTracker(QueryPlanningTracker.scala:89)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.executeAndTrack(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.resolveInFixedPoint(HybridAnalyzer.scala:236)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.$anonfun$apply$1(HybridAnalyzer.scala:91)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.withTrackedAnalyzerBridgeState(HybridAnalyzer.scala:122)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.apply(HybridAnalyzer.scala:84)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$executeAndCheck$1(Analyzer.scala:322)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:423)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:322)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$2(QueryExecution.scala:139)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$1(QueryExecution.scala:139)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:150)
+	at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:90)
+	at org.apache.spark.sql.classic.Dataset$.$anonfun$ofRows$1(Dataset.scala:114)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.Dataset$.ofRows(Dataset.scala:112)
+	at org.apache.spark.sql.classic.DataFrameReader.load(DataFrameReader.scala:108)
+	at org.apache.spark.sql.classic.DataFrameReader.load(DataFrameReader.scala:57)
+	at org.apache.spark.sql.DataFrameReader.json(DataFrameReader.scala:296)
+	at org.apache.spark.sql.classic.DataFrameReader.json(DataFrameReader.scala:149)
+	at org.apache.spark.sql.classic.DataFrameReader.json(DataFrameReader.scala:57)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+[Stage 0:==========>                                            (39 + 11) / 210][Stage 0:=========================>                             (99 + 10) / 210][Stage 0:========================================>             (158 + 12) / 210]                                                                                [Stage 1:>                                                          (0 + 4) / 4][Stage 1:==============>                                            (1 + 3) / 4]                                                                                26/08/08 14:18:21 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+26/08/08 14:18:21 WARN FileStreamSink: Assume no metadata directory. Error while looking for metadata directory in the path: data/lineups/*.json.
+java.io.FileNotFoundException: File data/lineups/*.json does not exist
+	at org.apache.hadoop.fs.RawLocalFileSystem.deprecatedGetFileStatus(RawLocalFileSystem.java:980)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileLinkStatusInternal(RawLocalFileSystem.java:1301)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileStatus(RawLocalFileSystem.java:970)
+	at org.apache.hadoop.fs.FilterFileSystem.getFileStatus(FilterFileSystem.java:462)
+	at org.apache.spark.sql.execution.streaming.sinks.FileStreamSink$.hasMetadata(FileStreamSink.scala:58)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:384)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.org$apache$spark$sql$catalyst$analysis$ResolveDataSource$$loadV1BatchSource(ResolveDataSource.scala:143)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.$anonfun$applyOrElse$2(ResolveDataSource.scala:61)
+	at scala.Option.getOrElse(Option.scala:201)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.applyOrElse(ResolveDataSource.scala:61)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.applyOrElse(ResolveDataSource.scala:45)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsUpWithPruning$3(AnalysisHelper.scala:139)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsUpWithPruning$1(AnalysisHelper.scala:139)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.allowInvokingTransformsInAnalyzer(AnalysisHelper.scala:416)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUpWithPruning(AnalysisHelper.scala:135)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUpWithPruning$(AnalysisHelper.scala:131)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsUpWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUp(AnalysisHelper.scala:112)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUp$(AnalysisHelper.scala:111)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsUp(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.apply(ResolveDataSource.scala:45)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.apply(ResolveDataSource.scala:43)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$2(RuleExecutor.scala:248)
+	at scala.collection.LinearSeqOps.foldLeft(LinearSeq.scala:183)
+	at scala.collection.LinearSeqOps.foldLeft$(LinearSeq.scala:179)
+	at scala.collection.immutable.List.foldLeft(List.scala:79)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1(RuleExecutor.scala:245)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1$adapted(RuleExecutor.scala:237)
+	at scala.collection.immutable.List.foreach(List.scala:323)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.execute(RuleExecutor.scala:237)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.org$apache$spark$sql$catalyst$analysis$Analyzer$$executeSameContext(Analyzer.scala:343)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$execute$1(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.AnalysisContext$.withNewAnalysisContext(Analyzer.scala:224)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:289)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$executeAndTrack$1(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker$.withTracker(QueryPlanningTracker.scala:89)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.executeAndTrack(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.resolveInFixedPoint(HybridAnalyzer.scala:236)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.$anonfun$apply$1(HybridAnalyzer.scala:91)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.withTrackedAnalyzerBridgeState(HybridAnalyzer.scala:122)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.apply(HybridAnalyzer.scala:84)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$executeAndCheck$1(Analyzer.scala:322)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:423)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:322)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$2(QueryExecution.scala:139)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$1(QueryExecution.scala:139)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:150)
+	at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:90)
+	at org.apache.spark.sql.classic.Dataset$.$anonfun$ofRows$1(Dataset.scala:114)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.Dataset$.ofRows(Dataset.scala:112)
+	at org.apache.spark.sql.classic.DataFrameReader.load(DataFrameReader.scala:108)
+	at org.apache.spark.sql.classic.DataFrameReader.load(DataFrameReader.scala:57)
+	at org.apache.spark.sql.DataFrameReader.json(DataFrameReader.scala:296)
+	at org.apache.spark.sql.classic.DataFrameReader.json(DataFrameReader.scala:149)
+	at org.apache.spark.sql.classic.DataFrameReader.json(DataFrameReader.scala:57)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+[Stage 3:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                (0 + 10) / 11][Stage 5:>                 (0 + 0) / 11][Stage 4:===>              (2 + 9) / 11][Stage 5:>                 (0 + 1) / 11][Stage 4:====>             (3 + 8) / 11][Stage 5:>                 (0 + 2) / 11][Stage 4:=============>    (8 + 3) / 11][Stage 5:=============>    (8 + 3) / 11][Stage 7:>                                                        (0 + 10) / 11]                                                                                [Stage 21:> (0 + 10) / 10][Stage 22:>  (0 + 0) / 10][Stage 23:>  (0 + 0) / 64][Stage 21:==>(8 + 2) / 10][Stage 22:==>(8 + 2) / 10][Stage 23:>  (6 + 6) / 64][Stage 25:>               (0 + 10) / 11][Stage 26:>                (0 + 0) / 64][Stage 26:>(29 + 10) / 64][Stage 27:>  (0 + 0) / 10][Stage 28:>  (0 + 0) / 10]                                                                                [Stage 33:>                                                       (0 + 10) / 11][Stage 33:>               (0 + 10) / 11][Stage 35:>                 (0 + 0) / 1][Stage 33:> (0 + 10) / 11][Stage 35:>   (0 + 0) / 1][Stage 38:>   (0 + 0) / 1]                                                                                [Stage 58:===>           (16 + 10) / 64][Stage 59:>                (0 + 0) / 11][Stage 58:===========>   (51 + 10) / 64][Stage 59:>                (0 + 0) / 11][Stage 59:>                                                       (0 + 10) / 11]                                                                                26/08/08 14:18:43 WARN InstanceBuilder: Failed to load implementation from:dev.ludovic.netlib.blas.JNIBLAS
+26/08/08 14:19:18 WARN InstanceBuilder: Failed to load implementation from:dev.ludovic.netlib.lapack.JNILAPACK
+[Stage 1420:>                                                     (0 + 10) / 64][Stage 1420:========>                                            (10 + 10) / 64][Stage 1420:========================>                            (30 + 10) / 64][Stage 1420:=========================================>           (50 + 10) / 64]                                                                                Loading events + lineups ...
+Computing minutes played ...
+
+Building TRAIN player features ...
+  387 players (TRAIN)
+Building TEST player features ...
+  327 players (TEST)
+
+Scaling TRAIN features and sweeping k for KMeans (elbow/silhouette) ...
+  k= 3  training_cost=   3360.15  silhouette=0.3267
+  k= 4  training_cost=   3004.87  silhouette=0.2983
+  k= 5  training_cost=   2760.14  silhouette=0.3160
+  k= 6  training_cost=   2589.42  silhouette=0.3083
+  k= 7  training_cost=   2494.39  silhouette=0.2860
+  k= 8  training_cost=   2310.86  silhouette=0.2747
+  k= 9  training_cost=   2278.35  silhouette=0.2808
+  k=10  training_cost=   2209.51  silhouette=0.2497
+Silhouette-max k=3, using K_OVERRIDE=5 from config.py (see rationale there).
+
+Fitting final KMeans and GMM on TRAIN ...
+
+=== TRAIN cluster profiles (KMeans) ===
++--------------+---------+-------------------------+------------------------+---------------------------+--------------------+------------------+------------------------+---------------------------+------------------------+--------------------+----------------------+-------------------------+------------------+--------------------------------+
+|cluster_kmeans|n_players|mean_passes_attempted_p90|mean_pass_completion_pct|mean_progressive_passes_p90|mean_key_passes_p90 |mean_shots_p90    |mean_shot_conversion_pct|mean_dribbles_completed_p90|mean_dribble_success_pct|mean_tackles_won_p90|mean_interceptions_p90|mean_aerial_duels_won_p90|mean_pressures_p90|mean_attacking_third_touches_p90|
++--------------+---------+-------------------------+------------------------+---------------------------+--------------------+------------------+------------------------+---------------------------+------------------------+--------------------+----------------------+-------------------------+------------------+--------------------------------+
+|0             |55       |38.528172321235154       |0.7708082791855116      |5.366108284617745          |1.7450582925669993  |2.2263933421127478|0.10277390586558656     |1.7969941886998608         |0.5376504310439144      |0.6051100008376793  |0.521883899513116     |0.5511428668937635       |13.356628357794348|75.57285253877018               |
+|1             |91       |60.628720141143546       |0.8847107543152349      |16.637292458081873         |0.2925983158465394  |0.4049563630181847|0.06642085984191247     |0.14043765936412092        |0.33951683237397523     |0.7603361615135233  |1.0191088748338444    |2.140149822619092        |7.045433346732601 |12.406770692684299              |
+|2             |50       |30.044544790696992       |0.7385060205413807      |11.176253893218375         |0.045232788271947974|0.0487061355011613|0.0                     |0.020244785390941576       |0.08                    |0.07103125667374541 |0.08480937866015624   |0.2044632359442716       |1.3377076354916955|2.1144490341934556              |
+|3             |147      |48.23756776336426        |0.8257592723163979      |9.529002617504888          |0.7465603685504518  |0.7642983692886424|0.06685750002076532     |0.551518275184319          |0.5316150983379945      |1.1664482974507695  |1.0387495694316329    |1.1695496855408223       |13.30565279396368 |40.88515775036068               |
+|4             |44       |21.64865932994197        |0.711791391221219       |2.3342726660107926         |0.7686781038395535  |2.020050129438322 |0.23620040266360273     |0.544307774642538          |0.37253283332828785     |0.4500995835761152  |0.2675072032187154    |2.2239570316144626       |14.638538483982485|51.617765146972054              |
++--------------+---------+-------------------------+------------------------+---------------------------+--------------------+------------------+------------------------+---------------------------+------------------------+--------------------+----------------------+-------------------------+------------------+--------------------------------+
+
+=== TRAIN vs official position labels (KMeans) ===
++--------------+-------------------------+-----+
+|cluster_kmeans|position_label           |count|
++--------------+-------------------------+-----+
+|0             |Left Wing                |21   |
+|0             |Right Wing               |9    |
+|0             |Center Attacking Midfield|8    |
+|0             |Center Forward           |3    |
+|0             |Right Attacking Midfield |3    |
+|0             |Right Midfield           |2    |
+|0             |Left Defensive Midfield  |2    |
+|0             |Left Attacking Midfield  |2    |
+|0             |Left Center Midfield     |1    |
+|0             |Right Center Forward     |1    |
+|0             |Right Wing Back          |1    |
+|0             |Left Center Forward      |1    |
+|0             |Right Center Midfield    |1    |
+|1             |Right Center Back        |39   |
+|1             |Left Center Back         |29   |
+|1             |Center Back              |8    |
+|1             |Right Back               |5    |
+|1             |Left Defensive Midfield  |3    |
+|1             |Right Defensive Midfield |3    |
+|1             |Left Back                |3    |
+|1             |Center Defensive Midfield|1    |
+|2             |Goalkeeper               |42   |
+|2             |Right Back               |2    |
+|2             |Center Back              |2    |
+|2             |Left Center Back         |2    |
+|2             |Right Center Back        |1    |
+|2             |Right Wing Back          |1    |
+|3             |Left Back                |26   |
+|3             |Left Defensive Midfield  |20   |
+|3             |Right Back               |19   |
+|3             |Right Defensive Midfield |16   |
+|3             |Right Center Midfield    |10   |
+|3             |Left Center Midfield     |9    |
+|3             |Center Defensive Midfield|7    |
+|3             |Right Center Back        |7    |
+|3             |Left Wing Back           |7    |
+|3             |Right Wing Back          |5    |
+|3             |Left Center Back         |5    |
+|3             |Right Wing               |3    |
+|3             |Center Attacking Midfield|3    |
+|3             |Right Midfield           |2    |
+|3             |Left Wing                |2    |
+|3             |Left Center Forward      |1    |
+|3             |Left Midfield            |1    |
+|3             |Center Forward           |1    |
+|3             |Right Attacking Midfield |1    |
+|3             |Center Back              |1    |
+|3             |Right Center Forward     |1    |
+|4             |Center Forward           |20   |
+|4             |Right Wing               |5    |
++--------------+-------------------------+-----+
+only showing top 50 rows
+=== Spot-check: Messi / Ronaldo (TRAIN, KMeans) ===
++-----------------------------------+--------------------+--------------+--------------------+-------------------+----------------------+-----------------+-----------------+-------------------+----------------------+-------------------+-------------------+-----------------+--------------------+------------------+---------------------------+
+|player_name                        |position_label      |cluster_kmeans|passes_attempted_p90|pass_completion_pct|progressive_passes_p90|key_passes_p90   |shots_p90        |shot_conversion_pct|dribbles_completed_p90|dribble_success_pct|tackles_won_p90    |interceptions_p90|aerial_duels_won_p90|pressures_p90     |attacking_third_touches_p90|
++-----------------------------------+--------------------+--------------+--------------------+-------------------+----------------------+-----------------+-----------------+-------------------+----------------------+-------------------+-------------------+-----------------+--------------------+------------------+---------------------------+
+|Cristiano Ronaldo dos Santos Aveiro|Center Forward      |4             |21.10238153695065   |0.7905759162303665 |1.10483672968328      |1.10483672968328 |3.977412226859808|0.08333333333333333|0.44193469187331197   |0.36363636363636365|0.0                |0.0              |1.6572550945249198  |5.966118340289712 |57.56199361649888          |
+|Lionel Andrés Messi Cuccittini     |Right Center Forward|0             |44.765714030344334  |0.8247978436657682 |10.738944875203897    |2.292583737403079|4.102518266931826|0.2647058823529412 |3.1372198511831613    |0.7222222222222222 |0.48264920787433246|0.0              |0.6033115098429156  |10.738944875203897|84.70493598194534          |
++-----------------------------------+--------------------+--------------+--------------------+-------------------+----------------------+-----------------+-----------------+-------------------+----------------------+-------------------+-------------------+-----------------+--------------------+------------------+---------------------------+
+
+
+=== KMeans vs GMM comparison (TRAIN) ===
+Silhouette  KMeans: 0.3160  GMM: 0.0275
+
+TRAIN cluster profiles (GMM):
++-----------+---------+-------------------------+------------------------+---------------------------+-------------------+------------------+------------------------+---------------------------+------------------------+--------------------+----------------------+-------------------------+------------------+--------------------------------+
+|cluster_gmm|n_players|mean_passes_attempted_p90|mean_pass_completion_pct|mean_progressive_passes_p90|mean_key_passes_p90|mean_shots_p90    |mean_shot_conversion_pct|mean_dribbles_completed_p90|mean_dribble_success_pct|mean_tackles_won_p90|mean_interceptions_p90|mean_aerial_duels_won_p90|mean_pressures_p90|mean_attacking_third_touches_p90|
++-----------+---------+-------------------------+------------------------+---------------------------+-------------------+------------------+------------------------+---------------------------+------------------------+--------------------+----------------------+-------------------------+------------------+--------------------------------+
+|0          |37       |43.59997237440466        |0.8029050240912081      |7.524025330012509          |1.2774544424574914 |1.6887940879871084|0.13789582705991377     |0.8836577092197457         |0.5812842461235758      |0.7857469896969522  |0.6468059984597092    |0.9188346622520827       |13.121643041268452|57.90609474598927               |
+|1          |23       |50.2056379305923         |0.8498447850810367      |9.36492939848505           |0.7641583304620724 |0.8479187826269046|0.4074706694271912      |0.2641079295291707         |0.31522209674383583     |1.1816907452164884  |0.8296147613539276    |0.9540289153021975       |13.388462020434435|43.36253229749809               |
+|2          |60       |28.401000352793417       |0.7337520952202321      |3.322576381183808          |1.2733150581838764 |2.4474356518739175|0.18809048261827968     |1.5234530208626313         |0.45696448106201615     |0.540001858911645   |0.40893032313822414   |1.599648819021555        |14.085208725337086|68.24619593690898               |
+|3          |249      |46.39356265793519        |0.8173325421275767      |11.56002986553158          |0.48518670793053204|0.4982216669180851|0.0                     |0.3192323060450857         |0.37358864919105883     |0.7744921258808508  |0.8003198399664577    |1.270281773468153        |8.954693599157256 |24.483104391976525              |
+|4          |18       |64.33155269604279        |0.8743902565546473      |16.65718407300152          |0.35448073641024336|0.5600660097583677|0.3421296296296297      |0.4435351171808497         |0.5448112073112074      |0.8775171301280791  |1.2956152038939706    |2.047162678339124        |9.688576739251351 |18.978712882519247              |
++-----------+---------+-------------------------+------------------------+---------------------------+-------------------+------------------+------------------------+---------------------------+------------------------+--------------------+----------------------+-------------------------+------------------+--------------------------------+
+
+=== Spot-check: Messi / Ronaldo (TRAIN, GMM) ===
++-----------------------------------+--------------------+-----------+--------------------+-------------------+----------------------+-----------------+-----------------+-------------------+----------------------+-------------------+-------------------+-----------------+--------------------+------------------+---------------------------+
+|player_name                        |position_label      |cluster_gmm|passes_attempted_p90|pass_completion_pct|progressive_passes_p90|key_passes_p90   |shots_p90        |shot_conversion_pct|dribbles_completed_p90|dribble_success_pct|tackles_won_p90    |interceptions_p90|aerial_duels_won_p90|pressures_p90     |attacking_third_touches_p90|
++-----------------------------------+--------------------+-----------+--------------------+-------------------+----------------------+-----------------+-----------------+-------------------+----------------------+-------------------+-------------------+-----------------+--------------------+------------------+---------------------------+
+|Cristiano Ronaldo dos Santos Aveiro|Center Forward      |2          |21.10238153695065   |0.7905759162303665 |1.10483672968328      |1.10483672968328 |3.977412226859808|0.08333333333333333|0.44193469187331197   |0.36363636363636365|0.0                |0.0              |1.6572550945249198  |5.966118340289712 |57.56199361649888          |
+|Lionel Andrés Messi Cuccittini     |Right Center Forward|2          |44.765714030344334  |0.8247978436657682 |10.738944875203897    |2.292583737403079|4.102518266931826|0.2647058823529412 |3.1372198511831613    |0.7222222222222222 |0.48264920787433246|0.0              |0.6033115098429156  |10.738944875203897|84.70493598194534          |
++-----------------------------------+--------------------+-----------+--------------------+-------------------+----------------------+-----------------+-----------------+-------------------+----------------------+-------------------+-------------------+-----------------+--------------------+------------------+---------------------------+
+
+=== Most style-blended players (lowest GMM max-probability) ===
++----------------------------------+-----------------------+-----------+------------+
+|player_name                       |position_label         |cluster_gmm|gmm_max_prob|
++----------------------------------+-----------------------+-----------+------------+
+|Federico Santiago Valverde Dipetta|Right Center Midfield  |3          |0.808       |
+|Ferrán Torres García              |Right Wing             |0          |0.815       |
+|Marcus Thuram                     |Center Forward         |2          |0.827       |
+|Salem Mohammed Al Dawsari         |Left Wing              |0          |0.856       |
+|Memphis Depay                     |Center Forward         |2          |0.878       |
+|Richarlison de Andrade            |Center Forward         |2          |0.893       |
+|Marko Arnautović                  |Center Forward         |0          |0.915       |
+|Christian Pulisic                 |Left Wing              |2          |0.927       |
+|Jules Koundé                      |Right Back             |1          |0.93        |
+|Ruben Vargas                      |Left Attacking Midfield|0          |0.938       |
+|Ivan Perišić                      |Left Wing              |2          |0.94        |
+|Breel-Donald Embolo               |Center Forward         |0          |0.942       |
+|Daley Blind                       |Left Wing Back         |1          |0.948       |
+|Josip Šutalo                      |Right Center Back      |4          |0.951       |
+|Heung-Min Son                     |Left Wing              |3          |0.951       |
++----------------------------------+-----------------------+-----------+------------+
+only showing top 15 rows
+
+=== Generalization check: applying TRAIN-fit models to TEST competitions ===
+TEST cluster profiles (using TRAIN-fit KMeans model):
++--------------+---------+-------------------------+------------------------+---------------------------+-------------------+-------------------+------------------------+---------------------------+------------------------+--------------------+----------------------+-------------------------+------------------+--------------------------------+
+|cluster_kmeans|n_players|mean_passes_attempted_p90|mean_pass_completion_pct|mean_progressive_passes_p90|mean_key_passes_p90|mean_shots_p90     |mean_shot_conversion_pct|mean_dribbles_completed_p90|mean_dribble_success_pct|mean_tackles_won_p90|mean_interceptions_p90|mean_aerial_duels_won_p90|mean_pressures_p90|mean_attacking_third_touches_p90|
++--------------+---------+-------------------------+------------------------+---------------------------+-------------------+-------------------+------------------------+---------------------------+------------------------+--------------------+----------------------+-------------------------+------------------+--------------------------------+
+|0             |53       |33.912740126547675       |0.7065865142696721      |4.597128006367022          |1.5568943535392392 |2.3197362427299635 |0.1284375686395372      |1.9176920247145413         |0.5522929191258811      |1.0859589514031143  |0.8164611669148222    |0.80168994284991         |18.3521073538473  |72.53051724256306               |
+|1             |47       |56.51984585225679        |0.8346275259890901      |17.415626187351144         |0.3045144306195093 |0.5586018905961828 |0.05097581491987543     |0.1518151117844294         |0.33416075650118204     |0.7569620989989624  |1.1600620887358042    |2.274063122851191        |7.8164064341532224|10.462102977858956              |
+|2             |48       |27.2959449736679         |0.6918014444799581      |10.573591485289496         |0.03415637406622891|0.08888810387484282|0.020833333333333332    |0.0417054191392816         |0.09623015873015872     |0.07507402253662432 |0.2032836620113616    |0.310245414009464        |2.3796341037975313|1.6282135555593589              |
+|3             |138      |42.77770460502987        |0.7277081492011721      |9.246414186283845          |0.7165497304616445 |0.7576352026068075 |0.06148808273571978     |0.6834490495167093         |0.5068706163588926      |1.568597758171994   |1.6130452041422811    |1.2760991908489092       |16.780962719892425|32.039694669840095              |
+|4             |41       |25.358301565714992       |0.6435775946803832      |3.424272956632989          |0.6887801987893692 |2.052567378511585  |0.2042336200462039      |0.6235926724036495         |0.3688730519814996      |0.7653223860218367  |0.6557961779037272    |2.516253120738652        |17.965738935353677|54.97915764385338               |
++--------------+---------+-------------------------+------------------------+---------------------------+-------------------+-------------------+------------------------+---------------------------+------------------------+--------------------+----------------------+-------------------------+------------------+--------------------------------+
+
+Compare these means to the TRAIN cluster profiles above -- similar per-cluster feature means indicate the clusters generalize beyond the competitions they were fit on.
+
+=== Pressing trend across tournaments (descriptive only) ===
++----------------------+-----------+-----------+--------------------+---------------------------+
+|competition_name      |season_year|n_pressures|total_player_minutes|pressures_per_90_player_min|
++----------------------+-----------+-----------+--------------------+---------------------------+
+|UEFA Women's Euro 2022|2022       |9364       |67087.9             |12.56202683345283          |
+|FIFA World Cup 2022   |2022       |16554      |141265.38333333327  |10.546532808285308         |
+|Women's World Cup 2023|2023       |24443      |141873.4            |15.505866497877685         |
+|UEFA Euro 2024        |2024       |14534      |111197.68333333333  |11.76337456670635          |
++----------------------+-----------+-----------+--------------------+---------------------------+
+
+
+Writing outputs ...
+Done.

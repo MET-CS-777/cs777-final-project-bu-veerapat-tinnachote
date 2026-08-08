@@ -11,8 +11,11 @@ Implements the evaluation plan from the approved proposal:
      each player's primary on-field position label.
   3. Qualitative spot-check: look up specific well-known players
      (e.g. Messi, Ronaldo) and report their assigned cluster.
-  4. Pressing trend: compare average pressing_p90 pre/post a cutoff
-     year (descriptive only, see config.PRESSING_TREND_CUTOFF_YEAR).
+  4. Pressing trend: compare pressing intensity across tournaments
+     (descriptive only). All four competitions in scope are 2022-2024,
+     so the proposal's pre/post-2017 era split would produce an empty
+     "pre" group; instead we report pressures per 90 player-minutes per
+     tournament, ordered by year.
 """
 from pyspark.ml.feature import VectorAssembler
 from pyspark.sql import DataFrame
@@ -58,14 +61,29 @@ def spot_check_players(clustered_df: DataFrame, cluster_col: str, name_substring
     )
 
 
-def pressing_trend(features_by_competition: DataFrame, cutoff_year: int):
-    """features_by_competition must have a `season_year` column (join in
-    main.py from matches metadata) alongside pressures_p90."""
+def pressing_trend(events_df: DataFrame, minutes_df: DataFrame,
+                   match_comp_map: DataFrame) -> DataFrame:
+    """Tournament-level pressing intensity: total Pressure events per 90
+    player-minutes, per competition. Computed directly from raw events +
+    minutes (not the player feature table) so every match contributes,
+    including players below the clustering minutes threshold."""
+    pressures = (
+        events_df.filter(F.col("event_type") == "Pressure")
+        .join(match_comp_map.select("match_id", "competition_name", "season_year"), "match_id")
+        .groupBy("competition_name", "season_year")
+        .agg(F.count("*").alias("n_pressures"))
+    )
+    minutes = (
+        minutes_df
+        .join(match_comp_map.select("match_id", "competition_name"), "match_id")
+        .groupBy("competition_name")
+        .agg(F.sum("minutes_played").alias("total_player_minutes"))
+    )
     return (
-        features_by_competition
+        pressures.join(minutes, "competition_name")
         .withColumn(
-            "era", F.when(F.col("season_year") < cutoff_year, "pre").otherwise("post")
+            "pressures_per_90_player_min",
+            F.col("n_pressures") / F.col("total_player_minutes") * 90.0,
         )
-        .groupBy("era")
-        .agg(F.mean("pressures_p90").alias("avg_pressures_p90"), F.count("*").alias("n"))
+        .orderBy("season_year")
     )

@@ -8,11 +8,10 @@ the train/competition-based test split in main.py trivial: call
 build_player_features() separately on the train-competition subset and
 the test-competition subset).
 
-IMPORTANT -- definitions used here are a reasonable first pass, not
-gospel. Before finalizing for submission, cross-check the exact field
-semantics (especially duel.type / duel.outcome for aerials & tackles,
-and pass.shot_assist / pass.goal_assist) against the official StatsBomb
-Open Data Specification:
+Field semantics (duel.type for tackles, aerial_won flags for aerial
+duels, pass.shot_assist / pass.goal_assist) follow the official
+StatsBomb Open Data Specification and were verified against the raw
+sample-match JSON (see the aerial-duel note below and in ingest.py):
 https://github.com/statsbomb/open-data/blob/master/doc/StatsBomb%20Open%20Data%20Specification%20v4.0.pdf
 Coordinates are already normalized so every team always attacks toward
 x=120 (verified against sample match 3857274), so no half-time
@@ -64,16 +63,16 @@ def build_player_match_stats(events_df: DataFrame) -> DataFrame:
     is_tackle = (F.col("event_type") == "Duel") & (F.col("duel_type") == "Tackle")
     is_tackle_won = is_tackle & (F.col("duel_outcome").isin("Won", "Success", "Success In Play", "Success Out"))
     is_interception = F.col("event_type") == "Interception"
-    is_aerial = (F.col("event_type") == "Duel") & (F.col("duel_type") == "Aerial Lost")
-    # NOTE: StatsBomb records a *lost* aerial duel explicitly via
-    # duel.type == "Aerial Lost" on the losing player's event; a won
-    # aerial duel shows up as a plain Duel with no "Lost" qualifier on
-    # the winning player's event instead. We approximate "aerial duels
-    # won" as Duel events that are NOT tagged "Aerial Lost" and whose
-    # related event partner lost one -- for this starter pipeline we
-    # simplify to counting non-"Aerial Lost" Duel events as a proxy and
-    # flag this for refinement.
-    is_aerial_won_proxy = (F.col("event_type") == "Duel") & (F.col("duel_type") != "Aerial Lost")
+    # A won aerial duel is recorded as aerial_won=true on the winning
+    # player's follow-up action (pass/shot/clearance/miscontrol), not as
+    # a Duel event -- see the note in ingest.py. Cross-checked on sample
+    # match 3857255: aerial_won flags exactly balance "Aerial Lost" duels.
+    is_aerial_won = (
+        (F.col("pass_aerial_won") == True)  # noqa: E712
+        | (F.col("shot_aerial_won") == True)  # noqa: E712
+        | (F.col("clearance_aerial_won") == True)  # noqa: E712
+        | (F.col("miscontrol_aerial_won") == True)  # noqa: E712
+    )
     is_pressure = F.col("event_type") == "Pressure"
     is_attacking_third_touch = F.col("start_x") >= ATTACKING_THIRD_X
 
@@ -89,7 +88,7 @@ def build_player_match_stats(events_df: DataFrame) -> DataFrame:
         F.sum(is_dribble_success.cast("int")).alias("dribbles_completed"),
         F.sum(is_tackle_won.cast("int")).alias("tackles_won"),
         F.sum(is_interception.cast("int")).alias("interceptions"),
-        F.sum(is_aerial_won_proxy.cast("int")).alias("aerial_duels_won_proxy"),
+        F.sum(is_aerial_won.cast("int")).alias("aerial_duels_won"),
         F.sum(is_pressure.cast("int")).alias("pressures"),
         F.sum(is_attacking_third_touch.cast("int")).alias("attacking_third_touches"),
     )
@@ -125,7 +124,7 @@ def build_player_features(events_df: DataFrame, minutes_df: DataFrame,
         *[F.sum(c).alias(c) for c in [
             "passes_attempted", "passes_completed", "progressive_passes", "key_passes",
             "shots", "goals", "dribble_attempts", "dribbles_completed", "tackles_won",
-            "interceptions", "aerial_duels_won_proxy", "pressures", "attacking_third_touches",
+            "interceptions", "aerial_duels_won", "pressures", "attacking_third_touches",
         ]]
     )
 
@@ -149,7 +148,7 @@ def build_player_features(events_df: DataFrame, minutes_df: DataFrame,
         (F.col("dribbles_completed") / F.when(F.col("dribble_attempts") > 0, F.col("dribble_attempts"))).alias("dribble_success_pct"),
         p90("tackles_won"),
         p90("interceptions"),
-        p90("aerial_duels_won_proxy"),
+        p90("aerial_duels_won"),
         p90("pressures"),
         p90("attacking_third_touches"),
     ).na.fill(0.0)
@@ -168,7 +167,7 @@ FEATURE_COLUMNS = [
     "dribble_success_pct",
     "tackles_won_p90",
     "interceptions_p90",
-    "aerial_duels_won_proxy_p90",
+    "aerial_duels_won_p90",
     "pressures_p90",
     "attacking_third_touches_p90",
 ]

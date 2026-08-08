@@ -49,6 +49,16 @@ MIN_MINUTES_PLAYED = 270  # ~3 full matches worth
 RANDOM_SEED = 42
 K_RANGE = range(3, 11)  # candidate number of clusters to try (elbow/silhouette)
 
+# Override the silhouette-chosen k (set to None to auto-pick the max-
+# silhouette k). On the full 210-match run, silhouette peaks at k=3,
+# which just recovers goalkeeper / defender / attacker -- too coarse to
+# answer the research question about style sub-types WITHIN those roles
+# (Messi and Ronaldo land in the same cluster at k=3). k=5 has nearly
+# identical silhouette (0.3160 vs 0.3267), sits in the proposal's
+# expected 5-8 range, and is the interpretability-driven choice the
+# k-sweep table is meant to inform. Report both numbers.
+K_OVERRIDE = 5
+
 # --- Train/test (generalization check) -------------------------------------
 # Competitions held out to test whether cluster profiles generalize.
 # Fit on TRAIN_COMPETITIONS, evaluate profile consistency on TEST_COMPETITIONS.
@@ -56,4 +66,7 @@ TRAIN_COMPETITIONS = [(43, 106), (55, 282)]        # men's WC 2022 + Euro 2024
 TEST_COMPETITIONS = [(72, 107), (53, 106)]          # women's WC 2023 + Euro 2022
 
 # --- Secondary analysis: pressing trend ------------------------------------
-PRESSING_TREND_CUTOFF_YEAR = 2017
+# The proposal's pre/post-2017 era split is not usable with this dataset
+# scope (all four competitions are 2022-2024, so the "pre" group would be
+# empty). The pipeline instead reports pressing intensity per tournament,
+# ordered by year -- see evaluate.pressing_trend().

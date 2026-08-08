@@ -58,6 +58,14 @@ def fit_gmm(scaled_df: DataFrame, k: int, seed: int):
     return model, model.transform(scaled_df)
 
 
+def silhouette_score(preds: DataFrame, prediction_col: str) -> float:
+    """Silhouette for an already-clustered DataFrame, for comparing the
+    final KMeans vs GMM fits on the same features."""
+    return ClusteringEvaluator(
+        featuresCol="features", predictionCol=prediction_col, metricName="silhouette"
+    ).evaluate(preds)
+
+
 def choose_k(sweep_results):
     """Pick k with the highest silhouette score as a simple default;
     inspect the printed elbow/silhouette table and override manually if

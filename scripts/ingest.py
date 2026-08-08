@@ -40,6 +40,24 @@ def load_events(spark: SparkSession, events_dir: str) -> DataFrame:
     raw = spark.read.option("multiLine", True).json(f"{events_dir}/*.json")
     raw = _with_match_id(raw)
 
+    # StatsBomb records a WON aerial duel as `aerial_won: true` on the
+    # winning player's follow-up action (pass/shot/clearance/miscontrol),
+    # not as a Duel event; only the LOSING side gets a Duel with
+    # type "Aerial Lost". Verified against sample match 3857255 (26
+    # aerial_won flags vs 26 Aerial Lost duels). Spec:
+    # https://github.com/statsbomb/open-data/blob/master/doc/StatsBomb%20Open%20Data%20Specification%20v4.0.pdf
+    # `miscontrol.aerial_won` may be absent from the inferred schema on
+    # small samples, so fall back to null if the field never occurs.
+    def _optional(path, alias):
+        top, _, nested = path.partition(".")
+        try:
+            field_names = [f.name for f in raw.schema[top].dataType.fields]
+        except (KeyError, AttributeError):
+            field_names = []
+        if nested in field_names:
+            return F.col(path).alias(alias)
+        return F.lit(None).cast("boolean").alias(alias)
+
     events = raw.select(
         "match_id",
         F.col("id").alias("event_id"),
@@ -67,9 +85,14 @@ def load_events(spark: SparkSession, events_dir: str) -> DataFrame:
         F.col("shot.statsbomb_xg").alias("shot_xg"),
         # Dribble
         F.col("dribble.outcome.name").alias("dribble_outcome"),
-        # Duel (includes aerials, tackles)
+        # Duel (only two types exist: "Tackle" and "Aerial Lost")
         F.col("duel.type.name").alias("duel_type"),
         F.col("duel.outcome.name").alias("duel_outcome"),
+        # Aerials won (see note above)
+        _optional("pass.aerial_won", "pass_aerial_won"),
+        _optional("shot.aerial_won", "shot_aerial_won"),
+        _optional("clearance.aerial_won", "clearance_aerial_won"),
+        _optional("miscontrol.aerial_won", "miscontrol_aerial_won"),
         # Interception
         F.col("interception.outcome.name").alias("interception_outcome"),
         # Substitution (used for minutes-played fallback / sanity checks)
