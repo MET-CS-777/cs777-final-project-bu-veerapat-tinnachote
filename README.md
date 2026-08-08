@@ -125,17 +125,20 @@ players (women's tournaments) met the 270-minute threshold.
   within the proposal's expected 5–8 range) is used via
   `config.K_OVERRIDE` for style-level resolution — both numbers and the
   rationale are reported.
-- **k=5 clusters are interpretable style groups:** creative attackers
-  (wingers/attacking mids, high key passes + dribbles), ball-playing
-  center backs (highest passing volume/completion + progressive
-  passes), goalkeepers, all-round fullbacks/defensive midfielders, and
-  penalty-box forwards (low pass volume, high shots).
-- **Headline spot-check confirmed:** Messi (creative-attacker cluster)
-  and Ronaldo (penalty-box-forward cluster) land in different clusters
-  despite both being listed as forwards.
+- **k=5 clusters are interpretable style groups, named from their
+  own stats (not position labels)** — cluster names describe the
+  1-2 features that most separate that cluster from the other four,
+  not the position that happens to correlate with it:
+  High Dribbles & Key Passes, High Passing & Progression, Minimal
+  On-Ball Output, High Tackles & Interceptions, High Conversion &
+  Aerials.
+- **Headline spot-check confirmed:** Messi (High Dribbles & Key
+  Passes) and Ronaldo (High Conversion & Aerials) land in different
+  clusters despite both being listed as forwards.
 - **Clusters cut across position labels** as hypothesized: e.g. the
-  penalty-box cluster contains wingers alongside center forwards, and
-  the creative cluster mixes wings, attacking mids, and forwards.
+  High Conversion & Aerials cluster contains wingers alongside center
+  forwards, and High Dribbles & Key Passes mixes wings, attacking
+  mids, and forwards.
 - **Generalization:** the TRAIN-fit scaler+KMeans applied to the
   held-out women's tournaments reproduces the same profile structure
   with closely matching per-cluster means.
