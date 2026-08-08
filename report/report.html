@@ -821,19 +821,20 @@ footer {
   <figure>
     <p class="figure-eyebrow">Figure 6</p>
     <h4>GK family &mdash; 79 players &middot; k=2 chosen by silhouette (0.303)</h4>
-    <p class="figure-note">Own StandardScaler and own k-sweep, fit only on this family's players. Each of the 7 axes is independently min-max scaled across this family's own cluster means (0 = lower cluster, 100 = higher cluster), so shape &mdash; not raw units &mdash; is what's comparable across axes. Hover a vertex for the raw per-90 value.</p>
-    <div class="chart-wrap"><svg viewBox="0 0 560 594" role="img" aria-label="GK sub-cluster radar chart" class="chart-svg chart-svg-radar">
-<circle cx="137.0" cy="14" r="5" fill="var(--series-1)"/>
-<text x="148.0" y="18" class="legend-label">Low-Volume Keepers (n=47)</text>
+    <p class="figure-note">Own StandardScaler and own k-sweep, fit only on this family's players. Each axis plots the cluster mean's <strong>percentile rank against all 79 goalkeepers in the family</strong> (not just the other cluster), so a vertex near the outer ring means that sub-cluster's average genuinely sits near the top of the real distribution, not just "higher than the other cluster." Hover a vertex for the raw per-90 value and exact percentile.</p>
+    <div class="chart-wrap"><svg viewBox="0 0 560 594" role="img" aria-label="GK sub-cluster percentile radar" class="chart-svg chart-svg-radar">
+<circle cx="132.0" cy="14" r="5" fill="var(--series-1)"/>
+<text x="143.0" y="18" class="legend-label">Low-Volume Keepers (n=47)</text>
 <circle cx="287.0" cy="14" r="5" fill="var(--series-2)"/>
 <text x="298.0" y="18" class="legend-label">High-Engagement Keepers (n=32)</text>
-<path d="M280.0,255.0 L312.8,270.8 L320.9,306.3 L298.2,334.8 L261.8,334.8 L239.1,306.3 L247.2,270.8 Z" class="radar-grid"/>
-<path d="M280.0,213.0 L345.7,244.6 L361.9,315.7 L316.4,372.7 L243.6,372.7 L198.1,315.7 L214.3,244.6 Z" class="radar-grid"/>
-<path d="M280.0,171.0 L378.5,218.4 L402.8,325.0 L334.7,410.5 L225.3,410.5 L157.2,325.0 L181.5,218.4 Z" class="radar-grid"/>
-<path d="M280.0,129.0 L411.3,192.3 L443.8,334.4 L352.9,448.4 L207.1,448.4 L116.2,334.4 L148.7,192.3 Z" class="radar-grid"/>
-<text x="284.0" y="259.0" class="axis-label">75</text>
+<circle cx="280.0" cy="297.0" r="42.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="84.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="126.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="168.0" class="radar-grid"/>
+<text x="284.0" y="259.0" class="axis-label">25</text>
 <text x="284.0" y="217.0" class="axis-label">50</text>
-<text x="284.0" y="175.0" class="axis-label">25</text>
+<text x="284.0" y="175.0" class="axis-label">75</text>
+<text x="284.0" y="133.0" class="axis-label">100</text>
 <line x1="280.0" y1="297.0" x2="280.0" y2="129.0" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="411.3" y2="192.3" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="443.8" y2="334.4" class="radar-grid"/>
@@ -841,51 +842,52 @@ footer {
 <line x1="280.0" y1="297.0" x2="207.1" y2="448.4" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="116.2" y2="334.4" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="148.7" y2="192.3" class="radar-grid"/>
-<text x="280.0" y="119.0" class="radar-axis-label" text-anchor="middle">Shots faced/90</text>
-<text x="417.6" y="190.3" class="radar-axis-label" text-anchor="start">Save %</text>
-<text x="451.6" y="339.2" class="radar-axis-label" text-anchor="start">Claims/90</text>
-<text x="356.4" y="464.6" class="radar-axis-label" text-anchor="start">Sweeper actions/90</text>
-<text x="203.6" y="464.6" class="radar-axis-label" text-anchor="end">Passes/90</text>
-<text x="108.4" y="339.2" class="radar-axis-label" text-anchor="end">Pass cmp %</text>
-<text x="142.4" y="190.3" class="radar-axis-label" text-anchor="end">Prog. passes/90</text>
-<path d="M280.0,297.0 L280.0,297.0 L280.0,297.0 L280.0,297.0 L280.0,297.0 L116.2,334.4 L280.0,297.0 Z" fill="var(--series-1)" fill-opacity="0.1" stroke="var(--series-1)" stroke-width="2" stroke-linejoin="round"/>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Shots faced/90: 6.24</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Save %: 0.35</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Claims/90: 1.29</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Sweeper actions/90: 0.86</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Passes/90: 25.41</title></circle>
-<circle cx="116.2" cy="334.4" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Pass cmp %: 0.75</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Prog. passes/90: 10.75</title></circle>
-<path d="M280.0,129.0 L411.3,192.3 L443.8,334.4 L352.9,448.4 L207.1,448.4 L280.0,297.0 L148.7,192.3 Z" fill="var(--series-2)" fill-opacity="0.1" stroke="var(--series-2)" stroke-width="2" stroke-linejoin="round"/>
-<circle cx="280.0" cy="129.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Shots faced/90: 10.10</title></circle>
-<circle cx="411.3" cy="192.3" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Save %: 0.35</title></circle>
-<circle cx="443.8" cy="334.4" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Claims/90: 1.96</title></circle>
-<circle cx="352.9" cy="448.4" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Sweeper actions/90: 1.16</title></circle>
-<circle cx="207.1" cy="448.4" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Passes/90: 33.42</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Pass cmp %: 0.66</title></circle>
-<circle cx="148.7" cy="192.3" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Prog. passes/90: 13.46</title></circle>
+<text x="280.0" y="119.0" class="radar-axis-label" text-anchor="start" transform="rotate(-90.0 280.0 119.0)">Shots faced/90</text>
+<text x="419.2" y="186.0" class="radar-axis-label" text-anchor="start" transform="rotate(-38.6 419.2 186.0)">Save %</text>
+<text x="453.5" y="336.6" class="radar-axis-label" text-anchor="start" transform="rotate(12.9 453.5 336.6)">Claims/90</text>
+<text x="357.2" y="457.4" class="radar-axis-label" text-anchor="start" transform="rotate(64.3 357.2 457.4)">Sweeper actions/90</text>
+<text x="202.8" y="457.4" class="radar-axis-label" text-anchor="end" transform="rotate(295.7 202.8 457.4)">Passes/90</text>
+<text x="106.5" y="336.6" class="radar-axis-label" text-anchor="end" transform="rotate(347.1 106.5 336.6)">Pass cmp %</text>
+<text x="140.8" y="186.0" class="radar-axis-label" text-anchor="end" transform="rotate(398.6 140.8 186.0)">Prog. passes/90</text>
+<path d="M280.0,239.6 L351.5,240.0 L352.6,313.6 L315.1,369.8 L256.9,344.9 L188.8,317.8 L228.5,255.9 Z" fill="var(--series-1)" fill-opacity="0.1" stroke="var(--series-1)" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="280.0" cy="239.6" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Shots faced/90: 6.24 (34th percentile of 79 GK players)</title></circle>
+<circle cx="351.5" cy="240.0" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Save %: 0.35 (54th percentile of 79 GK players)</title></circle>
+<circle cx="352.6" cy="313.6" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Claims/90: 1.29 (44th percentile of 79 GK players)</title></circle>
+<circle cx="315.1" cy="369.8" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Sweeper actions/90: 0.86 (48th percentile of 79 GK players)</title></circle>
+<circle cx="256.9" cy="344.9" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Passes/90: 25.41 (32th percentile of 79 GK players)</title></circle>
+<circle cx="188.8" cy="317.8" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Pass cmp %: 0.75 (56th percentile of 79 GK players)</title></circle>
+<circle cx="228.5" cy="255.9" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Low-Volume Keepers — Prog. passes/90: 10.75 (39th percentile of 79 GK players)</title></circle>
+<path d="M280.0,150.3 L351.5,240.0 L410.6,326.8 L326.1,392.8 L221.9,417.7 L228.2,308.8 L190.2,225.4 Z" fill="var(--series-2)" fill-opacity="0.1" stroke="var(--series-2)" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="280.0" cy="150.3" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Shots faced/90: 10.10 (87th percentile of 79 GK players)</title></circle>
+<circle cx="351.5" cy="240.0" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Save %: 0.35 (54th percentile of 79 GK players)</title></circle>
+<circle cx="410.6" cy="326.8" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Claims/90: 1.96 (80th percentile of 79 GK players)</title></circle>
+<circle cx="326.1" cy="392.8" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Sweeper actions/90: 1.16 (63th percentile of 79 GK players)</title></circle>
+<circle cx="221.9" cy="417.7" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Passes/90: 33.42 (80th percentile of 79 GK players)</title></circle>
+<circle cx="228.2" cy="308.8" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Pass cmp %: 0.66 (32th percentile of 79 GK players)</title></circle>
+<circle cx="190.2" cy="225.4" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Engagement Keepers — Prog. passes/90: 13.46 (68th percentile of 79 GK players)</title></circle>
 </svg></div>
-    <figcaption><strong>Low-Volume Keepers</strong> (n=47) vs. <strong>High-Engagement Keepers</strong> (n=32). Both sub-clusters have an identical 35.2% save rate &mdash; the shape difference is driven by engagement volume, not shot-stopping quality.</figcaption>
+    <figcaption><strong>Low-Volume Keepers</strong> (n=47) vs. <strong>High-Engagement Keepers</strong> (n=32). Both sub-clusters sit at the same 54th percentile on save %, confirming the split is driven by engagement volume, not shot-stopping quality.</figcaption>
   </figure>
   
   <figure>
     <p class="figure-eyebrow">Figure 7</p>
     <h4>DEF family &mdash; 301 players &middot; k=3 (overridden from silhouette-max k=2)</h4>
-    <p class="figure-note">Silhouette peaked at k=2 (0.294), but k=3 (0.286) was within 0.008 of it -- tighter than the gap that justified the global model's k=5 override -- and, unlike the rejected MID override below, k=3 here produces three well-balanced clusters (n=90/90/121). Each of the 13 axes is independently min-max scaled across this family's own cluster means, so the three polygons' <em>shapes</em> (not their raw units) are what's comparable. Hover a vertex for the raw per-90 value.</p>
-    <div class="chart-wrap"><svg viewBox="0 0 560 594" role="img" aria-label="DEF sub-cluster radar chart" class="chart-svg chart-svg-radar">
-<circle cx="62.0" cy="14" r="5" fill="var(--series-1)"/>
-<text x="73.0" y="18" class="legend-label">No-Nonsense Center Backs (n=90)</text>
-<circle cx="212.0" cy="14" r="5" fill="var(--series-2)"/>
-<text x="223.0" y="18" class="legend-label">Overlapping Fullbacks (n=90)</text>
-<circle cx="362.0" cy="14" r="5" fill="var(--series-3)"/>
-<text x="373.0" y="18" class="legend-label">Deep Ball-Playing Center Backs (n=121)</text>
-<path d="M280.0,255.0 L299.5,259.8 L314.6,273.1 L321.7,291.9 L319.3,311.9 L307.9,328.4 L290.1,337.8 L269.9,337.8 L252.1,328.4 L240.7,311.9 L238.3,291.9 L245.4,273.1 L260.5,259.8 Z" class="radar-grid"/>
-<path d="M280.0,213.0 L319.0,222.6 L349.1,249.3 L363.4,286.9 L358.5,326.8 L335.7,359.9 L300.1,378.6 L259.9,378.6 L224.3,359.9 L201.5,326.8 L196.6,286.9 L210.9,249.3 L241.0,222.6 Z" class="radar-grid"/>
-<path d="M280.0,171.0 L338.6,185.4 L383.7,225.4 L405.1,281.8 L397.8,341.7 L363.6,391.3 L310.2,419.3 L249.8,419.3 L196.4,391.3 L162.2,341.7 L154.9,281.8 L176.3,225.4 L221.4,185.4 Z" class="radar-grid"/>
-<path d="M280.0,129.0 L358.1,148.2 L418.3,201.6 L446.8,276.7 L437.1,356.6 L391.4,422.7 L320.2,460.1 L239.8,460.1 L168.6,422.7 L122.9,356.6 L113.2,276.7 L141.7,201.6 L201.9,148.2 Z" class="radar-grid"/>
-<text x="284.0" y="259.0" class="axis-label">75</text>
+    <p class="figure-note">Silhouette peaked at k=2 (0.294), but k=3 (0.286) was within 0.008 of it -- tighter than the gap that justified the global model's k=5 override -- and, unlike the rejected MID override below, k=3 here produces three well-balanced clusters (n=90/90/121). Each axis plots the cluster mean's <strong>percentile rank against all 301 defenders in the family</strong>, so a vertex near the outer ring is a genuinely top-quartile-or-better average, not just "highest of these three." Hover a vertex for the raw per-90 value and exact percentile.</p>
+    <div class="chart-wrap"><svg viewBox="0 0 560 594" role="img" aria-label="DEF sub-cluster percentile radar" class="chart-svg chart-svg-radar">
+<circle cx="54.5" cy="14" r="5" fill="var(--series-1)"/>
+<text x="65.5" y="18" class="legend-label">No-Nonsense Center Backs (n=90)</text>
+<circle cx="209.5" cy="14" r="5" fill="var(--series-2)"/>
+<text x="220.5" y="18" class="legend-label">Overlapping Fullbacks (n=90)</text>
+<circle cx="364.5" cy="14" r="5" fill="var(--series-3)"/>
+<text x="375.5" y="18" class="legend-label">Deep Ball-Playing Center Backs (n=121)</text>
+<circle cx="280.0" cy="297.0" r="42.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="84.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="126.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="168.0" class="radar-grid"/>
+<text x="284.0" y="259.0" class="axis-label">25</text>
 <text x="284.0" y="217.0" class="axis-label">50</text>
-<text x="284.0" y="175.0" class="axis-label">25</text>
+<text x="284.0" y="175.0" class="axis-label">75</text>
+<text x="284.0" y="133.0" class="axis-label">100</text>
 <line x1="280.0" y1="297.0" x2="280.0" y2="129.0" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="358.1" y2="148.2" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="418.3" y2="201.6" class="radar-grid"/>
@@ -899,81 +901,82 @@ footer {
 <line x1="280.0" y1="297.0" x2="113.2" y2="276.7" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="141.7" y2="201.6" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="201.9" y2="148.2" class="radar-grid"/>
-<text x="280.0" y="119.0" class="radar-axis-label" text-anchor="middle">Passes/90</text>
-<text x="361.8" y="139.2" class="radar-axis-label" text-anchor="start">Pass cmp %</text>
-<text x="424.8" y="200.0" class="radar-axis-label" text-anchor="start">Prog. passes/90</text>
-<text x="454.7" y="278.8" class="radar-axis-label" text-anchor="start">Key passes/90</text>
-<text x="444.6" y="362.4" class="radar-axis-label" text-anchor="start">Shots/90</text>
-<text x="396.7" y="437.7" class="radar-axis-label" text-anchor="start">Shot conv %</text>
-<text x="322.1" y="476.9" class="radar-axis-label" text-anchor="start">Dribbles/90</text>
-<text x="237.9" y="476.9" class="radar-axis-label" text-anchor="end">Dribble succ %</text>
-<text x="163.3" y="437.7" class="radar-axis-label" text-anchor="end">Tackles/90</text>
-<text x="115.4" y="362.4" class="radar-axis-label" text-anchor="end">Interceptions/90</text>
-<text x="105.3" y="278.8" class="radar-axis-label" text-anchor="end">Aerials won/90</text>
-<text x="135.2" y="200.0" class="radar-axis-label" text-anchor="end">Pressures/90</text>
-<text x="198.2" y="139.2" class="radar-axis-label" text-anchor="end">Att. 3rd touches/90</text>
-<path d="M280.0,297.0 L280.0,297.0 L280.0,297.0 L280.0,297.0 L280.0,297.0 L310.4,331.3 L284.0,313.3 L280.0,297.0 L224.2,360.0 L172.3,337.9 L280.0,297.0 L157.2,212.3 L272.4,282.6 Z" fill="var(--series-1)" fill-opacity="0.1" stroke="var(--series-1)" stroke-width="2" stroke-linejoin="round"/>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Passes/90: 34.31</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Pass cmp %: 0.72</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Prog. passes/90: 8.50</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Key passes/90: 0.24</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Shots/90: 0.32</title></circle>
-<circle cx="310.4" cy="331.3" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Shot conv %: 0.06</title></circle>
-<circle cx="284.0" cy="313.3" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Dribbles/90: 0.21</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Dribble succ %: 0.28</title></circle>
-<circle cx="224.2" cy="360.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Tackles/90: 1.02</title></circle>
-<circle cx="172.3" cy="337.9" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Interceptions/90: 1.32</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Aerials won/90: 1.22</title></circle>
-<circle cx="157.2" cy="212.3" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Pressures/90: 11.85</title></circle>
-<circle cx="272.4" cy="282.6" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Att. 3rd touches/90: 13.51</title></circle>
-<path d="M280.0,165.7 L308.1,243.5 L322.8,267.5 L446.8,276.7 L437.1,356.6 L391.4,422.7 L320.2,460.1 L239.8,460.1 L168.6,422.7 L122.9,356.6 L265.3,295.2 L141.7,201.6 L201.9,148.2 Z" fill="var(--series-2)" fill-opacity="0.1" stroke="var(--series-2)" stroke-width="2" stroke-linejoin="round"/>
-<circle cx="280.0" cy="165.7" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Passes/90: 53.76</title></circle>
-<circle cx="308.1" cy="243.5" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Pass cmp %: 0.78</title></circle>
-<circle cx="322.8" cy="267.5" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Prog. passes/90: 11.16</title></circle>
-<circle cx="446.8" cy="276.7" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Key passes/90: 0.95</title></circle>
-<circle cx="437.1" cy="356.6" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Shots/90: 0.72</title></circle>
-<circle cx="391.4" cy="422.7" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Shot conv %: 0.08</title></circle>
-<circle cx="320.2" cy="460.1" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Dribbles/90: 0.82</title></circle>
-<circle cx="239.8" cy="460.1" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Dribble succ %: 0.56</title></circle>
-<circle cx="168.6" cy="422.7" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Tackles/90: 1.29</title></circle>
-<circle cx="122.9" cy="356.6" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Interceptions/90: 1.46</title></circle>
-<circle cx="265.3" cy="295.2" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Aerials won/90: 1.31</title></circle>
-<circle cx="141.7" cy="201.6" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Pressures/90: 12.49</title></circle>
-<circle cx="201.9" cy="148.2" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Att. 3rd touches/90: 47.71</title></circle>
-<path d="M280.0,129.0 L358.1,148.2 L418.3,201.6 L283.3,296.6 L329.4,315.7 L280.0,297.0 L280.0,297.0 L267.3,348.5 L280.0,297.0 L280.0,297.0 L113.2,276.7 L280.0,297.0 L280.0,297.0 Z" fill="var(--series-3)" fill-opacity="0.1" stroke="var(--series-3)" stroke-width="2" stroke-linejoin="round"/>
-<circle cx="280.0" cy="129.0" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Passes/90: 59.21</title></circle>
-<circle cx="358.1" cy="148.2" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Pass cmp %: 0.88</title></circle>
-<circle cx="418.3" cy="201.6" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Prog. passes/90: 17.10</title></circle>
-<circle cx="283.3" cy="296.6" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Key passes/90: 0.26</title></circle>
-<circle cx="329.4" cy="315.7" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Shots/90: 0.44</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Shot conv %: 0.05</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Dribbles/90: 0.14</title></circle>
-<circle cx="267.3" cy="348.5" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Dribble succ %: 0.37</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Tackles/90: 0.75</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Interceptions/90: 1.02</title></circle>
-<circle cx="113.2" cy="276.7" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Aerials won/90: 2.20</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Pressures/90: 6.77</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Att. 3rd touches/90: 9.83</title></circle>
+<text x="280.0" y="119.0" class="radar-axis-label" text-anchor="start" transform="rotate(-90.0 280.0 119.0)">Passes/90</text>
+<text x="362.7" y="139.4" class="radar-axis-label" text-anchor="start" transform="rotate(-62.3 362.7 139.4)">Pass cmp %</text>
+<text x="426.5" y="195.9" class="radar-axis-label" text-anchor="start" transform="rotate(-34.6 426.5 195.9)">Prog. passes/90</text>
+<text x="456.7" y="275.5" class="radar-axis-label" text-anchor="start" transform="rotate(-6.9 456.7 275.5)">Key passes/90</text>
+<text x="446.4" y="360.1" class="radar-axis-label" text-anchor="start" transform="rotate(20.8 446.4 360.1)">Shots/90</text>
+<text x="398.0" y="430.2" class="radar-axis-label" text-anchor="start" transform="rotate(48.5 398.0 430.2)">Shot conv %</text>
+<text x="322.6" y="469.8" class="radar-axis-label" text-anchor="start" transform="rotate(76.2 322.6 469.8)">Dribbles/90</text>
+<text x="237.4" y="469.8" class="radar-axis-label" text-anchor="end" transform="rotate(283.8 237.4 469.8)">Dribble succ %</text>
+<text x="162.0" y="430.2" class="radar-axis-label" text-anchor="end" transform="rotate(311.5 162.0 430.2)">Tackles/90</text>
+<text x="113.6" y="360.1" class="radar-axis-label" text-anchor="end" transform="rotate(339.2 113.6 360.1)">Interceptions/90</text>
+<text x="103.3" y="275.5" class="radar-axis-label" text-anchor="end" transform="rotate(366.9 103.3 275.5)">Aerials won/90</text>
+<text x="133.5" y="195.9" class="radar-axis-label" text-anchor="end" transform="rotate(394.6 133.5 195.9)">Pressures/90</text>
+<text x="197.3" y="139.4" class="radar-axis-label" text-anchor="end" transform="rotate(422.3 197.3 139.4)">Att. 3rd touches/90</text>
+<path d="M280.0,267.4 L294.3,269.8 L311.7,275.1 L354.2,288.0 L356.2,325.9 L370.7,399.4 L298.6,372.3 L262.0,370.2 L216.7,368.4 L180.8,334.6 L214.6,289.1 L183.1,230.1 L241.4,223.4 Z" fill="var(--series-1)" fill-opacity="0.1" stroke="var(--series-1)" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="280.0" cy="267.4" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Passes/90: 34.31 (18th percentile of 301 DEF players)</title></circle>
+<circle cx="294.3" cy="269.8" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Pass cmp %: 0.72 (18th percentile of 301 DEF players)</title></circle>
+<circle cx="311.7" cy="275.1" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Prog. passes/90: 8.50 (23th percentile of 301 DEF players)</title></circle>
+<circle cx="354.2" cy="288.0" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Key passes/90: 0.24 (45th percentile of 301 DEF players)</title></circle>
+<circle cx="356.2" cy="325.9" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Shots/90: 0.32 (49th percentile of 301 DEF players)</title></circle>
+<circle cx="370.7" cy="399.4" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Shot conv %: 0.06 (81th percentile of 301 DEF players)</title></circle>
+<circle cx="298.6" cy="372.3" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Dribbles/90: 0.21 (46th percentile of 301 DEF players)</title></circle>
+<circle cx="262.0" cy="370.2" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Dribble succ %: 0.28 (45th percentile of 301 DEF players)</title></circle>
+<circle cx="216.7" cy="368.4" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Tackles/90: 1.02 (57th percentile of 301 DEF players)</title></circle>
+<circle cx="180.8" cy="334.6" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Interceptions/90: 1.32 (63th percentile of 301 DEF players)</title></circle>
+<circle cx="214.6" cy="289.1" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Aerials won/90: 1.22 (39th percentile of 301 DEF players)</title></circle>
+<circle cx="183.1" cy="230.1" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Pressures/90: 11.85 (70th percentile of 301 DEF players)</title></circle>
+<circle cx="241.4" cy="223.4" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>No-Nonsense Center Backs — Att. 3rd touches/90: 13.51 (50th percentile of 301 DEF players)</title></circle>
+<path d="M280.0,196.5 L308.5,242.6 L337.9,257.1 L420.7,279.9 L402.1,343.3 L371.8,400.6 L314.2,435.7 L253.0,406.5 L198.9,388.5 L173.5,337.4 L208.0,288.3 L177.6,226.3 L213.3,170.0 Z" fill="var(--series-2)" fill-opacity="0.1" stroke="var(--series-2)" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="280.0" cy="196.5" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Passes/90: 53.76 (60th percentile of 301 DEF players)</title></circle>
+<circle cx="308.5" cy="242.6" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Pass cmp %: 0.78 (37th percentile of 301 DEF players)</title></circle>
+<circle cx="337.9" cy="257.1" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Prog. passes/90: 11.16 (42th percentile of 301 DEF players)</title></circle>
+<circle cx="420.7" cy="279.9" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Key passes/90: 0.95 (84th percentile of 301 DEF players)</title></circle>
+<circle cx="402.1" cy="343.3" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Shots/90: 0.72 (78th percentile of 301 DEF players)</title></circle>
+<circle cx="371.8" cy="400.6" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Shot conv %: 0.08 (82th percentile of 301 DEF players)</title></circle>
+<circle cx="314.2" cy="435.7" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Dribbles/90: 0.82 (85th percentile of 301 DEF players)</title></circle>
+<circle cx="253.0" cy="406.5" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Dribble succ %: 0.56 (67th percentile of 301 DEF players)</title></circle>
+<circle cx="198.9" cy="388.5" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Tackles/90: 1.29 (73th percentile of 301 DEF players)</title></circle>
+<circle cx="173.5" cy="337.4" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Interceptions/90: 1.46 (68th percentile of 301 DEF players)</title></circle>
+<circle cx="208.0" cy="288.3" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Aerials won/90: 1.31 (43th percentile of 301 DEF players)</title></circle>
+<circle cx="177.6" cy="226.3" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Pressures/90: 12.49 (74th percentile of 301 DEF players)</title></circle>
+<circle cx="213.3" cy="170.0" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Overlapping Fullbacks — Att. 3rd touches/90: 47.71 (85th percentile of 301 DEF players)</title></circle>
+<path d="M280.0,175.3 L340.4,181.8 L390.2,220.9 L355.4,287.9 L366.1,329.7 L370.3,398.9 L297.2,366.9 L260.0,378.3 L232.3,350.9 L210.6,323.3 L154.8,281.8 L244.6,272.6 L245.8,231.8 Z" fill="var(--series-3)" fill-opacity="0.1" stroke="var(--series-3)" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="280.0" cy="175.3" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Passes/90: 59.21 (72th percentile of 301 DEF players)</title></circle>
+<circle cx="340.4" cy="181.8" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Pass cmp %: 0.88 (77th percentile of 301 DEF players)</title></circle>
+<circle cx="390.2" cy="220.9" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Prog. passes/90: 17.10 (80th percentile of 301 DEF players)</title></circle>
+<circle cx="355.4" cy="287.9" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Key passes/90: 0.26 (45th percentile of 301 DEF players)</title></circle>
+<circle cx="366.1" cy="329.7" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Shots/90: 0.44 (55th percentile of 301 DEF players)</title></circle>
+<circle cx="370.3" cy="398.9" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Shot conv %: 0.05 (81th percentile of 301 DEF players)</title></circle>
+<circle cx="297.2" cy="366.9" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Dribbles/90: 0.14 (43th percentile of 301 DEF players)</title></circle>
+<circle cx="260.0" cy="378.3" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Dribble succ %: 0.37 (50th percentile of 301 DEF players)</title></circle>
+<circle cx="232.3" cy="350.9" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Tackles/90: 0.75 (43th percentile of 301 DEF players)</title></circle>
+<circle cx="210.6" cy="323.3" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Interceptions/90: 1.02 (44th percentile of 301 DEF players)</title></circle>
+<circle cx="154.8" cy="281.8" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Aerials won/90: 2.20 (75th percentile of 301 DEF players)</title></circle>
+<circle cx="244.6" cy="272.6" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Pressures/90: 6.77 (26th percentile of 301 DEF players)</title></circle>
+<circle cx="245.8" cy="231.8" r="4.5" fill="var(--series-3)" stroke="var(--paper-raised)" stroke-width="2"><title>Deep Ball-Playing Center Backs — Att. 3rd touches/90: 9.83 (44th percentile of 301 DEF players)</title></circle>
 </svg></div>
-    <figcaption>The third cluster is the payoff: at k=2, DEF only separated into an attack-involved group and a deep/passing group. At k=3, that attack-involved group itself splits into <strong>No-Nonsense Center Backs</strong> (n=90) &mdash; low forward involvement, low key passes/dribbles, the classic no-frills stopper &mdash; and <strong>Overlapping Fullbacks</strong> (n=90) &mdash; high tackles <em>and</em> high attacking-third touches/key passes/dribbles, the modern hybrid fullback who both defends and joins the attack. <strong>Deep Ball-Playing Center Backs</strong> (n=121) is unchanged from k=2: highest pass volume/completion/progressive passing and aerial duels, lowest forward involvement &mdash; the deep possession-recycling center back. On the radar, Overlapping Fullbacks' polygon bulges toward the attacking axes (key passes, dribbles, att. 3rd touches, tackles) while Deep Ball-Playing Center Backs bulges toward the passing/aerial axes instead &mdash; two genuinely different shapes, not just different sizes of the same shape.</figcaption>
+    <figcaption>The third cluster is the payoff: at k=2, DEF only separated into an attack-involved group and a deep/passing group. At k=3, that attack-involved group itself splits into <strong>No-Nonsense Center Backs</strong> (n=90) &mdash; low forward involvement, low key passes/dribbles, the classic no-frills stopper &mdash; and <strong>Overlapping Fullbacks</strong> (n=90) &mdash; 85th-percentile attacking-third touches and dribbles alongside 73rd-percentile tackling, the modern hybrid fullback who both defends and joins the attack. <strong>Deep Ball-Playing Center Backs</strong> (n=121) is unchanged from k=2: 72nd-79th percentile on pass volume/completion/progressive passing, lowest forward involvement of the three &mdash; the deep possession-recycling center back.</figcaption>
   </figure>
   
   <figure>
     <p class="figure-eyebrow">Figure 8</p>
     <h4>MID family &mdash; 168 players &middot; k=2 chosen by silhouette (0.239)</h4>
-    <p class="figure-note">Own StandardScaler and own k-sweep, fit only on this family's players. Each of the 13 axes is independently min-max scaled across this family's own cluster means, so shape &mdash; not raw units &mdash; is what's comparable across axes. Hover a vertex for the raw per-90 value.</p>
-    <div class="chart-wrap"><svg viewBox="0 0 560 594" role="img" aria-label="MID sub-cluster radar chart" class="chart-svg chart-svg-radar">
-<circle cx="137.0" cy="14" r="5" fill="var(--series-1)"/>
-<text x="148.0" y="18" class="legend-label">High-Pressing Ball-Winners (n=86)</text>
+    <p class="figure-note">Own StandardScaler and own k-sweep, fit only on this family's players. Each axis plots the cluster mean's <strong>percentile rank against all 168 midfielders in the family</strong>, so a vertex near the outer ring is a genuinely top-tier average, not just "higher than the other cluster." Hover a vertex for the raw per-90 value and exact percentile.</p>
+    <div class="chart-wrap"><svg viewBox="0 0 560 594" role="img" aria-label="MID sub-cluster percentile radar" class="chart-svg chart-svg-radar">
+<circle cx="132.0" cy="14" r="5" fill="var(--series-1)"/>
+<text x="143.0" y="18" class="legend-label">High-Pressing Ball-Winners (n=86)</text>
 <circle cx="287.0" cy="14" r="5" fill="var(--series-2)"/>
 <text x="298.0" y="18" class="legend-label">Advanced Playmakers (n=82)</text>
-<path d="M280.0,255.0 L299.5,259.8 L314.6,273.1 L321.7,291.9 L319.3,311.9 L307.9,328.4 L290.1,337.8 L269.9,337.8 L252.1,328.4 L240.7,311.9 L238.3,291.9 L245.4,273.1 L260.5,259.8 Z" class="radar-grid"/>
-<path d="M280.0,213.0 L319.0,222.6 L349.1,249.3 L363.4,286.9 L358.5,326.8 L335.7,359.9 L300.1,378.6 L259.9,378.6 L224.3,359.9 L201.5,326.8 L196.6,286.9 L210.9,249.3 L241.0,222.6 Z" class="radar-grid"/>
-<path d="M280.0,171.0 L338.6,185.4 L383.7,225.4 L405.1,281.8 L397.8,341.7 L363.6,391.3 L310.2,419.3 L249.8,419.3 L196.4,391.3 L162.2,341.7 L154.9,281.8 L176.3,225.4 L221.4,185.4 Z" class="radar-grid"/>
-<path d="M280.0,129.0 L358.1,148.2 L418.3,201.6 L446.8,276.7 L437.1,356.6 L391.4,422.7 L320.2,460.1 L239.8,460.1 L168.6,422.7 L122.9,356.6 L113.2,276.7 L141.7,201.6 L201.9,148.2 Z" class="radar-grid"/>
-<text x="284.0" y="259.0" class="axis-label">75</text>
+<circle cx="280.0" cy="297.0" r="42.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="84.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="126.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="168.0" class="radar-grid"/>
+<text x="284.0" y="259.0" class="axis-label">25</text>
 <text x="284.0" y="217.0" class="axis-label">50</text>
-<text x="284.0" y="175.0" class="axis-label">25</text>
+<text x="284.0" y="175.0" class="axis-label">75</text>
+<text x="284.0" y="133.0" class="axis-label">100</text>
 <line x1="280.0" y1="297.0" x2="280.0" y2="129.0" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="358.1" y2="148.2" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="418.3" y2="201.6" class="radar-grid"/>
@@ -987,67 +990,68 @@ footer {
 <line x1="280.0" y1="297.0" x2="113.2" y2="276.7" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="141.7" y2="201.6" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="201.9" y2="148.2" class="radar-grid"/>
-<text x="280.0" y="119.0" class="radar-axis-label" text-anchor="middle">Passes/90</text>
-<text x="361.8" y="139.2" class="radar-axis-label" text-anchor="start">Pass cmp %</text>
-<text x="424.8" y="200.0" class="radar-axis-label" text-anchor="start">Prog. passes/90</text>
-<text x="454.7" y="278.8" class="radar-axis-label" text-anchor="start">Key passes/90</text>
-<text x="444.6" y="362.4" class="radar-axis-label" text-anchor="start">Shots/90</text>
-<text x="396.7" y="437.7" class="radar-axis-label" text-anchor="start">Shot conv %</text>
-<text x="322.1" y="476.9" class="radar-axis-label" text-anchor="start">Dribbles/90</text>
-<text x="237.9" y="476.9" class="radar-axis-label" text-anchor="end">Dribble succ %</text>
-<text x="163.3" y="437.7" class="radar-axis-label" text-anchor="end">Tackles/90</text>
-<text x="115.4" y="362.4" class="radar-axis-label" text-anchor="end">Interceptions/90</text>
-<text x="105.3" y="278.8" class="radar-axis-label" text-anchor="end">Aerials won/90</text>
-<text x="135.2" y="200.0" class="radar-axis-label" text-anchor="end">Pressures/90</text>
-<text x="198.2" y="139.2" class="radar-axis-label" text-anchor="end">Att. 3rd touches/90</text>
-<path d="M280.0,297.0 L280.0,297.0 L280.0,297.0 L280.0,297.0 L280.0,297.0 L391.4,422.7 L320.2,460.1 L280.0,297.0 L168.6,422.7 L122.9,356.6 L113.2,276.7 L141.7,201.6 L280.0,297.0 Z" fill="var(--series-1)" fill-opacity="0.1" stroke="var(--series-1)" stroke-width="2" stroke-linejoin="round"/>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Passes/90: 33.03</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Pass cmp %: 0.73</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Prog. passes/90: 5.68</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Key passes/90: 0.68</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Shots/90: 0.98</title></circle>
-<circle cx="391.4" cy="422.7" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Shot conv %: 0.10</title></circle>
-<circle cx="320.2" cy="460.1" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Dribbles/90: 0.82</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Dribble succ %: 0.51</title></circle>
-<circle cx="168.6" cy="422.7" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Tackles/90: 1.38</title></circle>
-<circle cx="122.9" cy="356.6" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Interceptions/90: 1.15</title></circle>
-<circle cx="113.2" cy="276.7" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Aerials won/90: 1.38</title></circle>
-<circle cx="141.7" cy="201.6" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Pressures/90: 19.46</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Att. 3rd touches/90: 33.69</title></circle>
-<path d="M280.0,129.0 L358.1,148.2 L418.3,201.6 L446.8,276.7 L437.1,356.6 L280.0,297.0 L280.0,297.0 L239.8,460.1 L280.0,297.0 L280.0,297.0 L280.0,297.0 L280.0,297.0 L201.9,148.2 Z" fill="var(--series-2)" fill-opacity="0.1" stroke="var(--series-2)" stroke-width="2" stroke-linejoin="round"/>
-<circle cx="280.0" cy="129.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Passes/90: 56.74</title></circle>
-<circle cx="358.1" cy="148.2" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Pass cmp %: 0.85</title></circle>
-<circle cx="418.3" cy="201.6" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Prog. passes/90: 11.67</title></circle>
-<circle cx="446.8" cy="276.7" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Key passes/90: 1.14</title></circle>
-<circle cx="437.1" cy="356.6" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Shots/90: 1.31</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Shot conv %: 0.09</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Dribbles/90: 0.66</title></circle>
-<circle cx="239.8" cy="460.1" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Dribble succ %: 0.53</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Tackles/90: 1.21</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Interceptions/90: 0.96</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Aerials won/90: 1.25</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Pressures/90: 14.66</title></circle>
-<circle cx="201.9" cy="148.2" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Att. 3rd touches/90: 49.47</title></circle>
+<text x="280.0" y="119.0" class="radar-axis-label" text-anchor="start" transform="rotate(-90.0 280.0 119.0)">Passes/90</text>
+<text x="362.7" y="139.4" class="radar-axis-label" text-anchor="start" transform="rotate(-62.3 362.7 139.4)">Pass cmp %</text>
+<text x="426.5" y="195.9" class="radar-axis-label" text-anchor="start" transform="rotate(-34.6 426.5 195.9)">Prog. passes/90</text>
+<text x="456.7" y="275.5" class="radar-axis-label" text-anchor="start" transform="rotate(-6.9 456.7 275.5)">Key passes/90</text>
+<text x="446.4" y="360.1" class="radar-axis-label" text-anchor="start" transform="rotate(20.8 446.4 360.1)">Shots/90</text>
+<text x="398.0" y="430.2" class="radar-axis-label" text-anchor="start" transform="rotate(48.5 398.0 430.2)">Shot conv %</text>
+<text x="322.6" y="469.8" class="radar-axis-label" text-anchor="start" transform="rotate(76.2 322.6 469.8)">Dribbles/90</text>
+<text x="237.4" y="469.8" class="radar-axis-label" text-anchor="end" transform="rotate(283.8 237.4 469.8)">Dribble succ %</text>
+<text x="162.0" y="430.2" class="radar-axis-label" text-anchor="end" transform="rotate(311.5 162.0 430.2)">Tackles/90</text>
+<text x="113.6" y="360.1" class="radar-axis-label" text-anchor="end" transform="rotate(339.2 113.6 360.1)">Interceptions/90</text>
+<text x="103.3" y="275.5" class="radar-axis-label" text-anchor="end" transform="rotate(366.9 103.3 275.5)">Aerials won/90</text>
+<text x="133.5" y="195.9" class="radar-axis-label" text-anchor="end" transform="rotate(394.6 133.5 195.9)">Pressures/90</text>
+<text x="197.3" y="139.4" class="radar-axis-label" text-anchor="end" transform="rotate(422.3 197.3 139.4)">Att. 3rd touches/90</text>
+<path d="M280.0,256.0 L301.8,255.4 L318.7,270.3 L353.5,288.1 L356.7,326.1 L357.6,384.6 L305.6,400.9 L260.6,375.6 L213.7,371.9 L187.4,332.1 L171.8,283.9 L182.1,229.4 L249.3,238.6 Z" fill="var(--series-1)" fill-opacity="0.1" stroke="var(--series-1)" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="280.0" cy="256.0" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Passes/90: 33.03 (24th percentile of 168 MID players)</title></circle>
+<circle cx="301.8" cy="255.4" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Pass cmp %: 0.73 (28th percentile of 168 MID players)</title></circle>
+<circle cx="318.7" cy="270.3" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Prog. passes/90: 5.68 (28th percentile of 168 MID players)</title></circle>
+<circle cx="353.5" cy="288.1" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Key passes/90: 0.68 (44th percentile of 168 MID players)</title></circle>
+<circle cx="356.7" cy="326.1" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Shots/90: 0.98 (49th percentile of 168 MID players)</title></circle>
+<circle cx="357.6" cy="384.6" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Shot conv %: 0.10 (70th percentile of 168 MID players)</title></circle>
+<circle cx="305.6" cy="400.9" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Dribbles/90: 0.82 (64th percentile of 168 MID players)</title></circle>
+<circle cx="260.6" cy="375.6" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Dribble succ %: 0.51 (48th percentile of 168 MID players)</title></circle>
+<circle cx="213.7" cy="371.9" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Tackles/90: 1.38 (60th percentile of 168 MID players)</title></circle>
+<circle cx="187.4" cy="332.1" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Interceptions/90: 1.15 (59th percentile of 168 MID players)</title></circle>
+<circle cx="171.8" cy="283.9" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Aerials won/90: 1.38 (65th percentile of 168 MID players)</title></circle>
+<circle cx="182.1" cy="229.4" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Pressures/90: 19.46 (71th percentile of 168 MID players)</title></circle>
+<circle cx="249.3" cy="238.6" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>High-Pressing Ball-Winners — Att. 3rd touches/90: 33.69 (39th percentile of 168 MID players)</title></circle>
+<path d="M280.0,162.0 L336.2,189.9 L389.5,221.4 L401.1,282.3 L384.7,336.7 L354.3,380.8 L302.7,389.2 L259.9,378.6 L224.3,359.9 L201.5,326.8 L181.7,285.1 L226.5,260.1 L224.7,191.6 Z" fill="var(--series-2)" fill-opacity="0.1" stroke="var(--series-2)" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="280.0" cy="162.0" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Passes/90: 56.74 (80th percentile of 168 MID players)</title></circle>
+<circle cx="336.2" cy="189.9" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Pass cmp %: 0.85 (72th percentile of 168 MID players)</title></circle>
+<circle cx="389.5" cy="221.4" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Prog. passes/90: 11.67 (79th percentile of 168 MID players)</title></circle>
+<circle cx="401.1" cy="282.3" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Key passes/90: 1.14 (73th percentile of 168 MID players)</title></circle>
+<circle cx="384.7" cy="336.7" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Shots/90: 1.31 (67th percentile of 168 MID players)</title></circle>
+<circle cx="354.3" cy="380.8" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Shot conv %: 0.09 (67th percentile of 168 MID players)</title></circle>
+<circle cx="302.7" cy="389.2" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Dribbles/90: 0.66 (57th percentile of 168 MID players)</title></circle>
+<circle cx="259.9" cy="378.6" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Dribble succ %: 0.53 (50th percentile of 168 MID players)</title></circle>
+<circle cx="224.3" cy="359.9" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Tackles/90: 1.21 (50th percentile of 168 MID players)</title></circle>
+<circle cx="201.5" cy="326.8" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Interceptions/90: 0.96 (50th percentile of 168 MID players)</title></circle>
+<circle cx="181.7" cy="285.1" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Aerials won/90: 1.25 (59th percentile of 168 MID players)</title></circle>
+<circle cx="226.5" cy="260.1" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Pressures/90: 14.66 (39th percentile of 168 MID players)</title></circle>
+<circle cx="224.7" cy="191.6" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Advanced Playmakers — Att. 3rd touches/90: 49.47 (71th percentile of 168 MID players)</title></circle>
 </svg></div>
-    <figcaption><strong>High-Pressing Ball-Winners</strong> (n=86) vs. <strong>Advanced Playmakers</strong> (n=82). The two polygons cross rather than nest inside one another &mdash; Ball-Winners lead on pressures and defensive actions, Playmakers lead on nearly everything passing- and attacking-related, so neither shape is simply a scaled-up version of the other.</figcaption>
+    <figcaption><strong>High-Pressing Ball-Winners</strong> (n=86) vs. <strong>Advanced Playmakers</strong> (n=82). The two polygons cross rather than nest inside one another &mdash; Ball-Winners sit at the 71st percentile on pressures but only the 24th-28th on passing volume/accuracy; Playmakers invert that almost exactly, so neither shape is simply a scaled-up version of the other.</figcaption>
   </figure>
   
   <figure>
     <p class="figure-eyebrow">Figure 9</p>
     <h4>FWD family &mdash; 166 players &middot; k=2 chosen by silhouette (0.261)</h4>
-    <p class="figure-note">Own StandardScaler and own k-sweep, fit only on this family's players. Each of the 13 axes is independently min-max scaled across this family's own cluster means, so shape &mdash; not raw units &mdash; is what's comparable across axes. Hover a vertex for the raw per-90 value.</p>
-    <div class="chart-wrap"><svg viewBox="0 0 560 594" role="img" aria-label="FWD sub-cluster radar chart" class="chart-svg chart-svg-radar">
-<circle cx="137.0" cy="14" r="5" fill="var(--series-1)"/>
-<text x="148.0" y="18" class="legend-label">Poacher-Type Finishers (n=77)</text>
+    <p class="figure-note">Own StandardScaler and own k-sweep, fit only on this family's players. Each axis plots the cluster mean's <strong>percentile rank against all 166 forwards in the family</strong>, so a vertex near the outer ring is a genuinely top-tier average, not just "higher than the other cluster." Hover a vertex for the raw per-90 value and exact percentile.</p>
+    <div class="chart-wrap"><svg viewBox="0 0 560 594" role="img" aria-label="FWD sub-cluster percentile radar" class="chart-svg chart-svg-radar">
+<circle cx="132.0" cy="14" r="5" fill="var(--series-1)"/>
+<text x="143.0" y="18" class="legend-label">Poacher-Type Finishers (n=77)</text>
 <circle cx="287.0" cy="14" r="5" fill="var(--series-2)"/>
 <text x="298.0" y="18" class="legend-label">Creative Providers (n=89)</text>
-<path d="M280.0,255.0 L299.5,259.8 L314.6,273.1 L321.7,291.9 L319.3,311.9 L307.9,328.4 L290.1,337.8 L269.9,337.8 L252.1,328.4 L240.7,311.9 L238.3,291.9 L245.4,273.1 L260.5,259.8 Z" class="radar-grid"/>
-<path d="M280.0,213.0 L319.0,222.6 L349.1,249.3 L363.4,286.9 L358.5,326.8 L335.7,359.9 L300.1,378.6 L259.9,378.6 L224.3,359.9 L201.5,326.8 L196.6,286.9 L210.9,249.3 L241.0,222.6 Z" class="radar-grid"/>
-<path d="M280.0,171.0 L338.6,185.4 L383.7,225.4 L405.1,281.8 L397.8,341.7 L363.6,391.3 L310.2,419.3 L249.8,419.3 L196.4,391.3 L162.2,341.7 L154.9,281.8 L176.3,225.4 L221.4,185.4 Z" class="radar-grid"/>
-<path d="M280.0,129.0 L358.1,148.2 L418.3,201.6 L446.8,276.7 L437.1,356.6 L391.4,422.7 L320.2,460.1 L239.8,460.1 L168.6,422.7 L122.9,356.6 L113.2,276.7 L141.7,201.6 L201.9,148.2 Z" class="radar-grid"/>
-<text x="284.0" y="259.0" class="axis-label">75</text>
+<circle cx="280.0" cy="297.0" r="42.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="84.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="126.0" class="radar-grid"/>
+<circle cx="280.0" cy="297.0" r="168.0" class="radar-grid"/>
+<text x="284.0" y="259.0" class="axis-label">25</text>
 <text x="284.0" y="217.0" class="axis-label">50</text>
-<text x="284.0" y="175.0" class="axis-label">25</text>
+<text x="284.0" y="175.0" class="axis-label">75</text>
+<text x="284.0" y="133.0" class="axis-label">100</text>
 <line x1="280.0" y1="297.0" x2="280.0" y2="129.0" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="358.1" y2="148.2" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="418.3" y2="201.6" class="radar-grid"/>
@@ -1061,49 +1065,49 @@ footer {
 <line x1="280.0" y1="297.0" x2="113.2" y2="276.7" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="141.7" y2="201.6" class="radar-grid"/>
 <line x1="280.0" y1="297.0" x2="201.9" y2="148.2" class="radar-grid"/>
-<text x="280.0" y="119.0" class="radar-axis-label" text-anchor="middle">Passes/90</text>
-<text x="361.8" y="139.2" class="radar-axis-label" text-anchor="start">Pass cmp %</text>
-<text x="424.8" y="200.0" class="radar-axis-label" text-anchor="start">Prog. passes/90</text>
-<text x="454.7" y="278.8" class="radar-axis-label" text-anchor="start">Key passes/90</text>
-<text x="444.6" y="362.4" class="radar-axis-label" text-anchor="start">Shots/90</text>
-<text x="396.7" y="437.7" class="radar-axis-label" text-anchor="start">Shot conv %</text>
-<text x="322.1" y="476.9" class="radar-axis-label" text-anchor="start">Dribbles/90</text>
-<text x="237.9" y="476.9" class="radar-axis-label" text-anchor="end">Dribble succ %</text>
-<text x="163.3" y="437.7" class="radar-axis-label" text-anchor="end">Tackles/90</text>
-<text x="115.4" y="362.4" class="radar-axis-label" text-anchor="end">Interceptions/90</text>
-<text x="105.3" y="278.8" class="radar-axis-label" text-anchor="end">Aerials won/90</text>
-<text x="135.2" y="200.0" class="radar-axis-label" text-anchor="end">Pressures/90</text>
-<text x="198.2" y="139.2" class="radar-axis-label" text-anchor="end">Att. 3rd touches/90</text>
-<path d="M280.0,297.0 L280.0,297.0 L280.0,297.0 L280.0,297.0 L437.1,356.6 L391.4,422.7 L280.0,297.0 L280.0,297.0 L280.0,297.0 L280.0,297.0 L113.2,276.7 L141.7,201.6 L280.0,297.0 Z" fill="var(--series-1)" fill-opacity="0.1" stroke="var(--series-1)" stroke-width="2" stroke-linejoin="round"/>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Passes/90: 22.07</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Pass cmp %: 0.68</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Prog. passes/90: 2.31</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Key passes/90: 0.84</title></circle>
-<circle cx="437.1" cy="356.6" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Shots/90: 2.34</title></circle>
-<circle cx="391.4" cy="422.7" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Shot conv %: 0.15</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Dribbles/90: 0.82</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Dribble succ %: 0.42</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Tackles/90: 0.56</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Interceptions/90: 0.43</title></circle>
-<circle cx="113.2" cy="276.7" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Aerials won/90: 2.25</title></circle>
-<circle cx="141.7" cy="201.6" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Pressures/90: 16.08</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Att. 3rd touches/90: 57.59</title></circle>
-<path d="M280.0,129.0 L358.1,148.2 L418.3,201.6 L446.8,276.7 L280.0,297.0 L280.0,297.0 L320.2,460.1 L239.8,460.1 L168.6,422.7 L122.9,356.6 L280.0,297.0 L280.0,297.0 L201.9,148.2 Z" fill="var(--series-2)" fill-opacity="0.1" stroke="var(--series-2)" stroke-width="2" stroke-linejoin="round"/>
-<circle cx="280.0" cy="129.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Passes/90: 37.54</title></circle>
-<circle cx="358.1" cy="148.2" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Pass cmp %: 0.76</title></circle>
-<circle cx="418.3" cy="201.6" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Prog. passes/90: 5.19</title></circle>
-<circle cx="446.8" cy="276.7" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Key passes/90: 1.56</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Shots/90: 2.08</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Shot conv %: 0.12</title></circle>
-<circle cx="320.2" cy="460.1" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Dribbles/90: 1.68</title></circle>
-<circle cx="239.8" cy="460.1" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Dribble succ %: 0.52</title></circle>
-<circle cx="168.6" cy="422.7" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Tackles/90: 0.92</title></circle>
-<circle cx="122.9" cy="356.6" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Interceptions/90: 0.71</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Aerials won/90: 0.68</title></circle>
-<circle cx="280.0" cy="297.0" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Pressures/90: 15.95</title></circle>
-<circle cx="201.9" cy="148.2" r="4" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Att. 3rd touches/90: 74.96</title></circle>
+<text x="280.0" y="119.0" class="radar-axis-label" text-anchor="start" transform="rotate(-90.0 280.0 119.0)">Passes/90</text>
+<text x="362.7" y="139.4" class="radar-axis-label" text-anchor="start" transform="rotate(-62.3 362.7 139.4)">Pass cmp %</text>
+<text x="426.5" y="195.9" class="radar-axis-label" text-anchor="start" transform="rotate(-34.6 426.5 195.9)">Prog. passes/90</text>
+<text x="456.7" y="275.5" class="radar-axis-label" text-anchor="start" transform="rotate(-6.9 456.7 275.5)">Key passes/90</text>
+<text x="446.4" y="360.1" class="radar-axis-label" text-anchor="start" transform="rotate(20.8 446.4 360.1)">Shots/90</text>
+<text x="398.0" y="430.2" class="radar-axis-label" text-anchor="start" transform="rotate(48.5 398.0 430.2)">Shot conv %</text>
+<text x="322.6" y="469.8" class="radar-axis-label" text-anchor="start" transform="rotate(76.2 322.6 469.8)">Dribbles/90</text>
+<text x="237.4" y="469.8" class="radar-axis-label" text-anchor="end" transform="rotate(283.8 237.4 469.8)">Dribble succ %</text>
+<text x="162.0" y="430.2" class="radar-axis-label" text-anchor="end" transform="rotate(311.5 162.0 430.2)">Tackles/90</text>
+<text x="113.6" y="360.1" class="radar-axis-label" text-anchor="end" transform="rotate(339.2 113.6 360.1)">Interceptions/90</text>
+<text x="103.3" y="275.5" class="radar-axis-label" text-anchor="end" transform="rotate(366.9 103.3 275.5)">Aerials won/90</text>
+<text x="133.5" y="195.9" class="radar-axis-label" text-anchor="end" transform="rotate(394.6 133.5 195.9)">Pressures/90</text>
+<text x="197.3" y="139.4" class="radar-axis-label" text-anchor="end" transform="rotate(422.3 197.3 139.4)">Att. 3rd touches/90</text>
+<path d="M280.0,255.5 L304.5,250.4 L324.1,266.5 L339.3,289.8 L376.5,333.6 L345.1,370.5 L294.3,355.0 L269.1,341.2 L235.0,347.8 L204.3,325.7 L146.4,280.8 L201.7,243.0 L253.2,245.9 Z" fill="var(--series-1)" fill-opacity="0.1" stroke="var(--series-1)" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="280.0" cy="255.5" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Passes/90: 22.07 (25th percentile of 166 FWD players)</title></circle>
+<circle cx="304.5" cy="250.4" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Pass cmp %: 0.68 (31th percentile of 166 FWD players)</title></circle>
+<circle cx="324.1" cy="266.5" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Prog. passes/90: 2.31 (32th percentile of 166 FWD players)</title></circle>
+<circle cx="339.3" cy="289.8" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Key passes/90: 0.84 (36th percentile of 166 FWD players)</title></circle>
+<circle cx="376.5" cy="333.6" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Shots/90: 2.34 (61th percentile of 166 FWD players)</title></circle>
+<circle cx="345.1" cy="370.5" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Shot conv %: 0.15 (58th percentile of 166 FWD players)</title></circle>
+<circle cx="294.3" cy="355.0" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Dribbles/90: 0.82 (36th percentile of 166 FWD players)</title></circle>
+<circle cx="269.1" cy="341.2" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Dribble succ %: 0.42 (27th percentile of 166 FWD players)</title></circle>
+<circle cx="235.0" cy="347.8" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Tackles/90: 0.56 (40th percentile of 166 FWD players)</title></circle>
+<circle cx="204.3" cy="325.7" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Interceptions/90: 0.43 (48th percentile of 166 FWD players)</title></circle>
+<circle cx="146.4" cy="280.8" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Aerials won/90: 2.25 (80th percentile of 166 FWD players)</title></circle>
+<circle cx="201.7" cy="243.0" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Pressures/90: 16.08 (57th percentile of 166 FWD players)</title></circle>
+<circle cx="253.2" cy="245.9" r="4.5" fill="var(--series-1)" stroke="var(--paper-raised)" stroke-width="2"><title>Poacher-Type Finishers — Att. 3rd touches/90: 57.59 (34th percentile of 166 FWD players)</title></circle>
+<path d="M280.0,169.5 L328.9,203.8 L384.9,224.6 L394.5,283.1 L361.4,327.9 L335.7,359.9 L309.3,415.9 L255.8,395.3 L210.2,375.8 L172.1,337.9 L212.7,288.8 L203.4,244.1 L230.1,202.0 Z" fill="var(--series-2)" fill-opacity="0.1" stroke="var(--series-2)" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="280.0" cy="169.5" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Passes/90: 37.54 (76th percentile of 166 FWD players)</title></circle>
+<circle cx="328.9" cy="203.8" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Pass cmp %: 0.76 (63th percentile of 166 FWD players)</title></circle>
+<circle cx="384.9" cy="224.6" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Prog. passes/90: 5.19 (76th percentile of 166 FWD players)</title></circle>
+<circle cx="394.5" cy="283.1" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Key passes/90: 1.56 (69th percentile of 166 FWD players)</title></circle>
+<circle cx="361.4" cy="327.9" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Shots/90: 2.08 (52th percentile of 166 FWD players)</title></circle>
+<circle cx="335.7" cy="359.9" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Shot conv %: 0.12 (50th percentile of 166 FWD players)</title></circle>
+<circle cx="309.3" cy="415.9" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Dribbles/90: 1.68 (73th percentile of 166 FWD players)</title></circle>
+<circle cx="255.8" cy="395.3" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Dribble succ %: 0.52 (60th percentile of 166 FWD players)</title></circle>
+<circle cx="210.2" cy="375.8" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Tackles/90: 0.92 (63th percentile of 166 FWD players)</title></circle>
+<circle cx="172.1" cy="337.9" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Interceptions/90: 0.71 (69th percentile of 166 FWD players)</title></circle>
+<circle cx="212.7" cy="288.8" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Aerials won/90: 0.68 (40th percentile of 166 FWD players)</title></circle>
+<circle cx="203.4" cy="244.1" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Pressures/90: 15.95 (55th percentile of 166 FWD players)</title></circle>
+<circle cx="230.1" cy="202.0" r="4.5" fill="var(--series-2)" stroke="var(--paper-raised)" stroke-width="2"><title>Creative Providers — Att. 3rd touches/90: 74.96 (64th percentile of 166 FWD players)</title></circle>
 </svg></div>
-    <figcaption><strong>Poacher-Type Finishers</strong> (n=77, Ronaldo) vs. <strong>Creative Providers</strong> (n=89, Messi). Finishers bulge toward shot conversion and aerials; Providers bulge toward passing, dribbles, and key passes &mdash; the same shape-not-size distinction visible in Figure 7's defenders, now inside a single position label.</figcaption>
+    <figcaption><strong>Poacher-Type Finishers</strong> (n=77, Ronaldo) vs. <strong>Creative Providers</strong> (n=89, Messi). Finishers sit at the 80th percentile on aerial duels but the 25th-35th on passing/dribbling; Providers invert that &mdash; the same shape-not-size distinction visible in Figure 7's defenders, now inside a single position label.</figcaption>
   </figure>
 
   <h3>Forward vs. forward: closing the loop</h3>
