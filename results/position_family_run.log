@@ -1,0 +1,242 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/08/08 21:20:43 WARN Utils: Your hostname, Veerapats-MacBook-Air.local, resolves to a loopback address: 127.0.0.1; using 192.168.1.105 instead (on interface en0)
+26/08/08 21:20:43 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/08/08 21:20:43 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/08/08 21:20:45 WARN FileStreamSink: Assume no metadata directory. Error while looking for metadata directory in the path: data/events/*.json.
+java.io.FileNotFoundException: File data/events/*.json does not exist
+	at org.apache.hadoop.fs.RawLocalFileSystem.deprecatedGetFileStatus(RawLocalFileSystem.java:980)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileLinkStatusInternal(RawLocalFileSystem.java:1301)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileStatus(RawLocalFileSystem.java:970)
+	at org.apache.hadoop.fs.FilterFileSystem.getFileStatus(FilterFileSystem.java:462)
+	at org.apache.spark.sql.execution.streaming.sinks.FileStreamSink$.hasMetadata(FileStreamSink.scala:58)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:384)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.org$apache$spark$sql$catalyst$analysis$ResolveDataSource$$loadV1BatchSource(ResolveDataSource.scala:143)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.$anonfun$applyOrElse$2(ResolveDataSource.scala:61)
+	at scala.Option.getOrElse(Option.scala:201)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.applyOrElse(ResolveDataSource.scala:61)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.applyOrElse(ResolveDataSource.scala:45)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsUpWithPruning$3(AnalysisHelper.scala:139)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsUpWithPruning$1(AnalysisHelper.scala:139)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.allowInvokingTransformsInAnalyzer(AnalysisHelper.scala:416)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUpWithPruning(AnalysisHelper.scala:135)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUpWithPruning$(AnalysisHelper.scala:131)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsUpWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUp(AnalysisHelper.scala:112)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUp$(AnalysisHelper.scala:111)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsUp(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.apply(ResolveDataSource.scala:45)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.apply(ResolveDataSource.scala:43)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$2(RuleExecutor.scala:248)
+	at scala.collection.LinearSeqOps.foldLeft(LinearSeq.scala:183)
+	at scala.collection.LinearSeqOps.foldLeft$(LinearSeq.scala:179)
+	at scala.collection.immutable.List.foldLeft(List.scala:79)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1(RuleExecutor.scala:245)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1$adapted(RuleExecutor.scala:237)
+	at scala.collection.immutable.List.foreach(List.scala:323)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.execute(RuleExecutor.scala:237)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.org$apache$spark$sql$catalyst$analysis$Analyzer$$executeSameContext(Analyzer.scala:343)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$execute$1(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.AnalysisContext$.withNewAnalysisContext(Analyzer.scala:224)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:289)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$executeAndTrack$1(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker$.withTracker(QueryPlanningTracker.scala:89)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.executeAndTrack(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.resolveInFixedPoint(HybridAnalyzer.scala:236)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.$anonfun$apply$1(HybridAnalyzer.scala:91)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.withTrackedAnalyzerBridgeState(HybridAnalyzer.scala:122)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.apply(HybridAnalyzer.scala:84)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$executeAndCheck$1(Analyzer.scala:322)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:423)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:322)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$2(QueryExecution.scala:139)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$1(QueryExecution.scala:139)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:150)
+	at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:90)
+	at org.apache.spark.sql.classic.Dataset$.$anonfun$ofRows$1(Dataset.scala:114)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.Dataset$.ofRows(Dataset.scala:112)
+	at org.apache.spark.sql.classic.DataFrameReader.load(DataFrameReader.scala:108)
+	at org.apache.spark.sql.classic.DataFrameReader.load(DataFrameReader.scala:57)
+	at org.apache.spark.sql.DataFrameReader.json(DataFrameReader.scala:296)
+	at org.apache.spark.sql.classic.DataFrameReader.json(DataFrameReader.scala:149)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+[Stage 0:============>                                          (47 + 10) / 210][Stage 0:=================================>                    (132 + 10) / 210]                                                                                [Stage 1:>                                                          (0 + 4) / 4][Stage 1:==============>                                            (1 + 3) / 4][Stage 1:============================================>              (3 + 1) / 4]                                                                                26/08/08 21:20:49 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+26/08/08 21:20:49 WARN FileStreamSink: Assume no metadata directory. Error while looking for metadata directory in the path: data/lineups/*.json.
+java.io.FileNotFoundException: File data/lineups/*.json does not exist
+	at org.apache.hadoop.fs.RawLocalFileSystem.deprecatedGetFileStatus(RawLocalFileSystem.java:980)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileLinkStatusInternal(RawLocalFileSystem.java:1301)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileStatus(RawLocalFileSystem.java:970)
+	at org.apache.hadoop.fs.FilterFileSystem.getFileStatus(FilterFileSystem.java:462)
+	at org.apache.spark.sql.execution.streaming.sinks.FileStreamSink$.hasMetadata(FileStreamSink.scala:58)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:384)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.org$apache$spark$sql$catalyst$analysis$ResolveDataSource$$loadV1BatchSource(ResolveDataSource.scala:143)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.$anonfun$applyOrElse$2(ResolveDataSource.scala:61)
+	at scala.Option.getOrElse(Option.scala:201)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.applyOrElse(ResolveDataSource.scala:61)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource$$anonfun$apply$1.applyOrElse(ResolveDataSource.scala:45)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsUpWithPruning$3(AnalysisHelper.scala:139)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsUpWithPruning$1(AnalysisHelper.scala:139)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.allowInvokingTransformsInAnalyzer(AnalysisHelper.scala:416)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUpWithPruning(AnalysisHelper.scala:135)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUpWithPruning$(AnalysisHelper.scala:131)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsUpWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUp(AnalysisHelper.scala:112)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsUp$(AnalysisHelper.scala:111)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsUp(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.apply(ResolveDataSource.scala:45)
+	at org.apache.spark.sql.catalyst.analysis.ResolveDataSource.apply(ResolveDataSource.scala:43)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$2(RuleExecutor.scala:248)
+	at scala.collection.LinearSeqOps.foldLeft(LinearSeq.scala:183)
+	at scala.collection.LinearSeqOps.foldLeft$(LinearSeq.scala:179)
+	at scala.collection.immutable.List.foldLeft(List.scala:79)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1(RuleExecutor.scala:245)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1$adapted(RuleExecutor.scala:237)
+	at scala.collection.immutable.List.foreach(List.scala:323)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.execute(RuleExecutor.scala:237)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.org$apache$spark$sql$catalyst$analysis$Analyzer$$executeSameContext(Analyzer.scala:343)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$execute$1(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.AnalysisContext$.withNewAnalysisContext(Analyzer.scala:224)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:289)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$executeAndTrack$1(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker$.withTracker(QueryPlanningTracker.scala:89)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.executeAndTrack(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.resolveInFixedPoint(HybridAnalyzer.scala:236)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.$anonfun$apply$1(HybridAnalyzer.scala:91)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.withTrackedAnalyzerBridgeState(HybridAnalyzer.scala:122)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.apply(HybridAnalyzer.scala:84)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$executeAndCheck$1(Analyzer.scala:322)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:423)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:322)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$2(QueryExecution.scala:139)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$1(QueryExecution.scala:139)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:150)
+	at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:90)
+	at org.apache.spark.sql.classic.Dataset$.$anonfun$ofRows$1(Dataset.scala:114)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.Dataset$.ofRows(Dataset.scala:112)
+	at org.apache.spark.sql.classic.DataFrameReader.load(DataFrameReader.scala:108)
+	at org.apache.spark.sql.classic.DataFrameReader.load(DataFrameReader.scala:57)
+	at org.apache.spark.sql.DataFrameReader.json(DataFrameReader.scala:296)
+	at org.apache.spark.sql.classic.DataFrameReader.json(DataFrameReader.scala:149)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+[Stage 3:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                (0 + 10) / 11][Stage 5:>                 (0 + 0) / 11][Stage 4:=>               (1 + 10) / 11][Stage 5:>                 (0 + 0) / 11][Stage 4:====>             (3 + 8) / 11][Stage 5:>                 (0 + 2) / 11]                                                                                [Stage 22:==========>                                              (2 + 9) / 11][Stage 23:========>      (37 + 10) / 64][Stage 24:>                (0 + 0) / 64][Stage 24:==================>                                    (22 + 11) / 64]                                                                                26/08/08 21:21:00 WARN InstanceBuilder: Failed to load implementation from:dev.ludovic.netlib.blas.JNIBLAS
+[Stage 542:============================>                         (34 + 10) / 64]                                                                                Loading events + lineups (all 4 competitions, pooled) ...
+Building player features (all competitions combined) ...
+  714 players total (>= 270 min)
+
+======================================================================
+FAMILY: GK
+======================================================================
+  n players: 79
+  Sweeping k in [2, 3, 4, 5, 6] (feature set: GK, 7 features)
+    k=2  silhouette=0.3028  training_cost=443.3
+    k=3  silhouette=0.2535  training_cost=374.8
+    k=4  silhouette=0.2437  training_cost=341.4
+    k=5  silhouette=0.2087  training_cost=312.2
+    k=6  silhouette=0.2787  training_cost=272.0
+  Chosen k=2 (silhouette=0.3028) by max silhouette
+  Cluster profiles:
+    cluster 0: n=47  gk_shots_faced_p90=6.241  gk_save_pct=0.352  gk_claims_p90=1.294  gk_sweeper_actions_p90=0.857  passes_attempted_p90=25.414  pass_completion_pct=0.751  progressive_passes_p90=10.746
+    cluster 1: n=32  gk_shots_faced_p90=10.103  gk_save_pct=0.352  gk_claims_p90=1.962  gk_sweeper_actions_p90=1.164  passes_attempted_p90=33.418  pass_completion_pct=0.657  progressive_passes_p90=13.459
+
+======================================================================
+FAMILY: DEF
+======================================================================
+  n players: 301
+  Sweeping k in [2, 3, 4, 5, 6] (feature set: standard, 13 features)
+    k=2  silhouette=0.2936  training_cost=3173.2
+    k=3  silhouette=0.2859  training_cost=2782.4
+    k=4  silhouette=0.2403  training_cost=2606.7
+    k=5  silhouette=0.2750  training_cost=2455.0
+    k=6  silhouette=0.2129  training_cost=2309.4
+  Chosen k=2 (silhouette=0.2936) by max silhouette
+  Cluster profiles:
+    cluster 0: n=150  passes_attempted_p90=45.718  pass_completion_pct=0.741  progressive_passes_p90=9.866  key_passes_p90=0.678  shots_p90=0.552  shot_conversion_pct=0.065  dribbles_completed_p90=0.602  dribble_success_pct=0.468  tackles_won_p90=1.239  interceptions_p90=1.466  aerial_duels_won_p90=1.168  pressures_p90=12.905  attacking_third_touches_p90=35.017
+    cluster 1: n=151  passes_attempted_p90=54.527  pass_completion_pct=0.859  progressive_passes_p90=15.613  key_passes_p90=0.248  shots_p90=0.425  shot_conversion_pct=0.066  dribbles_completed_p90=0.127  dribble_success_pct=0.336  tackles_won_p90=0.752  interceptions_p90=1.016  aerial_duels_won_p90=2.108  pressures_p90=7.112  attacking_third_touches_p90=9.577
+
+======================================================================
+FAMILY: MID
+======================================================================
+  n players: 168
+  Sweeping k in [2, 3, 4, 5, 6] (feature set: standard, 13 features)
+    k=2  silhouette=0.2395  training_cost=1846.8
+    k=3  silhouette=0.1672  training_cost=1693.5
+    k=4  silhouette=0.2132  training_cost=1591.4
+    k=5  silhouette=0.1483  training_cost=1534.0
+    k=6  silhouette=0.1914  training_cost=1328.6
+  Chosen k=2 (silhouette=0.2395) by max silhouette
+  Cluster profiles:
+    cluster 0: n=86  passes_attempted_p90=33.032  pass_completion_pct=0.725  progressive_passes_p90=5.676  key_passes_p90=0.677  shots_p90=0.982  shot_conversion_pct=0.101  dribbles_completed_p90=0.815  dribble_success_pct=0.505  tackles_won_p90=1.380  interceptions_p90=1.151  aerial_duels_won_p90=1.383  pressures_p90=19.463  attacking_third_touches_p90=33.693
+    cluster 1: n=82  passes_attempted_p90=56.740  pass_completion_pct=0.853  progressive_passes_p90=11.667  key_passes_p90=1.137  shots_p90=1.313  shot_conversion_pct=0.087  dribbles_completed_p90=0.662  dribble_success_pct=0.535  tackles_won_p90=1.206  interceptions_p90=0.962  aerial_duels_won_p90=1.250  pressures_p90=14.663  attacking_third_touches_p90=49.468
+
+======================================================================
+FAMILY: FWD
+======================================================================
+  n players: 166
+  Sweeping k in [2, 3, 4, 5, 6] (feature set: standard, 13 features)
+    k=2  silhouette=0.2606  training_cost=1783.3
+    k=3  silhouette=0.2066  training_cost=1627.6
+    k=4  silhouette=0.1889  training_cost=1530.9
+    k=5  silhouette=0.1959  training_cost=1423.8
+    k=6  silhouette=0.1924  training_cost=1350.5
+  Chosen k=2 (silhouette=0.2606) by max silhouette
+  Cluster profiles:
+    cluster 0: n=77  passes_attempted_p90=22.065  pass_completion_pct=0.683  progressive_passes_p90=2.308  key_passes_p90=0.838  shots_p90=2.341  shot_conversion_pct=0.150  dribbles_completed_p90=0.817  dribble_success_pct=0.420  tackles_won_p90=0.559  interceptions_p90=0.425  aerial_duels_won_p90=2.251  pressures_p90=16.084  attacking_third_touches_p90=57.591
+    cluster 1: n=89  passes_attempted_p90=37.544  pass_completion_pct=0.755  progressive_passes_p90=5.189  key_passes_p90=1.558  shots_p90=2.082  shot_conversion_pct=0.123  dribbles_completed_p90=1.685  dribble_success_pct=0.519  tackles_won_p90=0.919  interceptions_p90=0.709  aerial_duels_won_p90=0.678  pressures_p90=15.953  attacking_third_touches_p90=74.965
+  Spot check:
+    Lionel Andrés Messi Cuccittini (Right Center Forward) -> cluster 1
+    Cristiano Ronaldo dos Santos Aveiro (Center Forward) -> cluster 0
+
+Wrote results/position_family_clusters.json

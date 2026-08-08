@@ -1,0 +1,1665 @@
+{
+  "GK": {
+    "n": 79,
+    "features_used": [
+      "gk_shots_faced_p90",
+      "gk_save_pct",
+      "gk_claims_p90",
+      "gk_sweeper_actions_p90",
+      "passes_attempted_p90",
+      "pass_completion_pct",
+      "progressive_passes_p90"
+    ],
+    "k_sweep": [
+      {
+        "k": 2,
+        "silhouette": 0.3028045485480001,
+        "training_cost": 443.30255574989525
+      },
+      {
+        "k": 3,
+        "silhouette": 0.2535257767367013,
+        "training_cost": 374.82270537345966
+      },
+      {
+        "k": 4,
+        "silhouette": 0.2437242535273322,
+        "training_cost": 341.38449718250473
+      },
+      {
+        "k": 5,
+        "silhouette": 0.20873653174519624,
+        "training_cost": 312.2215116019063
+      },
+      {
+        "k": 6,
+        "silhouette": 0.2786883957204581,
+        "training_cost": 271.96576614693606
+      }
+    ],
+    "chosen_k": 2,
+    "chosen_silhouette": 0.3028045485480001,
+    "cluster_profiles": [
+      {
+        "cluster": 0,
+        "n": 47,
+        "gk_shots_faced_p90": 6.241358538459352,
+        "gk_save_pct": 0.35155182616226416,
+        "gk_claims_p90": 1.2939924844340522,
+        "gk_sweeper_actions_p90": 0.8568361889693742,
+        "passes_attempted_p90": 25.413839638637292,
+        "pass_completion_pct": 0.7507452542994136,
+        "progressive_passes_p90": 10.746414729268853
+      },
+      {
+        "cluster": 1,
+        "n": 32,
+        "gk_shots_faced_p90": 10.10251829428235,
+        "gk_save_pct": 0.3523323159165561,
+        "gk_claims_p90": 1.9621116978221895,
+        "gk_sweeper_actions_p90": 1.163952989381886,
+        "passes_attempted_p90": 33.417884532258135,
+        "pass_completion_pct": 0.6573990781150822,
+        "progressive_passes_p90": 13.459007058076017
+      }
+    ],
+    "position_cross_tab": [
+      {
+        "cluster": 0,
+        "position_label": "Goalkeeper",
+        "count": 47
+      },
+      {
+        "cluster": 1,
+        "position_label": "Goalkeeper",
+        "count": 32
+      }
+    ],
+    "sample_players": {
+      "0": [
+        {
+          "player_name": "Diogo Meireles Costa",
+          "position_label": "Goalkeeper",
+          "cluster": 0,
+          "gk_shots_faced_p90": 6.186864611908989,
+          "gk_save_pct": 0.3380281690140845,
+          "gk_claims_p90": 0.69711150556721,
+          "gk_sweeper_actions_p90": 0.8713893819590125,
+          "passes_attempted_p90": 27.274487655317092,
+          "pass_completion_pct": 0.7987220447284346,
+          "progressive_passes_p90": 13.506535420364694
+        },
+        {
+          "player_name": "Edouard Mendy",
+          "position_label": "Goalkeeper",
+          "cluster": 0,
+          "gk_shots_faced_p90": 5.308599760642845,
+          "gk_save_pct": 0.30434782608695654,
+          "gk_claims_p90": 1.3848521114720465,
+          "gk_sweeper_actions_p90": 1.3848521114720465,
+          "passes_attempted_p90": 27.004616173704903,
+          "pass_completion_pct": 0.7692307692307693,
+          "progressive_passes_p90": 9.924773465549666
+        },
+        {
+          "player_name": "Sandra Pa\u00f1os Garc\u00eda-Villamil",
+          "position_label": "Goalkeeper",
+          "cluster": 0,
+          "gk_shots_faced_p90": 4.655936935457382,
+          "gk_save_pct": 0.19047619047619047,
+          "gk_claims_p90": 0.4434225652816554,
+          "gk_sweeper_actions_p90": 0.6651338479224832,
+          "passes_attempted_p90": 23.057973394646083,
+          "pass_completion_pct": 0.8076923076923077,
+          "progressive_passes_p90": 11.528986697323042
+        },
+        {
+          "player_name": "Dami\u00e1n Emiliano Mart\u00ednez",
+          "position_label": "Goalkeeper",
+          "cluster": 0,
+          "gk_shots_faced_p90": 3.9818559649632426,
+          "gk_save_pct": 0.18181818181818182,
+          "gk_claims_p90": 1.8099345295287468,
+          "gk_sweeper_actions_p90": 0.48264920787433246,
+          "passes_attempted_p90": 22.44318816615646,
+          "pass_completion_pct": 0.6612903225806451,
+          "progressive_passes_p90": 7.36040042008357
+        },
+        {
+          "player_name": "Victoria Esson",
+          "position_label": "Goalkeeper",
+          "cluster": 0,
+          "gk_shots_faced_p90": 4.5615813482007095,
+          "gk_save_pct": 0.26666666666666666,
+          "gk_claims_p90": 1.8246325392802838,
+          "gk_sweeper_actions_p90": 0.6082108464267614,
+          "passes_attempted_p90": 23.11201216421693,
+          "pass_completion_pct": 0.8157894736842105,
+          "progressive_passes_p90": 13.684744044602128
+        },
+        {
+          "player_name": "Hern\u00e1n Ismael Gal\u00edndez",
+          "position_label": "Goalkeeper",
+          "cluster": 0,
+          "gk_shots_faced_p90": 4.9663735126746,
+          "gk_save_pct": 0.0625,
+          "gk_claims_p90": 1.24159337816865,
+          "gk_sweeper_actions_p90": 0.620796689084325,
+          "passes_attempted_p90": 23.900672529746508,
+          "pass_completion_pct": 0.5714285714285714,
+          "progressive_passes_p90": 6.207966890843249
+        },
+        {
+          "player_name": "Mar\u00eda Isabel Rodr\u00edguez Rivero",
+          "position_label": "Goalkeeper",
+          "cluster": 0,
+          "gk_shots_faced_p90": 3.711978003093315,
+          "gk_save_pct": 0.16666666666666666,
+          "gk_claims_p90": 0.3093315002577762,
+          "gk_sweeper_actions_p90": 0.3093315002577762,
+          "passes_attempted_p90": 17.32256401443547,
+          "pass_completion_pct": 0.9285714285714286,
+          "progressive_passes_p90": 8.661282007217736
+        },
+        {
+          "player_name": "Manuel Neuer",
+          "position_label": "Goalkeeper",
+          "cluster": 0,
+          "gk_shots_faced_p90": 5.162953109411373,
+          "gk_save_pct": 0.391304347826087,
+          "gk_claims_p90": 0.6734286664449617,
+          "gk_sweeper_actions_p90": 1.2346192218157632,
+          "passes_attempted_p90": 29.855337545726638,
+          "pass_completion_pct": 0.8796992481203008,
+          "progressive_passes_p90": 15.601097439308282
+        }
+      ],
+      "1": [
+        {
+          "player_name": "Jan Oblak",
+          "position_label": "Goalkeeper",
+          "cluster": 1,
+          "gk_shots_faced_p90": 10.050169930409451,
+          "gk_save_pct": 0.30434782608695654,
+          "gk_claims_p90": 1.7478556400712089,
+          "gk_sweeper_actions_p90": 0.6554458650267033,
+          "passes_attempted_p90": 28.184172196148243,
+          "pass_completion_pct": 0.6124031007751938,
+          "progressive_passes_p90": 12.016507525489562
+        },
+        {
+          "player_name": "Keylor Navas Gamboa",
+          "position_label": "Goalkeeper",
+          "cluster": 1,
+          "gk_shots_faced_p90": 11.820171746085201,
+          "gk_save_pct": 0.28205128205128205,
+          "gk_claims_p90": 0.6061626536453949,
+          "gk_sweeper_actions_p90": 1.8184879609361846,
+          "passes_attempted_p90": 30.611214009092443,
+          "pass_completion_pct": 0.5445544554455446,
+          "progressive_passes_p90": 8.18319582421283
+        },
+        {
+          "player_name": "Patrick Pentz",
+          "position_label": "Goalkeeper",
+          "cluster": 1,
+          "gk_shots_faced_p90": 8.099074391498116,
+          "gk_save_pct": 0.17142857142857143,
+          "gk_claims_p90": 1.1570106273568734,
+          "gk_sweeper_actions_p90": 1.6198148782996227,
+          "passes_attempted_p90": 33.55330819334933,
+          "pass_completion_pct": 0.8206896551724138,
+          "progressive_passes_p90": 17.586561535824476
+        },
+        {
+          "player_name": "Ga\u00eblle Thalmann",
+          "position_label": "Goalkeeper",
+          "cluster": 1,
+          "gk_shots_faced_p90": 9.041439933026371,
+          "gk_save_pct": 0.39705882352941174,
+          "gk_claims_p90": 2.3933223352128628,
+          "gk_sweeper_actions_p90": 0.6648117597813508,
+          "passes_attempted_p90": 37.22945854775565,
+          "pass_completion_pct": 0.7821428571428571,
+          "progressive_passes_p90": 14.094009307364638
+        },
+        {
+          "player_name": "Sandra Sigur\u00f0ard\u00f3ttir",
+          "position_label": "Goalkeeper",
+          "cluster": 1,
+          "gk_shots_faced_p90": 9.589276507991064,
+          "gk_save_pct": 0.4838709677419355,
+          "gk_claims_p90": 1.8559890015466576,
+          "gk_sweeper_actions_p90": 0.6186630005155525,
+          "passes_attempted_p90": 36.501117030417596,
+          "pass_completion_pct": 0.7203389830508474,
+          "progressive_passes_p90": 15.157243512631036
+        },
+        {
+          "player_name": "Yassine Bounou",
+          "position_label": "Goalkeeper",
+          "cluster": 1,
+          "gk_shots_faced_p90": 7.390376088027591,
+          "gk_save_pct": 0.14,
+          "gk_claims_p90": 1.9214977828871735,
+          "gk_sweeper_actions_p90": 0.5912300870422073,
+          "passes_attempted_p90": 31.03957956971588,
+          "pass_completion_pct": 0.7428571428571429,
+          "progressive_passes_p90": 13.450484480210216
+        },
+        {
+          "player_name": "Rebecca Leigh Spencer",
+          "position_label": "Goalkeeper",
+          "cluster": 1,
+          "gk_shots_faced_p90": 8.351950506959959,
+          "gk_save_pct": 0.5277777777777778,
+          "gk_claims_p90": 0.6959958755799965,
+          "gk_sweeper_actions_p90": 0.4639972503866644,
+          "passes_attempted_p90": 32.015810276679844,
+          "pass_completion_pct": 0.5,
+          "progressive_passes_p90": 10.67193675889328
+        },
+        {
+          "player_name": "Khadija Er-Rmichi",
+          "position_label": "Goalkeeper",
+          "cluster": 1,
+          "gk_shots_faced_p90": 10.07804546996946,
+          "gk_save_pct": 0.1590909090909091,
+          "gk_claims_p90": 2.519511367492365,
+          "gk_sweeper_actions_p90": 2.0614183915846622,
+          "passes_attempted_p90": 25.424160162877502,
+          "pass_completion_pct": 0.36936936936936937,
+          "progressive_passes_p90": 8.245673566338649
+        }
+      ]
+    },
+    "spot_check": []
+  },
+  "DEF": {
+    "n": 301,
+    "features_used": [
+      "passes_attempted_p90",
+      "pass_completion_pct",
+      "progressive_passes_p90",
+      "key_passes_p90",
+      "shots_p90",
+      "shot_conversion_pct",
+      "dribbles_completed_p90",
+      "dribble_success_pct",
+      "tackles_won_p90",
+      "interceptions_p90",
+      "aerial_duels_won_p90",
+      "pressures_p90",
+      "attacking_third_touches_p90"
+    ],
+    "k_sweep": [
+      {
+        "k": 2,
+        "silhouette": 0.293591577224323,
+        "training_cost": 3173.2174960042626
+      },
+      {
+        "k": 3,
+        "silhouette": 0.28585318853109115,
+        "training_cost": 2782.4446421945727
+      },
+      {
+        "k": 4,
+        "silhouette": 0.24034492130039645,
+        "training_cost": 2606.651054348793
+      },
+      {
+        "k": 5,
+        "silhouette": 0.2749864864155294,
+        "training_cost": 2455.0445545843727
+      },
+      {
+        "k": 6,
+        "silhouette": 0.2129130698252416,
+        "training_cost": 2309.3867490495472
+      }
+    ],
+    "chosen_k": 2,
+    "chosen_silhouette": 0.293591577224323,
+    "cluster_profiles": [
+      {
+        "cluster": 0,
+        "n": 150,
+        "passes_attempted_p90": 45.71800266231439,
+        "pass_completion_pct": 0.7406215144949697,
+        "progressive_passes_p90": 9.8658708918742,
+        "key_passes_p90": 0.6780677878059208,
+        "shots_p90": 0.5515934916307964,
+        "shot_conversion_pct": 0.06479365079365079,
+        "dribbles_completed_p90": 0.6024505441125612,
+        "dribble_success_pct": 0.4677986769818519,
+        "tackles_won_p90": 1.2387982556745707,
+        "interceptions_p90": 1.466306290434886,
+        "aerial_duels_won_p90": 1.1676114798302908,
+        "pressures_p90": 12.904995392582746,
+        "attacking_third_touches_p90": 35.01740834047485
+      },
+      {
+        "cluster": 1,
+        "n": 151,
+        "passes_attempted_p90": 54.5272475070028,
+        "pass_completion_pct": 0.8586142021419458,
+        "progressive_passes_p90": 15.613324755241662,
+        "key_passes_p90": 0.24802441064173097,
+        "shots_p90": 0.42475775856291453,
+        "shot_conversion_pct": 0.06603220729294136,
+        "dribbles_completed_p90": 0.12742808173112877,
+        "dribble_success_pct": 0.33562493430043094,
+        "tackles_won_p90": 0.7521577593515761,
+        "interceptions_p90": 1.0164274318717788,
+        "aerial_duels_won_p90": 2.1080764570418817,
+        "pressures_p90": 7.112208746795631,
+        "attacking_third_touches_p90": 9.577497018448673
+      }
+    ],
+    "position_cross_tab": [
+      {
+        "cluster": 0,
+        "position_label": "Left Back",
+        "count": 56
+      },
+      {
+        "cluster": 0,
+        "position_label": "Right Back",
+        "count": 44
+      },
+      {
+        "cluster": 0,
+        "position_label": "Left Center Back",
+        "count": 13
+      },
+      {
+        "cluster": 0,
+        "position_label": "Right Center Back",
+        "count": 13
+      },
+      {
+        "cluster": 0,
+        "position_label": "Left Wing Back",
+        "count": 11
+      },
+      {
+        "cluster": 0,
+        "position_label": "Right Wing Back",
+        "count": 10
+      },
+      {
+        "cluster": 0,
+        "position_label": "Center Back",
+        "count": 3
+      },
+      {
+        "cluster": 1,
+        "position_label": "Right Center Back",
+        "count": 68
+      },
+      {
+        "cluster": 1,
+        "position_label": "Left Center Back",
+        "count": 59
+      },
+      {
+        "cluster": 1,
+        "position_label": "Center Back",
+        "count": 13
+      },
+      {
+        "cluster": 1,
+        "position_label": "Right Back",
+        "count": 6
+      },
+      {
+        "cluster": 1,
+        "position_label": "Left Back",
+        "count": 4
+      },
+      {
+        "cluster": 1,
+        "position_label": "Right Wing Back",
+        "count": 1
+      }
+    ],
+    "sample_players": {
+      "0": [
+        {
+          "player_name": "Risa Shimizu",
+          "position_label": "Right Wing Back",
+          "cluster": 0,
+          "passes_attempted_p90": 48.345581377998286,
+          "pass_completion_pct": 0.7666666666666667,
+          "progressive_passes_p90": 8.661916663558026,
+          "key_passes_p90": 0.8057596896333047,
+          "shots_p90": 1.0071996120416309,
+          "shot_conversion_pct": 0.2,
+          "dribbles_completed_p90": 0.40287984481665234,
+          "dribble_success_pct": 0.5,
+          "tackles_won_p90": 0.40287984481665234,
+          "interceptions_p90": 0.8057596896333047,
+          "aerial_duels_won_p90": 0.20143992240832617,
+          "pressures_p90": 7.453277129108068,
+          "attacking_third_touches_p90": 40.287984481665234
+        },
+        {
+          "player_name": "Marc Cucurella Saseta",
+          "position_label": "Left Back",
+          "cluster": 0,
+          "passes_attempted_p90": 57.43020634645396,
+          "pass_completion_pct": 0.9130434782608695,
+          "progressive_passes_p90": 11.860586093289406,
+          "key_passes_p90": 0.936362059996532,
+          "shots_p90": 0.1560603433327553,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 1.2484827466620425,
+          "interceptions_p90": 1.7166637766603086,
+          "aerial_duels_won_p90": 1.7166637766603086,
+          "pressures_p90": 14.045430899947979,
+          "attacking_third_touches_p90": 62.89231836310039
+        },
+        {
+          "player_name": "Theo Bernard Fran\u00e7ois Hern\u00e1ndez",
+          "position_label": "Left Back",
+          "cluster": 0,
+          "passes_attempted_p90": 56.03524987800327,
+          "pass_completion_pct": 0.8948824343015215,
+          "progressive_passes_p90": 11.703074317535952,
+          "key_passes_p90": 1.3950684616930276,
+          "shots_p90": 0.775038034273904,
+          "shot_conversion_pct": 0.2,
+          "dribbles_completed_p90": 0.930045641128685,
+          "dribble_success_pct": 0.7058823529411765,
+          "tackles_won_p90": 1.1625570514108563,
+          "interceptions_p90": 0.8525418377012947,
+          "aerial_duels_won_p90": 0.930045641128685,
+          "pressures_p90": 8.912937394149898,
+          "attacking_third_touches_p90": 58.127852570542814
+        },
+        {
+          "player_name": "Betina Petit-Fr\u00e8re",
+          "position_label": "Right Back",
+          "cluster": 0,
+          "passes_attempted_p90": 30.849947534102835,
+          "pass_completion_pct": 0.6428571428571429,
+          "progressive_passes_p90": 8.184679958027282,
+          "key_passes_p90": 0.0,
+          "shots_p90": 0.0,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 0.9443861490031481,
+          "interceptions_p90": 2.5183630640083945,
+          "aerial_duels_won_p90": 0.3147953830010493,
+          "pressures_p90": 13.221406086044071,
+          "attacking_third_touches_p90": 6.610703043022036
+        },
+        {
+          "player_name": "Lynn Wilms",
+          "position_label": "Right Back",
+          "cluster": 0,
+          "passes_attempted_p90": 48.803035529492924,
+          "pass_completion_pct": 0.7366412213740458,
+          "progressive_passes_p90": 11.921352190410484,
+          "key_passes_p90": 0.37254225595032764,
+          "shots_p90": 0.37254225595032764,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.5588133839254915,
+          "dribble_success_pct": 0.5,
+          "tackles_won_p90": 0.7450845119006553,
+          "interceptions_p90": 0.9313556398758193,
+          "aerial_duels_won_p90": 0.18627112797516382,
+          "pressures_p90": 14.901690238013108,
+          "attacking_third_touches_p90": 28.872024836150395
+        },
+        {
+          "player_name": "Marcos Javier Acu\u00f1a",
+          "position_label": "Left Back",
+          "cluster": 0,
+          "passes_attempted_p90": 48.824999999999996,
+          "pass_completion_pct": 0.783410138248848,
+          "progressive_passes_p90": 6.975,
+          "key_passes_p90": 1.125,
+          "shots_p90": 0.45,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.225,
+          "dribble_success_pct": 0.2,
+          "tackles_won_p90": 1.8,
+          "interceptions_p90": 0.6749999999999999,
+          "aerial_duels_won_p90": 2.25,
+          "pressures_p90": 11.700000000000001,
+          "attacking_third_touches_p90": 62.325
+        },
+        {
+          "player_name": "Bongeka Gamede",
+          "position_label": "Left Center Back",
+          "cluster": 0,
+          "passes_attempted_p90": 22.104996623902768,
+          "pass_completion_pct": 0.5773195876288659,
+          "progressive_passes_p90": 6.38082376772451,
+          "key_passes_p90": 0.22788656313301822,
+          "shots_p90": 0.45577312626603644,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.45577312626603644,
+          "dribble_success_pct": 0.3333333333333333,
+          "tackles_won_p90": 2.734638757596219,
+          "interceptions_p90": 1.3673193787981095,
+          "aerial_duels_won_p90": 0.9115462525320729,
+          "pressures_p90": 29.39736664415935,
+          "attacking_third_touches_p90": 7.520256583389602
+        },
+        {
+          "player_name": "Hye-Ri Kim",
+          "position_label": "Right Back",
+          "cluster": 0,
+          "passes_attempted_p90": 32.454499064466745,
+          "pass_completion_pct": 0.6792452830188679,
+          "progressive_passes_p90": 9.491410103759144,
+          "key_passes_p90": 0.9185235584283041,
+          "shots_p90": 0.0,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.3061745194761014,
+          "dribble_success_pct": 0.3333333333333333,
+          "tackles_won_p90": 0.6123490389522028,
+          "interceptions_p90": 0.9185235584283041,
+          "aerial_duels_won_p90": 0.3061745194761014,
+          "pressures_p90": 15.921075012757273,
+          "attacking_third_touches_p90": 26.63718319442082
+        }
+      ],
+      "1": [
+        {
+          "player_name": "Millie Bright",
+          "position_label": "Right Center Back",
+          "cluster": 1,
+          "passes_attempted_p90": 63.34310850439883,
+          "pass_completion_pct": 0.8695175438596491,
+          "progressive_passes_p90": 19.65581108195709,
+          "key_passes_p90": 0.1389103256675413,
+          "shots_p90": 0.6250964655039358,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.2778206513350826,
+          "dribble_success_pct": 1.0,
+          "tackles_won_p90": 0.5556413026701652,
+          "interceptions_p90": 1.1112826053403304,
+          "aerial_duels_won_p90": 3.3338478160209912,
+          "pressures_p90": 5.556413026701652,
+          "attacking_third_touches_p90": 4.445130421361322
+        },
+        {
+          "player_name": "Dominique Johanna Anna Petrone Janssen",
+          "position_label": "Left Center Back",
+          "cluster": 1,
+          "passes_attempted_p90": 60.72336054495323,
+          "pass_completion_pct": 0.8108974358974359,
+          "progressive_passes_p90": 19.073363248094285,
+          "key_passes_p90": 0.38925231118559767,
+          "shots_p90": 0.38925231118559767,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.38925231118559767,
+          "dribble_success_pct": 0.6666666666666666,
+          "tackles_won_p90": 0.8758177001675946,
+          "interceptions_p90": 1.4596961669459914,
+          "aerial_duels_won_p90": 1.65432232253879,
+          "pressures_p90": 10.801751635400334,
+          "attacking_third_touches_p90": 17.419040925555496
+        },
+        {
+          "player_name": "Alistair Johnston",
+          "position_label": "Right Center Back",
+          "cluster": 1,
+          "passes_attempted_p90": 58.651332984840565,
+          "pass_completion_pct": 0.8342245989304813,
+          "progressive_passes_p90": 15.368531102979615,
+          "key_passes_p90": 1.2545739675901726,
+          "shots_p90": 0.6272869837950863,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 0.9409304756926293,
+          "interceptions_p90": 0.6272869837950863,
+          "aerial_duels_won_p90": 2.509147935180345,
+          "pressures_p90": 11.91845269210664,
+          "attacking_third_touches_p90": 39.83272347098798
+        },
+        {
+          "player_name": "\u00c9der Gabriel Milit\u00e3o",
+          "position_label": "Right Back",
+          "cluster": 1,
+          "passes_attempted_p90": 64.6692607003891,
+          "pass_completion_pct": 0.9061371841155235,
+          "progressive_passes_p90": 18.21011673151751,
+          "key_passes_p90": 0.0,
+          "shots_p90": 1.1673151750972763,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 1.867704280155642,
+          "interceptions_p90": 0.4669260700389105,
+          "aerial_duels_won_p90": 0.933852140077821,
+          "pressures_p90": 11.673151750972764,
+          "attacking_third_touches_p90": 35.719844357976655
+        },
+        {
+          "player_name": "Samet Akaydin",
+          "position_label": "Right Center Back",
+          "cluster": 1,
+          "passes_attempted_p90": 52.868561698907435,
+          "pass_completion_pct": 0.8985507246376812,
+          "progressive_passes_p90": 13.280991344653074,
+          "key_passes_p90": 0.0,
+          "shots_p90": 0.5108073594097337,
+          "shot_conversion_pct": 0.5,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 1.0216147188194673,
+          "interceptions_p90": 1.2770183985243342,
+          "aerial_duels_won_p90": 3.575651515868136,
+          "pressures_p90": 8.172917750555738,
+          "attacking_third_touches_p90": 3.8310551955730023
+        },
+        {
+          "player_name": "Alex Greenwood",
+          "position_label": "Left Center Back",
+          "cluster": 1,
+          "passes_attempted_p90": 82.19454729047457,
+          "pass_completion_pct": 0.8685503685503686,
+          "progressive_passes_p90": 24.941097273645234,
+          "key_passes_p90": 1.8175698418041062,
+          "shots_p90": 0.302928306967351,
+          "shot_conversion_pct": 0.3333333333333333,
+          "dribbles_completed_p90": 0.5048805116122517,
+          "dribble_success_pct": 0.5555555555555556,
+          "tackles_won_p90": 1.7165937394816557,
+          "interceptions_p90": 1.1107371255469538,
+          "aerial_duels_won_p90": 2.322450353416358,
+          "pressures_p90": 9.693705822955232,
+          "attacking_third_touches_p90": 26.354762706159537
+        },
+        {
+          "player_name": "Lisandro Mart\u00ednez",
+          "position_label": "Left Center Back",
+          "cluster": 1,
+          "passes_attempted_p90": 39.14148545608585,
+          "pass_completion_pct": 0.8571428571428571,
+          "progressive_passes_p90": 11.437447048856257,
+          "key_passes_p90": 0.0,
+          "shots_p90": 0.2541654899745835,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 1.016661959898334,
+          "interceptions_p90": 0.7624964699237504,
+          "aerial_duels_won_p90": 1.2708274498729175,
+          "pressures_p90": 5.845806269415419,
+          "attacking_third_touches_p90": 5.591640779440836
+        },
+        {
+          "player_name": "Marc Guehi",
+          "position_label": "Left Center Back",
+          "cluster": 1,
+          "passes_attempted_p90": 68.15211928296198,
+          "pass_completion_pct": 0.9336283185840708,
+          "progressive_passes_p90": 15.831797621042051,
+          "key_passes_p90": 0.15077902496230525,
+          "shots_p90": 0.3015580499246105,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 0.603116099849221,
+          "interceptions_p90": 0.3015580499246105,
+          "aerial_duels_won_p90": 3.16635952420841,
+          "pressures_p90": 7.086614173228346,
+          "attacking_third_touches_p90": 8.142067347964485
+        }
+      ]
+    },
+    "spot_check": []
+  },
+  "MID": {
+    "n": 168,
+    "features_used": [
+      "passes_attempted_p90",
+      "pass_completion_pct",
+      "progressive_passes_p90",
+      "key_passes_p90",
+      "shots_p90",
+      "shot_conversion_pct",
+      "dribbles_completed_p90",
+      "dribble_success_pct",
+      "tackles_won_p90",
+      "interceptions_p90",
+      "aerial_duels_won_p90",
+      "pressures_p90",
+      "attacking_third_touches_p90"
+    ],
+    "k_sweep": [
+      {
+        "k": 2,
+        "silhouette": 0.23946791900136516,
+        "training_cost": 1846.7676101308487
+      },
+      {
+        "k": 3,
+        "silhouette": 0.1672394142380704,
+        "training_cost": 1693.5095408219975
+      },
+      {
+        "k": 4,
+        "silhouette": 0.21320233924729526,
+        "training_cost": 1591.4099581983749
+      },
+      {
+        "k": 5,
+        "silhouette": 0.14833005244123246,
+        "training_cost": 1534.0299199593546
+      },
+      {
+        "k": 6,
+        "silhouette": 0.1914007842804597,
+        "training_cost": 1328.5898107423525
+      }
+    ],
+    "chosen_k": 2,
+    "chosen_silhouette": 0.23946791900136516,
+    "cluster_profiles": [
+      {
+        "cluster": 0,
+        "n": 86,
+        "passes_attempted_p90": 33.03161334298434,
+        "pass_completion_pct": 0.7254876212218204,
+        "progressive_passes_p90": 5.675565636401766,
+        "key_passes_p90": 0.6766603993396036,
+        "shots_p90": 0.9818231454014914,
+        "shot_conversion_pct": 0.10065528051981984,
+        "dribbles_completed_p90": 0.8151209497971145,
+        "dribble_success_pct": 0.5050595765455547,
+        "tackles_won_p90": 1.37951781616077,
+        "interceptions_p90": 1.1514831343088796,
+        "aerial_duels_won_p90": 1.3834098189293542,
+        "pressures_p90": 19.46325940554599,
+        "attacking_third_touches_p90": 33.69284712758269
+      },
+      {
+        "cluster": 1,
+        "n": 82,
+        "passes_attempted_p90": 56.740383401866126,
+        "pass_completion_pct": 0.8533735754816845,
+        "progressive_passes_p90": 11.6669815526004,
+        "key_passes_p90": 1.1373470381176054,
+        "shots_p90": 1.3126450740159366,
+        "shot_conversion_pct": 0.08727157839056579,
+        "dribbles_completed_p90": 0.6622889894853987,
+        "dribble_success_pct": 0.5348389843047621,
+        "tackles_won_p90": 1.206484410209658,
+        "interceptions_p90": 0.9618929036616307,
+        "aerial_duels_won_p90": 1.2501580037508708,
+        "pressures_p90": 14.662682740541385,
+        "attacking_third_touches_p90": 49.46842937344911
+      }
+    ],
+    "position_cross_tab": [
+      {
+        "cluster": 0,
+        "position_label": "Left Defensive Midfield",
+        "count": 18
+      },
+      {
+        "cluster": 0,
+        "position_label": "Center Defensive Midfield",
+        "count": 16
+      },
+      {
+        "cluster": 0,
+        "position_label": "Right Defensive Midfield",
+        "count": 14
+      },
+      {
+        "cluster": 0,
+        "position_label": "Right Midfield",
+        "count": 11
+      },
+      {
+        "cluster": 0,
+        "position_label": "Left Midfield",
+        "count": 10
+      },
+      {
+        "cluster": 0,
+        "position_label": "Left Center Midfield",
+        "count": 9
+      },
+      {
+        "cluster": 0,
+        "position_label": "Right Center Midfield",
+        "count": 8
+      },
+      {
+        "cluster": 1,
+        "position_label": "Left Defensive Midfield",
+        "count": 25
+      },
+      {
+        "cluster": 1,
+        "position_label": "Right Defensive Midfield",
+        "count": 20
+      },
+      {
+        "cluster": 1,
+        "position_label": "Right Center Midfield",
+        "count": 14
+      },
+      {
+        "cluster": 1,
+        "position_label": "Left Center Midfield",
+        "count": 10
+      },
+      {
+        "cluster": 1,
+        "position_label": "Center Defensive Midfield",
+        "count": 9
+      },
+      {
+        "cluster": 1,
+        "position_label": "Left Midfield",
+        "count": 2
+      },
+      {
+        "cluster": 1,
+        "position_label": "Right Midfield",
+        "count": 2
+      }
+    ],
+    "sample_players": {
+      "0": [
+        {
+          "player_name": "Karen Holmgaard",
+          "position_label": "Left Defensive Midfield",
+          "cluster": 0,
+          "passes_attempted_p90": 36.09676734809365,
+          "pass_completion_pct": 0.7301587301587301,
+          "progressive_passes_p90": 6.111621984862417,
+          "key_passes_p90": 0.5729645610808517,
+          "shots_p90": 0.9549409351347528,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.19098818702695053,
+          "dribble_success_pct": 1.0,
+          "tackles_won_p90": 1.3369173091886537,
+          "interceptions_p90": 1.5279054962156042,
+          "aerial_duels_won_p90": 5.347669236754615,
+          "pressures_p90": 21.19968875999151,
+          "attacking_third_touches_p90": 22.918582443234065
+        },
+        {
+          "player_name": "Linyan Zhang",
+          "position_label": "Left Midfield",
+          "cluster": 0,
+          "passes_attempted_p90": 28.818376936017174,
+          "pass_completion_pct": 0.7608695652173914,
+          "progressive_passes_p90": 2.505945820523232,
+          "key_passes_p90": 0.313243227565404,
+          "shots_p90": 0.939729682696212,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 1.252972910261616,
+          "dribble_success_pct": 0.36363636363636365,
+          "tackles_won_p90": 2.1927025929578283,
+          "interceptions_p90": 0.313243227565404,
+          "aerial_duels_won_p90": 0.313243227565404,
+          "pressures_p90": 18.79459365392424,
+          "attacking_third_touches_p90": 59.51621323742677
+        },
+        {
+          "player_name": "Marius Mihai Marin",
+          "position_label": "Center Defensive Midfield",
+          "cluster": 0,
+          "passes_attempted_p90": 29.800357084888816,
+          "pass_completion_pct": 0.8137254901960784,
+          "progressive_passes_p90": 5.258886544392143,
+          "key_passes_p90": 0.2921603635773413,
+          "shots_p90": 0.0,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.2921603635773413,
+          "dribble_success_pct": 1.0,
+          "tackles_won_p90": 1.4608018178867066,
+          "interceptions_p90": 0.5843207271546826,
+          "aerial_duels_won_p90": 0.5843207271546826,
+          "pressures_p90": 19.57474435968187,
+          "attacking_third_touches_p90": 8.764810907320241
+        },
+        {
+          "player_name": "Mathew Leckie",
+          "position_label": "Right Midfield",
+          "cluster": 0,
+          "passes_attempted_p90": 27.07491602979117,
+          "pass_completion_pct": 0.6699029126213593,
+          "progressive_passes_p90": 3.6800856739521977,
+          "key_passes_p90": 0.525726524850314,
+          "shots_p90": 0.262863262425157,
+          "shot_conversion_pct": 1.0,
+          "dribbles_completed_p90": 0.7885897872754709,
+          "dribble_success_pct": 0.21428571428571427,
+          "tackles_won_p90": 0.7885897872754709,
+          "interceptions_p90": 0.525726524850314,
+          "aerial_duels_won_p90": 4.468675461227669,
+          "pressures_p90": 17.874701844910675,
+          "attacking_third_touches_p90": 60.4585503577861
+        },
+        {
+          "player_name": "Priscila Chinchilla",
+          "position_label": "Left Midfield",
+          "cluster": 0,
+          "passes_attempted_p90": 17.45194761013778,
+          "pass_completion_pct": 0.6666666666666666,
+          "progressive_passes_p90": 0.6123490389522028,
+          "key_passes_p90": 0.9185235584283041,
+          "shots_p90": 0.0,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.9185235584283041,
+          "dribble_success_pct": 0.6,
+          "tackles_won_p90": 1.8370471168566083,
+          "interceptions_p90": 1.8370471168566083,
+          "aerial_duels_won_p90": 0.9185235584283041,
+          "pressures_p90": 30.61745194761014,
+          "attacking_third_touches_p90": 44.0891308045586
+        },
+        {
+          "player_name": "Denise O'Sullivan",
+          "position_label": "Right Defensive Midfield",
+          "cluster": 0,
+          "passes_attempted_p90": 33.67919714237115,
+          "pass_completion_pct": 0.7636363636363637,
+          "progressive_passes_p90": 4.286443272665419,
+          "key_passes_p90": 0.3061745194761014,
+          "shots_p90": 1.2246980779044057,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.3061745194761014,
+          "dribble_success_pct": 0.3333333333333333,
+          "tackles_won_p90": 2.7555706752849125,
+          "interceptions_p90": 1.5308725973805068,
+          "aerial_duels_won_p90": 0.6123490389522028,
+          "pressures_p90": 38.57798945398878,
+          "attacking_third_touches_p90": 40.41503657084539
+        },
+        {
+          "player_name": "Gonzalo Jordy Plata Jim\u00e9nez",
+          "position_label": "Right Midfield",
+          "cluster": 0,
+          "passes_attempted_p90": 33.17776333668104,
+          "pass_completion_pct": 0.75,
+          "progressive_passes_p90": 3.8282034619247356,
+          "key_passes_p90": 0.6380339103207893,
+          "shots_p90": 0.6380339103207893,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 1.595084775801973,
+          "dribble_success_pct": 0.5,
+          "tackles_won_p90": 0.9570508654811839,
+          "interceptions_p90": 0.9570508654811839,
+          "aerial_duels_won_p90": 1.595084775801973,
+          "pressures_p90": 22.96922077154841,
+          "attacking_third_touches_p90": 57.42305192887103
+        },
+        {
+          "player_name": "Vyan Sampson",
+          "position_label": "Left Defensive Midfield",
+          "cluster": 0,
+          "passes_attempted_p90": 25.120816584616772,
+          "pass_completion_pct": 0.6796116504854369,
+          "progressive_passes_p90": 4.633937039880765,
+          "key_passes_p90": 0.24389142315161916,
+          "shots_p90": 0.4877828463032383,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.4877828463032383,
+          "dribble_success_pct": 1.0,
+          "tackles_won_p90": 1.2194571157580958,
+          "interceptions_p90": 1.707239962061334,
+          "aerial_duels_won_p90": 1.2194571157580958,
+          "pressures_p90": 12.926245427035816,
+          "attacking_third_touches_p90": 13.170136850187436
+        }
+      ],
+      "1": [
+        {
+          "player_name": "Kobbie Mainoo",
+          "position_label": "Right Defensive Midfield",
+          "cluster": 1,
+          "passes_attempted_p90": 47.802197802197796,
+          "pass_completion_pct": 0.9064039408866995,
+          "progressive_passes_p90": 4.7095761381475665,
+          "key_passes_p90": 0.706436420722135,
+          "shots_p90": 1.1773940345368916,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.2354788069073783,
+          "dribble_success_pct": 0.2,
+          "tackles_won_p90": 1.1773940345368916,
+          "interceptions_p90": 0.9419152276295132,
+          "aerial_duels_won_p90": 0.4709576138147566,
+          "pressures_p90": 11.06750392464678,
+          "attacking_third_touches_p90": 64.99215070643642
+        },
+        {
+          "player_name": "Andr\u00e9-Frank Zambo Anguissa",
+          "position_label": "Right Center Midfield",
+          "cluster": 1,
+          "passes_attempted_p90": 43.337126429897594,
+          "pass_completion_pct": 0.8582089552238806,
+          "progressive_passes_p90": 11.319398694376236,
+          "key_passes_p90": 0.0,
+          "shots_p90": 0.3234113912678925,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.9702341738036775,
+          "dribble_success_pct": 1.0,
+          "tackles_won_p90": 0.3234113912678925,
+          "interceptions_p90": 1.940468347607355,
+          "aerial_duels_won_p90": 1.29364556507157,
+          "pressures_p90": 18.434449302269872,
+          "attacking_third_touches_p90": 41.07324669102234
+        },
+        {
+          "player_name": "Enzo Fernandez",
+          "position_label": "Center Defensive Midfield",
+          "cluster": 1,
+          "passes_attempted_p90": 69.10259202788063,
+          "pass_completion_pct": 0.8851063829787233,
+          "progressive_passes_p90": 13.526464822478763,
+          "key_passes_p90": 0.8821607492920932,
+          "shots_p90": 1.3232411239381399,
+          "shot_conversion_pct": 0.1111111111111111,
+          "dribbles_completed_p90": 0.4410803746460466,
+          "dribble_success_pct": 0.5,
+          "tackles_won_p90": 1.9113482901328687,
+          "interceptions_p90": 0.7351339577434111,
+          "aerial_duels_won_p90": 1.1762143323894578,
+          "pressures_p90": 15.731866695708995,
+          "attacking_third_touches_p90": 32.198867349161404
+        },
+        {
+          "player_name": "Hakan \u00c7alhano\u011flu",
+          "position_label": "Left Defensive Midfield",
+          "cluster": 1,
+          "passes_attempted_p90": 62.70873655308998,
+          "pass_completion_pct": 0.8875968992248062,
+          "progressive_passes_p90": 11.42368456587298,
+          "key_passes_p90": 0.9722284736913175,
+          "shots_p90": 2.430571184228294,
+          "shot_conversion_pct": 0.1,
+          "dribbles_completed_p90": 0.24305711842282937,
+          "dribble_success_pct": 0.3333333333333333,
+          "tackles_won_p90": 1.4583427105369762,
+          "interceptions_p90": 0.7291713552684881,
+          "aerial_duels_won_p90": 0.9722284736913175,
+          "pressures_p90": 11.909798802718639,
+          "attacking_third_touches_p90": 52.500337579331145
+        },
+        {
+          "player_name": "Declan Rice",
+          "position_label": "Left Defensive Midfield",
+          "cluster": 1,
+          "passes_attempted_p90": 65.83500892073292,
+          "pass_completion_pct": 0.9198606271777003,
+          "progressive_passes_p90": 12.540001699187222,
+          "key_passes_p90": 0.3823171249752202,
+          "shots_p90": 0.6881708249553963,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.3823171249752202,
+          "dribble_success_pct": 0.5555555555555556,
+          "tackles_won_p90": 0.9940245249355725,
+          "interceptions_p90": 1.5292684999008808,
+          "aerial_duels_won_p90": 1.2998782249157488,
+          "pressures_p90": 9.175610999405285,
+          "attacking_third_touches_p90": 33.72037042281442
+        },
+        {
+          "player_name": "Marcelo Brozovi\u0107",
+          "position_label": "Center Defensive Midfield",
+          "cluster": 1,
+          "passes_attempted_p90": 79.01148909250453,
+          "pass_completion_pct": 0.8967921896792189,
+          "progressive_passes_p90": 15.537824214843988,
+          "key_passes_p90": 0.7713813439993469,
+          "shots_p90": 0.8815786788563965,
+          "shot_conversion_pct": 0.125,
+          "dribbles_completed_p90": 0.5509866742852478,
+          "dribble_success_pct": 0.625,
+          "tackles_won_p90": 0.6611840091422974,
+          "interceptions_p90": 1.4325653531416442,
+          "aerial_duels_won_p90": 1.3223680182845947,
+          "pressures_p90": 17.41117890741383,
+          "attacking_third_touches_p90": 38.899659204538494
+        },
+        {
+          "player_name": "In-Beom Hwang",
+          "position_label": "Left Defensive Midfield",
+          "cluster": 1,
+          "passes_attempted_p90": 61.684317624751415,
+          "pass_completion_pct": 0.805668016194332,
+          "progressive_passes_p90": 14.234842528788787,
+          "key_passes_p90": 0.7492022383573046,
+          "shots_p90": 1.4984044767146092,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.24973407945243487,
+          "dribble_success_pct": 0.25,
+          "tackles_won_p90": 0.7492022383573046,
+          "interceptions_p90": 0.7492022383573046,
+          "aerial_duels_won_p90": 0.9989363178097395,
+          "pressures_p90": 12.73643805207418,
+          "attacking_third_touches_p90": 67.67793553160985
+        },
+        {
+          "player_name": "Vitor Machado Ferreira",
+          "position_label": "Right Defensive Midfield",
+          "cluster": 1,
+          "passes_attempted_p90": 77.72226450054593,
+          "pass_completion_pct": 0.9080459770114943,
+          "progressive_passes_p90": 14.651093538033948,
+          "key_passes_p90": 0.8933593620752407,
+          "shots_p90": 1.7867187241504814,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.5360156172451443,
+          "dribble_success_pct": 0.75,
+          "tackles_won_p90": 1.0720312344902887,
+          "interceptions_p90": 0.17867187241504814,
+          "aerial_duels_won_p90": 0.0,
+          "pressures_p90": 10.54164047248784,
+          "attacking_third_touches_p90": 63.78585845217218
+        }
+      ]
+    },
+    "spot_check": []
+  },
+  "FWD": {
+    "n": 166,
+    "features_used": [
+      "passes_attempted_p90",
+      "pass_completion_pct",
+      "progressive_passes_p90",
+      "key_passes_p90",
+      "shots_p90",
+      "shot_conversion_pct",
+      "dribbles_completed_p90",
+      "dribble_success_pct",
+      "tackles_won_p90",
+      "interceptions_p90",
+      "aerial_duels_won_p90",
+      "pressures_p90",
+      "attacking_third_touches_p90"
+    ],
+    "k_sweep": [
+      {
+        "k": 2,
+        "silhouette": 0.2605753319391261,
+        "training_cost": 1783.3024201256414
+      },
+      {
+        "k": 3,
+        "silhouette": 0.20657496815560597,
+        "training_cost": 1627.5540107096247
+      },
+      {
+        "k": 4,
+        "silhouette": 0.18894408318322037,
+        "training_cost": 1530.919382119948
+      },
+      {
+        "k": 5,
+        "silhouette": 0.19590048747552632,
+        "training_cost": 1423.836477842998
+      },
+      {
+        "k": 6,
+        "silhouette": 0.19244824717620337,
+        "training_cost": 1350.4763215770972
+      }
+    ],
+    "chosen_k": 2,
+    "chosen_silhouette": 0.2605753319391261,
+    "cluster_profiles": [
+      {
+        "cluster": 0,
+        "n": 77,
+        "passes_attempted_p90": 22.06531164043423,
+        "pass_completion_pct": 0.6829951354612159,
+        "progressive_passes_p90": 2.3077274276118125,
+        "key_passes_p90": 0.8380009918165043,
+        "shots_p90": 2.3406151825419346,
+        "shot_conversion_pct": 0.1499438818809189,
+        "dribbles_completed_p90": 0.8167770285022139,
+        "dribble_success_pct": 0.42049517953725035,
+        "tackles_won_p90": 0.5594618553685633,
+        "interceptions_p90": 0.4254796265402184,
+        "aerial_duels_won_p90": 2.250643870445382,
+        "pressures_p90": 16.08374248502077,
+        "attacking_third_touches_p90": 57.59133122841081
+      },
+      {
+        "cluster": 1,
+        "n": 89,
+        "passes_attempted_p90": 37.543639755623815,
+        "pass_completion_pct": 0.7550827006646672,
+        "progressive_passes_p90": 5.188540084465512,
+        "key_passes_p90": 1.5583531864153881,
+        "shots_p90": 2.0823727565095425,
+        "shot_conversion_pct": 0.12282593470991242,
+        "dribbles_completed_p90": 1.6846657628351889,
+        "dribble_success_pct": 0.5185901337719223,
+        "tackles_won_p90": 0.9194653133723157,
+        "interceptions_p90": 0.7089794073168325,
+        "aerial_duels_won_p90": 0.6781000073879416,
+        "pressures_p90": 15.953365286594893,
+        "attacking_third_touches_p90": 74.96461787802754
+      }
+    ],
+    "position_cross_tab": [
+      {
+        "cluster": 0,
+        "position_label": "Center Forward",
+        "count": 36
+      },
+      {
+        "cluster": 0,
+        "position_label": "Right Wing",
+        "count": 11
+      },
+      {
+        "cluster": 0,
+        "position_label": "Left Wing",
+        "count": 10
+      },
+      {
+        "cluster": 0,
+        "position_label": "Left Center Forward",
+        "count": 8
+      },
+      {
+        "cluster": 0,
+        "position_label": "Center Attacking Midfield",
+        "count": 6
+      },
+      {
+        "cluster": 0,
+        "position_label": "Right Center Forward",
+        "count": 5
+      },
+      {
+        "cluster": 0,
+        "position_label": "Left Attacking Midfield",
+        "count": 1
+      },
+      {
+        "cluster": 1,
+        "position_label": "Left Wing",
+        "count": 33
+      },
+      {
+        "cluster": 1,
+        "position_label": "Right Wing",
+        "count": 19
+      },
+      {
+        "cluster": 1,
+        "position_label": "Center Attacking Midfield",
+        "count": 17
+      },
+      {
+        "cluster": 1,
+        "position_label": "Center Forward",
+        "count": 8
+      },
+      {
+        "cluster": 1,
+        "position_label": "Right Attacking Midfield",
+        "count": 5
+      },
+      {
+        "cluster": 1,
+        "position_label": "Right Center Forward",
+        "count": 3
+      },
+      {
+        "cluster": 1,
+        "position_label": "Left Center Forward",
+        "count": 3
+      },
+      {
+        "cluster": 1,
+        "position_label": "Left Attacking Midfield",
+        "count": 1
+      }
+    ],
+    "sample_players": {
+      "0": [
+        {
+          "player_name": "Sophie Roman Haug",
+          "position_label": "Center Forward",
+          "cluster": 0,
+          "passes_attempted_p90": 22.447306791569083,
+          "pass_completion_pct": 0.49295774647887325,
+          "progressive_passes_p90": 2.5292740046838404,
+          "key_passes_p90": 1.2646370023419202,
+          "shots_p90": 4.110070257611241,
+          "shot_conversion_pct": 0.23076923076923078,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 0.31615925058548006,
+          "interceptions_p90": 0.0,
+          "aerial_duels_won_p90": 6.639344262295082,
+          "pressures_p90": 19.285714285714285,
+          "attacking_third_touches_p90": 56.27634660421545
+        },
+        {
+          "player_name": "Olivier Giroud",
+          "position_label": "Center Forward",
+          "cluster": 0,
+          "passes_attempted_p90": 15.288099604285302,
+          "pass_completion_pct": 0.6590909090909091,
+          "progressive_passes_p90": 1.7372840459415115,
+          "key_passes_p90": 0.6949136183766047,
+          "shots_p90": 3.300839687288872,
+          "shot_conversion_pct": 0.21052631578947367,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 0.0,
+          "interceptions_p90": 0.17372840459415118,
+          "aerial_duels_won_p90": 5.038123733230384,
+          "pressures_p90": 12.682173535373035,
+          "attacking_third_touches_p90": 34.74568091883023
+        },
+        {
+          "player_name": "Rasmus Winther H\u00f8jlund",
+          "position_label": "Center Forward",
+          "cluster": 0,
+          "passes_attempted_p90": 16.906307977736546,
+          "pass_completion_pct": 0.7962962962962963,
+          "progressive_passes_p90": 0.9392393320964749,
+          "key_passes_p90": 0.9392393320964749,
+          "shots_p90": 1.8784786641929498,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 0.3130797773654916,
+          "dribble_success_pct": 0.25,
+          "tackles_won_p90": 0.0,
+          "interceptions_p90": 0.0,
+          "aerial_duels_won_p90": 0.9392393320964749,
+          "pressures_p90": 25.35946196660482,
+          "attacking_third_touches_p90": 76.70454545454545
+        },
+        {
+          "player_name": "Harry Kane",
+          "position_label": "Center Forward",
+          "cluster": 0,
+          "passes_attempted_p90": 16.873950624961132,
+          "pass_completion_pct": 0.6517412935323383,
+          "progressive_passes_p90": 3.441950127479634,
+          "key_passes_p90": 0.8395000310925935,
+          "shots_p90": 2.5185000932777806,
+          "shot_conversion_pct": 0.16666666666666666,
+          "dribbles_completed_p90": 0.33580001243703744,
+          "dribble_success_pct": 0.4444444444444444,
+          "tackles_won_p90": 0.25185000932777807,
+          "interceptions_p90": 0.0,
+          "aerial_duels_won_p90": 2.350600087059262,
+          "pressures_p90": 10.241900379329643,
+          "attacking_third_touches_p90": 47.85150177227784
+        },
+        {
+          "player_name": "Kai Havertz",
+          "position_label": "Center Forward",
+          "cluster": 0,
+          "passes_attempted_p90": 25.552602579892394,
+          "pass_completion_pct": 0.8287671232876712,
+          "progressive_passes_p90": 2.800285214234783,
+          "key_passes_p90": 0.7000713035586957,
+          "shots_p90": 4.200427821352175,
+          "shot_conversion_pct": 0.16666666666666666,
+          "dribbles_completed_p90": 0.5250534776690219,
+          "dribble_success_pct": 0.5,
+          "tackles_won_p90": 0.35003565177934787,
+          "interceptions_p90": 0.35003565177934787,
+          "aerial_duels_won_p90": 2.1002139106760875,
+          "pressures_p90": 13.30135476761522,
+          "attacking_third_touches_p90": 83.65852077526414
+        },
+        {
+          "player_name": "Mitchell Thomas Duke",
+          "position_label": "Right Center Forward",
+          "cluster": 0,
+          "passes_attempted_p90": 22.477962781586683,
+          "pass_completion_pct": 0.5294117647058824,
+          "progressive_passes_p90": 1.3222331047992164,
+          "key_passes_p90": 0.3305582761998041,
+          "shots_p90": 2.313907933398629,
+          "shot_conversion_pct": 0.14285714285714285,
+          "dribbles_completed_p90": 0.3305582761998041,
+          "dribble_success_pct": 0.5,
+          "tackles_won_p90": 0.0,
+          "interceptions_p90": 0.6611165523996082,
+          "aerial_duels_won_p90": 5.288932419196866,
+          "pressures_p90": 19.502938295788443,
+          "attacking_third_touches_p90": 60.492164544564154
+        },
+        {
+          "player_name": "Lina Mona Andr\u00e9a Hurtig",
+          "position_label": "Left Wing",
+          "cluster": 0,
+          "passes_attempted_p90": 27.509972605373196,
+          "pass_completion_pct": 0.6320754716981132,
+          "progressive_passes_p90": 1.5571682606815016,
+          "key_passes_p90": 0.25952804344691693,
+          "shots_p90": 1.0381121737876677,
+          "shot_conversion_pct": 0.25,
+          "dribbles_completed_p90": 0.5190560868938339,
+          "dribble_success_pct": 0.4,
+          "tackles_won_p90": 1.2976402172345847,
+          "interceptions_p90": 0.5190560868938339,
+          "aerial_duels_won_p90": 5.190560868938339,
+          "pressures_p90": 14.793098476474265,
+          "attacking_third_touches_p90": 58.65333781900323
+        },
+        {
+          "player_name": "Juli\u00e1n \u00c1lvarez",
+          "position_label": "Left Center Forward",
+          "cluster": 0,
+          "passes_attempted_p90": 22.96847665763386,
+          "pass_completion_pct": 0.75,
+          "progressive_passes_p90": 0.926148252323946,
+          "key_passes_p90": 0.37045930092957846,
+          "shots_p90": 2.037526155112681,
+          "shot_conversion_pct": 0.36363636363636365,
+          "dribbles_completed_p90": 0.0,
+          "dribble_success_pct": 0.0,
+          "tackles_won_p90": 0.7409186018591569,
+          "interceptions_p90": 0.37045930092957846,
+          "aerial_duels_won_p90": 0.7409186018591569,
+          "pressures_p90": 21.85709875484513,
+          "attacking_third_touches_p90": 62.97808115802833
+        }
+      ],
+      "1": [
+        {
+          "player_name": "Estefan\u00eda Romina Banini Ruiz",
+          "position_label": "Left Wing",
+          "cluster": 1,
+          "passes_attempted_p90": 45.93252269224182,
+          "pass_completion_pct": 0.785234899328859,
+          "progressive_passes_p90": 4.315807501284467,
+          "key_passes_p90": 0.3082719643774619,
+          "shots_p90": 0.9248158931323858,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 3.390991608152081,
+          "dribble_success_pct": 0.55,
+          "tackles_won_p90": 0.9248158931323858,
+          "interceptions_p90": 1.2330878575098476,
+          "aerial_duels_won_p90": 0.0,
+          "pressures_p90": 12.9474225038534,
+          "attacking_third_touches_p90": 49.3235143003939
+        },
+        {
+          "player_name": "Jule Brand",
+          "position_label": "Left Wing",
+          "cluster": 1,
+          "passes_attempted_p90": 29.141455437448897,
+          "pass_completion_pct": 0.703030303030303,
+          "progressive_passes_p90": 4.062142273098937,
+          "key_passes_p90": 0.7064595257563367,
+          "shots_p90": 1.059689288634505,
+          "shot_conversion_pct": 0.0,
+          "dribbles_completed_p90": 1.766148814390842,
+          "dribble_success_pct": 0.5263157894736842,
+          "tackles_won_p90": 1.4129190515126735,
+          "interceptions_p90": 0.3532297628781684,
+          "aerial_duels_won_p90": 1.2363041700735895,
+          "pressures_p90": 18.89779231398201,
+          "attacking_third_touches_p90": 62.34505314799672
+        },
+        {
+          "player_name": "Mar\u00eda Catalina Usme Pineda",
+          "position_label": "Right Wing",
+          "cluster": 1,
+          "passes_attempted_p90": 40.091792656587465,
+          "pass_completion_pct": 0.6909090909090909,
+          "progressive_passes_p90": 7.8361231101511875,
+          "key_passes_p90": 2.004589632829373,
+          "shots_p90": 1.4578833693304534,
+          "shot_conversion_pct": 0.25,
+          "dribbles_completed_p90": 0.54670626349892,
+          "dribble_success_pct": 0.5,
+          "tackles_won_p90": 0.54670626349892,
+          "interceptions_p90": 0.9111771058315333,
+          "aerial_duels_won_p90": 0.7289416846652267,
+          "pressures_p90": 26.059665226781853,
+          "attacking_third_touches_p90": 48.839092872570184
+        },
+        {
+          "player_name": "Kosovare Asllani",
+          "position_label": "Center Attacking Midfield",
+          "cluster": 1,
+          "passes_attempted_p90": 37.07440100882724,
+          "pass_completion_pct": 0.6428571428571429,
+          "progressive_passes_p90": 4.918032786885246,
+          "key_passes_p90": 2.1752837326607817,
+          "shots_p90": 1.6078184110970997,
+          "shot_conversion_pct": 0.11764705882352941,
+          "dribbles_completed_p90": 1.9861286254728876,
+          "dribble_success_pct": 0.4883720930232558,
+          "tackles_won_p90": 0.9457755359394703,
+          "interceptions_p90": 0.2837326607818411,
+          "aerial_duels_won_p90": 0.47288776796973514,
+          "pressures_p90": 30.075662042875155,
+          "attacking_third_touches_p90": 102.80580075662043
+        },
+        {
+          "player_name": "Valentina Bergamaschi",
+          "position_label": "Left Wing",
+          "cluster": 1,
+          "passes_attempted_p90": 36.56059580230196,
+          "pass_completion_pct": 0.7090909090909091,
+          "progressive_passes_p90": 6.979750107712193,
+          "key_passes_p90": 0.33236905274819967,
+          "shots_p90": 1.661845263740998,
+          "shot_conversion_pct": 0.2,
+          "dribbles_completed_p90": 0.6647381054963993,
+          "dribble_success_pct": 0.5,
+          "tackles_won_p90": 1.661845263740998,
+          "interceptions_p90": 2.3265833692373974,
+          "aerial_duels_won_p90": 1.3294762109927987,
+          "pressures_p90": 17.28319074290638,
+          "attacking_third_touches_p90": 58.49695328368314
+        },
+        {
+          "player_name": "Lovro Majer",
+          "position_label": "Right Wing",
+          "cluster": 1,
+          "passes_attempted_p90": 55.37748003091986,
+          "pass_completion_pct": 0.864321608040201,
+          "progressive_passes_p90": 7.235248647255862,
+          "key_passes_p90": 1.1131151765009017,
+          "shots_p90": 1.9479515588765781,
+          "shot_conversion_pct": 0.2857142857142857,
+          "dribbles_completed_p90": 0.5565575882504509,
+          "dribble_success_pct": 0.4,
+          "tackles_won_p90": 1.1131151765009017,
+          "interceptions_p90": 0.8348363823756763,
+          "aerial_duels_won_p90": 0.5565575882504509,
+          "pressures_p90": 18.366400412264877,
+          "attacking_third_touches_p90": 87.37954135532078
+        },
+        {
+          "player_name": "Chloe Kelly",
+          "position_label": "Right Wing",
+          "cluster": 1,
+          "passes_attempted_p90": 28.783973758200567,
+          "pass_completion_pct": 0.5824175824175825,
+          "progressive_passes_p90": 1.7396907216494846,
+          "key_passes_p90": 1.5815370196813496,
+          "shots_p90": 2.0559981255857545,
+          "shot_conversion_pct": 0.23076923076923078,
+          "dribbles_completed_p90": 2.0559981255857545,
+          "dribble_success_pct": 0.52,
+          "tackles_won_p90": 1.1070759137769448,
+          "interceptions_p90": 0.9489222118088099,
+          "aerial_duels_won_p90": 0.9489222118088099,
+          "pressures_p90": 20.40182755388941,
+          "attacking_third_touches_p90": 99.16237113402063
+        },
+        {
+          "player_name": "Bethany Mead",
+          "position_label": "Right Wing",
+          "cluster": 1,
+          "passes_attempted_p90": 32.09568535368359,
+          "pass_completion_pct": 0.7777777777777778,
+          "progressive_passes_p90": 3.7643087760493104,
+          "key_passes_p90": 3.3680657469914883,
+          "shots_p90": 2.9718227179336663,
+          "shot_conversion_pct": 0.4,
+          "dribbles_completed_p90": 1.5849721162312886,
+          "dribble_success_pct": 0.5333333333333333,
+          "tackles_won_p90": 1.1887290871734664,
+          "interceptions_p90": 1.3868506017023774,
+          "aerial_duels_won_p90": 1.7830936307601997,
+          "pressures_p90": 12.481655415321397,
+          "attacking_third_touches_p90": 87.17346639272087
+        }
+      ]
+    },
+    "spot_check": [
+      {
+        "player_name": "Lionel Andr\u00e9s Messi Cuccittini",
+        "position_label": "Right Center Forward",
+        "cluster": 1,
+        "passes_attempted_p90": 44.765714030344334,
+        "pass_completion_pct": 0.8247978436657682,
+        "progressive_passes_p90": 10.738944875203897,
+        "key_passes_p90": 2.292583737403079,
+        "shots_p90": 4.102518266931826,
+        "shot_conversion_pct": 0.2647058823529412,
+        "dribbles_completed_p90": 3.1372198511831613,
+        "dribble_success_pct": 0.7222222222222222,
+        "tackles_won_p90": 0.48264920787433246,
+        "interceptions_p90": 0.0,
+        "aerial_duels_won_p90": 0.6033115098429156,
+        "pressures_p90": 10.738944875203897,
+        "attacking_third_touches_p90": 84.70493598194534
+      },
+      {
+        "player_name": "Cristiano Ronaldo dos Santos Aveiro",
+        "position_label": "Center Forward",
+        "cluster": 0,
+        "passes_attempted_p90": 21.10238153695065,
+        "pass_completion_pct": 0.7905759162303665,
+        "progressive_passes_p90": 1.1048367296832802,
+        "key_passes_p90": 1.1048367296832802,
+        "shots_p90": 3.9774122268598084,
+        "shot_conversion_pct": 0.08333333333333333,
+        "dribbles_completed_p90": 0.4419346918733121,
+        "dribble_success_pct": 0.36363636363636365,
+        "tackles_won_p90": 0.0,
+        "interceptions_p90": 0.0,
+        "aerial_duels_won_p90": 1.65725509452492,
+        "pressures_p90": 5.966118340289712,
+        "attacking_third_touches_p90": 57.561993616498896
+      }
+    ]
+  }
+}

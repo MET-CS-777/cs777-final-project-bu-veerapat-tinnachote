@@ -74,6 +74,24 @@ pip install -r requirements.txt
      (`scripts/evaluate.py`)
    - write `output/player_features_train` / `_test` as Parquet
 
+3. Run the within-position-family companion analysis (optional, adds
+   ~2-3 min; requires step 1's full dataset):
+
+   ```bash
+   python3 scripts/position_families.py
+   ```
+
+   This is a supplementary analysis alongside the global clustering
+   above: it clusters goalkeepers against goalkeepers, defenders
+   against defenders, midfielders against midfielders, and forwards
+   against forwards -- each family gets its own StandardScaler and its
+   own k-sweep -- to show that a single official position label can
+   itself contain multiple distinct styles. Pools all four competitions
+   (no train/test split, unlike the primary model) to keep each
+   family's sample large enough to cluster meaningfully. Writes
+   `results/position_family_clusters.json` and
+   `output/position_families/{GK,DEF,MID,FWD}` as Parquet.
+
 ## Project layout
 
 ```
@@ -83,12 +101,17 @@ scripts/
   ingest.py           Spark: raw JSON -> flat events_df / lineup_players_df
   minutes.py          per-player-per-match minutes played + primary position
   features.py         per-90 feature engineering (passing, shooting,
-                       dribbling, defending, pressing, attacking-third presence)
+                       dribbling, defending, pressing, attacking-third presence,
+                       goalkeeper shot-stopping/claims/sweeping)
   clustering.py        StandardScaler + KMeans + GaussianMixture, elbow/silhouette sweep
   evaluate.py           generalization check, position cross-tab, spot-checks, pressing trend
-  main.py               orchestrates the full pipeline
+  main.py               orchestrates the full (global) pipeline
+  position_families.py  supplementary: cluster within each traditional
+                         position family (GK/DEF/MID/FWD) separately
 data/                  raw StatsBomb JSON (gitignored except the sample)
 output/                 Parquet feature/cluster tables (created on run)
+results/                pipeline run logs + position_family_clusters.json
+report/                 report.html (full write-up with charts)
 ```
 
 ## Results (full 210-match run, verified)
@@ -122,6 +145,15 @@ players (women's tournaments) met the 270-minute threshold.
 - **Pressing (descriptive):** both women's tournaments show more
   pressures per 90 player-minutes (12.6, 15.5) than the men's (10.5,
   11.8); men's pressing rose slightly from WC 2022 to Euro 2024.
+- **Within-position-family clustering** (`position_families.py`,
+  pooling all 4 competitions): clustering goalkeepers, defenders,
+  midfielders, and forwards *separately* against only their own family
+  — own scaler, own k-sweep — every family independently landed on
+  k=2 by silhouette. Restricted to forwards only (166 players, no
+  other positions in the comparison), Ronaldo lands in a low-pass/
+  high-shot-conversion/high-aerial cluster and Messi in a high-pass/
+  high-dribble/high-key-pass cluster — the same separation the global
+  model found, this time using only players who share his position tag.
 
 Feature semantics (aerial duels via `aerial_won` flags, tackles via
 duel type, key passes via shot/goal assist flags) were verified against

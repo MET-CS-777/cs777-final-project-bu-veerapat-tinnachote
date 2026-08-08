@@ -800,10 +800,178 @@ footer {
   </figure>
 </section>
 
+
+<section id="position-families">
+  <div class="section-head"><span class="section-num">04</span><h2>Within-Position Sub-Styles</h2></div>
+  <p class="lede">The global clustering above shows styles cutting <em>across</em> position labels. The reverse question is just as important: within one traditional position family, are there already multiple distinct styles?</p>
+  <p>For each of the four broad families &mdash; goalkeepers, defenders (center backs + fullbacks), midfielders, forwards (including wingers and attacking midfielders) &mdash; this analysis re-standardizes the 13 features <em>within that family only</em> and re-sweeps k independently, exactly as the primary model does globally. Fitting one global scaler and then slicing by position would make, say, every goalkeeper look uniformly extreme against outfield players and hide the real variation the family actually contains &mdash; the whole point of asking the question this way.</p>
+  <p>Goalkeepers get an extended feature set here: StatsBomb's <code>Goal Keeper</code> event type (distinct from the passing features used elsewhere) records shots faced, saves, claims, and sweeper actions directly, so a real shot-stopping/distribution signal is available rather than an approximation.</p>
+
+  <div class="callout">
+    <p><strong>k was not assumed.</strong> Each family swept k=2 through the largest k its sample size could support (capped so no resulting cluster drops below 12 players) and kept whichever k maximized silhouette &mdash; the same rule as the primary model, applied independently four times. All four families landed on <strong>k=2</strong>. That's a finding, not a design choice: at this feature set and sample size, each traditional position most strongly supports a two-way split, not the four- or five-way taxonomies scouting vocabulary sometimes uses.</p>
+  </div>
+
+  <p style="font-size:13.5px;color:var(--ink-secondary)">This analysis pools all four competitions (no train/test split) to keep each family's sample large enough to cluster meaningfully &mdash; it is a companion to the primary model, not a replacement for it, and is not held to the same generalization check.</p>
+
+  
+  <figure>
+    <p class="figure-eyebrow">Figure 6</p>
+    <h4>GK family &mdash; 79 players &middot; k=2 chosen by silhouette (0.303)</h4>
+    <p class="figure-note">Own StandardScaler and own k-sweep, fit only on this family's players. Bars show each feature's relative difference between the two sub-clusters (orange = higher in "High-Engagement Keepers", blue = higher in "Low-Volume Keepers"), ranked by size of the difference.</p>
+    <div class="chart-wrap"><svg viewBox="0 0 620 214" role="img" aria-label="GK sub-cluster differentiators" class="chart-svg">
+<rect x="310.0" y="20.0" width="84.1" height="16" rx="3" fill="var(--series-2)"><title>High-Engagement Keepers: 10.10 vs Low-Volume Keepers: 6.24</title></rect>
+<text x="310.0" y="14.0" class="axis-caption-sm" text-anchor="middle">Shots faced/90</text>
+<text x="302.0" y="32.0" class="bar-value" text-anchor="end">6.24</text>
+<text x="318.0" y="32.0" class="bar-value" text-anchor="start">10.10</text>
+<line x1="310.0" y1="18.0" x2="310.0" y2="38.0" class="tape-divider"/>
+<rect x="310.0" y="60.0" width="74.9" height="16" rx="3" fill="var(--series-2)"><title>High-Engagement Keepers: 1.96 vs Low-Volume Keepers: 1.29</title></rect>
+<text x="310.0" y="54.0" class="axis-caption-sm" text-anchor="middle">Claims/90</text>
+<text x="302.0" y="72.0" class="bar-value" text-anchor="end">1.29</text>
+<text x="318.0" y="72.0" class="bar-value" text-anchor="start">1.96</text>
+<line x1="310.0" y1="58.0" x2="310.0" y2="78.0" class="tape-divider"/>
+<rect x="310.0" y="100.0" width="58.0" height="16" rx="3" fill="var(--series-2)"><title>High-Engagement Keepers: 1.16 vs Low-Volume Keepers: 0.86</title></rect>
+<text x="310.0" y="94.0" class="axis-caption-sm" text-anchor="middle">Sweeper actions/90</text>
+<text x="302.0" y="112.0" class="bar-value" text-anchor="end">0.86</text>
+<text x="318.0" y="112.0" class="bar-value" text-anchor="start">1.16</text>
+<line x1="310.0" y1="98.0" x2="310.0" y2="118.0" class="tape-divider"/>
+<rect x="310.0" y="140.0" width="52.7" height="16" rx="3" fill="var(--series-2)"><title>High-Engagement Keepers: 33.42 vs Low-Volume Keepers: 25.41</title></rect>
+<text x="310.0" y="134.0" class="axis-caption-sm" text-anchor="middle">Passes/90</text>
+<text x="302.0" y="152.0" class="bar-value" text-anchor="end">25.41</text>
+<text x="318.0" y="152.0" class="bar-value" text-anchor="start">33.42</text>
+<line x1="310.0" y1="138.0" x2="310.0" y2="158.0" class="tape-divider"/>
+<rect x="310.0" y="180.0" width="44.3" height="16" rx="3" fill="var(--series-2)"><title>High-Engagement Keepers: 13.46 vs Low-Volume Keepers: 10.75</title></rect>
+<text x="310.0" y="174.0" class="axis-caption-sm" text-anchor="middle">Progressive passes/90</text>
+<text x="302.0" y="192.0" class="bar-value" text-anchor="end">10.75</text>
+<text x="318.0" y="192.0" class="bar-value" text-anchor="start">13.46</text>
+<line x1="310.0" y1="178.0" x2="310.0" y2="198.0" class="tape-divider"/>
+</svg></div>
+    <figcaption><strong>Low-Volume Keepers</strong> (n=47) vs. <strong>High-Engagement Keepers</strong> (n=32).</figcaption>
+  </figure>
+  
+  <figure>
+    <p class="figure-eyebrow">Figure 7</p>
+    <h4>DEF family &mdash; 301 players &middot; k=2 chosen by silhouette (0.294)</h4>
+    <p class="figure-note">Own StandardScaler and own k-sweep, fit only on this family's players. Bars show each feature's relative difference between the two sub-clusters (orange = higher in "Deep Ball-Players", blue = higher in "Progressive Duellers"), ranked by size of the difference.</p>
+    <div class="chart-wrap"><svg viewBox="0 0 620 214" role="img" aria-label="DEF sub-cluster differentiators" class="chart-svg">
+<rect x="136.5" y="20.0" width="173.5" height="16" rx="3" fill="var(--series-1)"><title>Progressive Duellers: 0.60 vs Deep Ball-Players: 0.13</title></rect>
+<text x="310.0" y="14.0" class="axis-caption-sm" text-anchor="middle">Dribbles/90</text>
+<text x="302.0" y="32.0" class="bar-value" text-anchor="end">0.60</text>
+<text x="318.0" y="32.0" class="bar-value" text-anchor="start">0.13</text>
+<line x1="310.0" y1="18.0" x2="310.0" y2="38.0" class="tape-divider"/>
+<rect x="150.2" y="60.0" width="159.8" height="16" rx="3" fill="var(--series-1)"><title>Progressive Duellers: 35.02 vs Deep Ball-Players: 9.58</title></rect>
+<text x="310.0" y="54.0" class="axis-caption-sm" text-anchor="middle">Att. 3rd touches/90</text>
+<text x="302.0" y="72.0" class="bar-value" text-anchor="end">35.02</text>
+<text x="318.0" y="72.0" class="bar-value" text-anchor="start">9.58</text>
+<line x1="310.0" y1="58.0" x2="310.0" y2="78.0" class="tape-divider"/>
+<rect x="170.5" y="100.0" width="139.5" height="16" rx="3" fill="var(--series-1)"><title>Progressive Duellers: 0.68 vs Deep Ball-Players: 0.25</title></rect>
+<text x="310.0" y="94.0" class="axis-caption-sm" text-anchor="middle">Key passes/90</text>
+<text x="302.0" y="112.0" class="bar-value" text-anchor="end">0.68</text>
+<text x="318.0" y="112.0" class="bar-value" text-anchor="start">0.25</text>
+<line x1="310.0" y1="98.0" x2="310.0" y2="118.0" class="tape-divider"/>
+<rect x="211.2" y="140.0" width="98.8" height="16" rx="3" fill="var(--series-1)"><title>Progressive Duellers: 12.90 vs Deep Ball-Players: 7.11</title></rect>
+<text x="310.0" y="134.0" class="axis-caption-sm" text-anchor="middle">Pressures/90</text>
+<text x="302.0" y="152.0" class="bar-value" text-anchor="end">12.90</text>
+<text x="318.0" y="152.0" class="bar-value" text-anchor="start">7.11</text>
+<line x1="310.0" y1="138.0" x2="310.0" y2="158.0" class="tape-divider"/>
+<rect x="310.0" y="180.0" width="98.1" height="16" rx="3" fill="var(--series-2)"><title>Deep Ball-Players: 2.11 vs Progressive Duellers: 1.17</title></rect>
+<text x="310.0" y="174.0" class="axis-caption-sm" text-anchor="middle">Aerial duels won/90</text>
+<text x="302.0" y="192.0" class="bar-value" text-anchor="end">1.17</text>
+<text x="318.0" y="192.0" class="bar-value" text-anchor="start">2.11</text>
+<line x1="310.0" y1="178.0" x2="310.0" y2="198.0" class="tape-divider"/>
+</svg></div>
+    <figcaption><strong>Progressive Duellers</strong> (n=150) vs. <strong>Deep Ball-Players</strong> (n=151).</figcaption>
+  </figure>
+  
+  <figure>
+    <p class="figure-eyebrow">Figure 8</p>
+    <h4>MID family &mdash; 168 players &middot; k=2 chosen by silhouette (0.239)</h4>
+    <p class="figure-note">Own StandardScaler and own k-sweep, fit only on this family's players. Bars show each feature's relative difference between the two sub-clusters (orange = higher in "Advanced Playmakers", blue = higher in "High-Pressing Ball-Winners"), ranked by size of the difference.</p>
+    <div class="chart-wrap"><svg viewBox="0 0 620 214" role="img" aria-label="MID sub-cluster differentiators" class="chart-svg">
+<rect x="310.0" y="20.0" width="113.0" height="16" rx="3" fill="var(--series-2)"><title>Advanced Playmakers: 11.67 vs High-Pressing Ball-Winners: 5.68</title></rect>
+<text x="310.0" y="14.0" class="axis-caption-sm" text-anchor="middle">Progressive passes/90</text>
+<text x="302.0" y="32.0" class="bar-value" text-anchor="end">5.68</text>
+<text x="318.0" y="32.0" class="bar-value" text-anchor="start">11.67</text>
+<line x1="310.0" y1="18.0" x2="310.0" y2="38.0" class="tape-divider"/>
+<rect x="310.0" y="60.0" width="91.9" height="16" rx="3" fill="var(--series-2)"><title>Advanced Playmakers: 56.74 vs High-Pressing Ball-Winners: 33.03</title></rect>
+<text x="310.0" y="54.0" class="axis-caption-sm" text-anchor="middle">Passes/90</text>
+<text x="302.0" y="72.0" class="bar-value" text-anchor="end">33.03</text>
+<text x="318.0" y="72.0" class="bar-value" text-anchor="start">56.74</text>
+<line x1="310.0" y1="58.0" x2="310.0" y2="78.0" class="tape-divider"/>
+<rect x="310.0" y="100.0" width="89.1" height="16" rx="3" fill="var(--series-2)"><title>Advanced Playmakers: 1.14 vs High-Pressing Ball-Winners: 0.68</title></rect>
+<text x="310.0" y="94.0" class="axis-caption-sm" text-anchor="middle">Key passes/90</text>
+<text x="302.0" y="112.0" class="bar-value" text-anchor="end">0.68</text>
+<text x="318.0" y="112.0" class="bar-value" text-anchor="start">1.14</text>
+<line x1="310.0" y1="98.0" x2="310.0" y2="118.0" class="tape-divider"/>
+<rect x="310.0" y="140.0" width="70.2" height="16" rx="3" fill="var(--series-2)"><title>Advanced Playmakers: 49.47 vs High-Pressing Ball-Winners: 33.69</title></rect>
+<text x="310.0" y="134.0" class="axis-caption-sm" text-anchor="middle">Att. 3rd touches/90</text>
+<text x="302.0" y="152.0" class="bar-value" text-anchor="end">33.69</text>
+<text x="318.0" y="152.0" class="bar-value" text-anchor="start">49.47</text>
+<line x1="310.0" y1="138.0" x2="310.0" y2="158.0" class="tape-divider"/>
+<rect x="310.0" y="180.0" width="55.4" height="16" rx="3" fill="var(--series-2)"><title>Advanced Playmakers: 1.31 vs High-Pressing Ball-Winners: 0.98</title></rect>
+<text x="310.0" y="174.0" class="axis-caption-sm" text-anchor="middle">Shots/90</text>
+<text x="302.0" y="192.0" class="bar-value" text-anchor="end">0.98</text>
+<text x="318.0" y="192.0" class="bar-value" text-anchor="start">1.31</text>
+<line x1="310.0" y1="178.0" x2="310.0" y2="198.0" class="tape-divider"/>
+</svg></div>
+    <figcaption><strong>High-Pressing Ball-Winners</strong> (n=86) vs. <strong>Advanced Playmakers</strong> (n=82).</figcaption>
+  </figure>
+  
+  <figure>
+    <p class="figure-eyebrow">Figure 9</p>
+    <h4>FWD family &mdash; 166 players &middot; k=2 chosen by silhouette (0.261)</h4>
+    <p class="figure-note">Own StandardScaler and own k-sweep, fit only on this family's players. Bars show each feature's relative difference between the two sub-clusters (orange = higher in "Creative Providers", blue = higher in "Poacher-Type Finishers"), ranked by size of the difference.</p>
+    <div class="chart-wrap"><svg viewBox="0 0 620 214" role="img" aria-label="FWD sub-cluster differentiators" class="chart-svg">
+<rect x="156.3" y="20.0" width="153.7" height="16" rx="3" fill="var(--series-1)"><title>Poacher-Type Finishers: 2.25 vs Creative Providers: 0.68</title></rect>
+<text x="310.0" y="14.0" class="axis-caption-sm" text-anchor="middle">Aerial duels won/90</text>
+<text x="302.0" y="32.0" class="bar-value" text-anchor="end">2.25</text>
+<text x="318.0" y="32.0" class="bar-value" text-anchor="start">0.68</text>
+<line x1="310.0" y1="18.0" x2="310.0" y2="38.0" class="tape-divider"/>
+<rect x="310.0" y="60.0" width="122.1" height="16" rx="3" fill="var(--series-2)"><title>Creative Providers: 5.19 vs Poacher-Type Finishers: 2.31</title></rect>
+<text x="310.0" y="54.0" class="axis-caption-sm" text-anchor="middle">Progressive passes/90</text>
+<text x="302.0" y="72.0" class="bar-value" text-anchor="end">2.31</text>
+<text x="318.0" y="72.0" class="bar-value" text-anchor="start">5.19</text>
+<line x1="310.0" y1="58.0" x2="310.0" y2="78.0" class="tape-divider"/>
+<rect x="310.0" y="100.0" width="113.3" height="16" rx="3" fill="var(--series-2)"><title>Creative Providers: 1.68 vs Poacher-Type Finishers: 0.82</title></rect>
+<text x="310.0" y="94.0" class="axis-caption-sm" text-anchor="middle">Dribbles/90</text>
+<text x="302.0" y="112.0" class="bar-value" text-anchor="end">0.82</text>
+<text x="318.0" y="112.0" class="bar-value" text-anchor="start">1.68</text>
+<line x1="310.0" y1="98.0" x2="310.0" y2="118.0" class="tape-divider"/>
+<rect x="310.0" y="140.0" width="101.7" height="16" rx="3" fill="var(--series-2)"><title>Creative Providers: 1.56 vs Poacher-Type Finishers: 0.84</title></rect>
+<text x="310.0" y="134.0" class="axis-caption-sm" text-anchor="middle">Key passes/90</text>
+<text x="302.0" y="152.0" class="bar-value" text-anchor="end">0.84</text>
+<text x="318.0" y="152.0" class="bar-value" text-anchor="start">1.56</text>
+<line x1="310.0" y1="138.0" x2="310.0" y2="158.0" class="tape-divider"/>
+<rect x="310.0" y="180.0" width="90.7" height="16" rx="3" fill="var(--series-2)"><title>Creative Providers: 37.54 vs Poacher-Type Finishers: 22.07</title></rect>
+<text x="310.0" y="174.0" class="axis-caption-sm" text-anchor="middle">Passes/90</text>
+<text x="302.0" y="192.0" class="bar-value" text-anchor="end">22.07</text>
+<text x="318.0" y="192.0" class="bar-value" text-anchor="start">37.54</text>
+<line x1="310.0" y1="178.0" x2="310.0" y2="198.0" class="tape-divider"/>
+</svg></div>
+    <figcaption><strong>Poacher-Type Finishers</strong> (n=77) vs. <strong>Creative Providers</strong> (n=89).</figcaption>
+  </figure>
+
+  <h3>Forward vs. forward: closing the loop</h3>
+  <p>Restricting K-Means to only the 166 players in the Forward family &mdash; wingers, attacking midfielders, and center forwards together &mdash; still separates <strong>Cristiano Ronaldo into Poacher-Type Finishers</strong> and <strong>Lionel Messi into Creative Providers</strong>. This is the same separation the global model found, but this time with every other position removed from the comparison entirely: it isn't that Messi and Ronaldo differ from defenders and midfielders, it's that they differ from each other, using only players who share their official label.</p>
+
+  <div class="table-wrap">
+  <table>
+    <caption>All eight within-family sub-clusters</caption>
+    <thead><tr><th>Family</th><th class="num">n</th><th class="num">k</th><th>Cluster 0</th><th class="num">n</th><th>Cluster 1</th><th class="num">n</th></tr></thead>
+    <tbody>
+      <tr><td>Goalkeeper</td><td class="num">79</td><td class="num">2</td><td>Low-Volume Keepers</td><td class="num">47</td><td>High-Engagement Keepers</td><td class="num">32</td></tr>
+      <tr><td>Defender</td><td class="num">301</td><td class="num">2</td><td>Progressive Duellers</td><td class="num">150</td><td>Deep Ball-Players</td><td class="num">151</td></tr>
+      <tr><td>Midfielder</td><td class="num">168</td><td class="num">2</td><td>High-Pressing Ball-Winners</td><td class="num">86</td><td>Advanced Playmakers</td><td class="num">82</td></tr>
+      <tr class="hl"><td>Forward</td><td class="num">166</td><td class="num">2</td><td>Poacher-Type Finishers</td><td class="num">77</td><td>Creative Providers</td><td class="num">89</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
 <section id="discussion">
-  <div class="section-head"><span class="section-num">04</span><h2>Discussion</h2></div>
+  <div class="section-head"><span class="section-num">05</span><h2>Discussion</h2></div>
   <p>The central hypothesis holds: clustering on per-90 event-derived features recovers style groups that correlate with, but do not collapse into, official position labels. Two nearly-pure clusters (Goalkeepers, Ball-Playing Center Backs) confirm the pipeline surfaces real structure rather than noise; the three mixed clusters (Creative Attackers, Fullbacks &amp; Defensive Midfielders, Box Finishers) are exactly where the interesting cross-position groupings live, and Fullbacks &amp; Defensive Midfielders in particular &mdash; a near 50/50 split of two nominally different position families &mdash; is the clearest evidence that a defensive-actions <em>style</em> exists independent of which line a player nominally sits in.</p>
   <p>The Messi/Ronaldo separation is a genuine finding, not a cherry-pick: both were pulled from the dataset by name before clustering, and the pipeline (fit on all 387 players, with no player-specific tuning) placed them in different clusters on its own. The generalization check adds real weight &mdash; the same rank-ordering of clusters on every feature holds on tournaments the model never saw during fitting.</p>
+  <p>The within-position-family analysis (Section 04) answers the complementary question and reaches the same conclusion from the opposite direction: even restricted to players who share one official label, distinct styles emerge on their own -- and every family the data was rich enough to test landed on exactly two, not the finer four- or five-way taxonomies real scouting vocabulary sometimes assumes. That two-cluster result held independently for goalkeepers, defenders, midfielders, and forwards, which is a more surprising and more consistent finding than a single lucky split would be.</p>
   <h3>Limitations</h3>
   <ul>
     <li><strong>k selection is not fully data-driven.</strong> k=5 was chosen over the silhouette-optimal k=3 for interpretability, a defensible but subjective call, disclosed rather than hidden.</li>
@@ -811,12 +979,14 @@ footer {
     <li><strong>GMM underperforms K-Means here</strong>, particularly at k=5 &mdash; a real result, but it means the "blended style" list should be read as suggestive, not as confidently probabilistic as a well-separated GMM fit would support.</li>
     <li><strong>Position labels are themselves StatsBomb's per-match assignment</strong>, majority-voted across a player's appearances; a player who moved positions across the tournament (common for wingers used as wing-backs, for instance) gets one label, which is exactly the kind of real-world messiness the cluster-vs-position comparison has to tolerate rather than assume away.</li>
     <li><strong>Pressing-trend comparison is descriptive only</strong>, as flagged in the results &mdash; four tournaments across three years cannot support a causal or even confidently correlational claim about a league-wide tactical shift.</li>
+    <li><strong>The goalkeeper split reflects engagement volume, not save quality.</strong> Both GK sub-clusters have an identical 35.2% save rate; the split is driven by how many shots/crosses a keeper faces and how much they distribute, which plausibly reflects team defensive context (a busier keeper behind a team that concedes more chances) as much as individual style. Flagged rather than dressed up as a "shot-stopper vs. sweeper-keeper" archetype the data doesn't actually support.</li>
+    <li><strong>The within-family analysis pools all four competitions</strong> rather than following the train/test split used for the primary model, to keep each family's sample large enough to cluster meaningfully -- a deliberate scope trade-off, not an oversight, but it means Section 04's clusters have not been generalization-tested the way the primary model's have.</li>
   </ul>
 </section>
 
 <section id="conclusion">
-  <div class="section-head"><span class="section-num">05</span><h2>Conclusion</h2></div>
-  <p>Aggregating StatsBomb's raw event data into per-90 feature vectors and clustering with K-Means recovers five interpretable playing-style groups from 738 professional footballers across four major tournaments. The groups correlate with official positions where roles are narrow (goalkeepers, center backs) and diverge from them where roles are broad (forwards, wide players, defensive midfielders) &mdash; which is precisely where a scout or coach relying on position labels alone would be least well served. The pipeline separates Messi from Ronaldo despite an identical position tag, reproduces its cluster structure on tournaments held out entirely from fitting, and its K-Means/GMM comparison surfaces both a clear model-selection result (K-Means fits this feature space better) and a substantive one (wingers and mobile forwards are where individual players' styles genuinely blend two of the discovered groups). Style-based grouping built this way widens the realistic replacement pool for recruitment and gives a coach a lens on squad composition that a position sheet cannot provide on its own.</p>
+  <div class="section-head"><span class="section-num">06</span><h2>Conclusion</h2></div>
+  <p>Aggregating StatsBomb's raw event data into per-90 feature vectors and clustering with K-Means recovers five interpretable playing-style groups from 738 professional footballers across four major tournaments. The groups correlate with official positions where roles are narrow (goalkeepers, center backs) and diverge from them where roles are broad (forwards, wide players, defensive midfielders) &mdash; which is precisely where a scout or coach relying on position labels alone would be least well served. The pipeline separates Messi from Ronaldo despite an identical position tag, reproduces its cluster structure on tournaments held out entirely from fitting, and its K-Means/GMM comparison surfaces both a clear model-selection result (K-Means fits this feature space better) and a substantive one (wingers and mobile forwards are where individual players' styles genuinely blend two of the discovered groups). Style-based grouping built this way widens the realistic replacement pool for recruitment and gives a coach a lens on squad composition that a position sheet cannot provide on its own. A companion analysis restricted to each traditional position family in turn confirms the same conclusion from the other direction: clustering forwards only, defenders only, midfielders only, and goalkeepers only, each family independently split into exactly two silhouette-optimal sub-styles -- including, within forwards alone, the same Ronaldo/Messi separation the global model found.</p>
 </section>
 
 <footer>

@@ -97,6 +97,10 @@ def load_events(spark: SparkSession, events_dir: str) -> DataFrame:
         F.col("interception.outcome.name").alias("interception_outcome"),
         # Substitution (used for minutes-played fallback / sanity checks)
         F.col("substitution.replacement.id").alias("sub_replacement_id"),
+        # Goalkeeper (StatsBomb's event type name has a literal space:
+        # "Goal Keeper", not "Goalkeeper" -- verified against sample data)
+        F.col("goalkeeper.type.name").alias("gk_type"),
+        F.col("goalkeeper.outcome.name").alias("gk_outcome"),
     )
     return events
 

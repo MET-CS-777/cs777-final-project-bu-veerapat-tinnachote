@@ -76,6 +76,17 @@ def build_player_match_stats(events_df: DataFrame) -> DataFrame:
     is_pressure = F.col("event_type") == "Pressure"
     is_attacking_third_touch = F.col("start_x") >= ATTACKING_THIRD_X
 
+    # Goalkeeper sub-events (StatsBomb type name has a literal space,
+    # "Goal Keeper" -- see ingest.py). "Shot Saved" covers three outcome
+    # variants (on target, to the post, saved off target); all three
+    # still count as a save for shot-stopping purposes.
+    is_gk_shot_faced = F.col("gk_type") == "Shot Faced"
+    is_gk_shot_saved = F.col("gk_type").isin(
+        "Shot Saved", "Shot Saved to Post", "Shot Saved Off Target"
+    )
+    is_gk_claim = F.col("gk_type").isin("Collected", "Punch")
+    is_gk_sweeper = F.col("gk_type") == "Keeper Sweeper"
+
     stats = e.filter(F.col("player_id").isNotNull()).groupBy("match_id", "player_id").agg(
         F.count("*").alias("total_events"),
         F.sum(is_pass.cast("int")).alias("passes_attempted"),
@@ -91,6 +102,10 @@ def build_player_match_stats(events_df: DataFrame) -> DataFrame:
         F.sum(is_aerial_won.cast("int")).alias("aerial_duels_won"),
         F.sum(is_pressure.cast("int")).alias("pressures"),
         F.sum(is_attacking_third_touch.cast("int")).alias("attacking_third_touches"),
+        F.sum(is_gk_shot_faced.cast("int")).alias("gk_shots_faced"),
+        F.sum(is_gk_shot_saved.cast("int")).alias("gk_shots_saved"),
+        F.sum(is_gk_claim.cast("int")).alias("gk_claims"),
+        F.sum(is_gk_sweeper.cast("int")).alias("gk_sweeper_actions"),
     )
     return stats
 
@@ -125,6 +140,7 @@ def build_player_features(events_df: DataFrame, minutes_df: DataFrame,
             "passes_attempted", "passes_completed", "progressive_passes", "key_passes",
             "shots", "goals", "dribble_attempts", "dribbles_completed", "tackles_won",
             "interceptions", "aerial_duels_won", "pressures", "attacking_third_touches",
+            "gk_shots_faced", "gk_shots_saved", "gk_claims", "gk_sweeper_actions",
         ]]
     )
 
@@ -151,11 +167,19 @@ def build_player_features(events_df: DataFrame, minutes_df: DataFrame,
         p90("aerial_duels_won"),
         p90("pressures"),
         p90("attacking_third_touches"),
+        p90("gk_shots_faced"),
+        (F.col("gk_shots_saved") / F.when(F.col("gk_shots_faced") > 0, F.col("gk_shots_faced"))).alias("gk_save_pct"),
+        p90("gk_claims"),
+        p90("gk_sweeper_actions"),
     ).na.fill(0.0)
 
     return features
 
 
+# The 13 features used for the PRIMARY global (all-positions) clustering
+# in main.py. Deliberately does not include the goalkeeper-specific
+# columns below -- those are near-zero for every outfield player and
+# would just recreate the GK/outfield split rather than add signal.
 FEATURE_COLUMNS = [
     "passes_attempted_p90",
     "pass_completion_pct",
@@ -170,4 +194,18 @@ FEATURE_COLUMNS = [
     "aerial_duels_won_p90",
     "pressures_p90",
     "attacking_third_touches_p90",
+]
+
+# Goalkeeper-specific features, used only by the within-position-family
+# clustering (scripts/position_families.py) for the GK family. Distinct
+# from FEATURE_COLUMNS because these are meaningless (near-zero) for
+# outfield players and shouldn't be part of the global model.
+GK_FEATURE_COLUMNS = [
+    "gk_shots_faced_p90",
+    "gk_save_pct",
+    "gk_claims_p90",
+    "gk_sweeper_actions_p90",
+    "passes_attempted_p90",
+    "pass_completion_pct",
+    "progressive_passes_p90",
 ]
